@@ -1,57 +1,76 @@
-import { FC, useContext, useEffect, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import Logo from '../../public/logo.svg'
 import CTA from '../CTA'
 import HamburgerMenu from '../../public/static/icons/HamburgerMenu.svg'
-import { SidebarContext } from '../../pages/_app'
+import { useRouter } from 'next/router'
 
 const Header: FC = () => {
-  const { isSidebarOpen, toggleIsSidebarOpen } = useContext(SidebarContext)
+  const { push, route } = useRouter()
   
-  useEffect(() => {
+  const [isSidebar, toggleSidebar] =
+    useState<boolean>(false)
+  
+  const timeout = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+  
+  const handleContainer = async () => {
     const nextContainer =
       document.getElementById('__next')
+    if (nextContainer) {
+      if (isSidebar) {
+        timeout.current && clearTimeout(timeout.current)
+        nextContainer.style.height = '100vh'
+        nextContainer.style.overflowY = 'hidden'
+      } else {
+        timeout.current && clearTimeout(timeout.current)
+        timeout.current = setTimeout(() => {
+          nextContainer.style.height = '100%'
+          nextContainer.style.overflowY = 'auto'
+        }, 800)
+      }
+      nextContainer.style.cursor = isSidebar
+        ? 'pointer'
+        : 'inherit'
+      nextContainer.style.transform = isSidebar
+        ? 'scaleY(0.8) translateX(-50%)'
+        : ''
+    }
+  }
+  
+  useEffect(() => {
+    const sidebar = document.getElementById('sidebar')
     const closeButton = document.getElementById(
       'close-sidebar'
     )
-    if (nextContainer && closeButton) {
+    if (closeButton && sidebar) {
+      handleContainer()
+      sidebar.style.display = isSidebar ? 'block' : 'none'
       // Make animation
-      nextContainer.style.transform = isSidebarOpen
-        ? 'scaleY(0.8) translateX(-50%)'
-        : ''
-      // Change cursor to pointer when sidebar is open on page container hovering
-      nextContainer.style.cursor = isSidebarOpen
-        ? 'pointer'
-        : 'inherit'
       // Make open/close button animation
-      closeButton.style.scale = isSidebarOpen ? '1' : '0'
+      closeButton.style.scale = isSidebar ? '1' : '0'
       // Disallow page scrolling
-      document.documentElement.style.overflowY =
-        isSidebarOpen ? 'hidden' : 'auto'
-      nextContainer.style.overflowY = isSidebarOpen
-        ? 'hidden'
-        : 'auto'
+      document.documentElement.style.overflow =
+        isSidebar ? 'hidden' : 'auto'
     }
-  }, [isSidebarOpen])
+  }, [isSidebar])
   
   // https://stackoverflow.com/questions/60540985/react-usestate-doesnt-update-in-window-events
   const mouseDownListener = (e: Event) => {
     // Fix typescript error "Property 'id' does not exist on type 'EventTarget'"
-    const target = e.target as HTMLDivElement
-    toggleIsSidebarOpen((isSidebar) => {
-      // If t is null, close sidebar
-      if (target == null) return false
-      // if clicked item is the toggle button, toggle sidebar
-      if (target.id == 'sidebar-toggle') return !isSidebar
-      // if clicked item id differ from 'sidebar' and sidebar is open, close it
-      return isSidebar && target.id == 'sidebar'
+    const t = e.target as HTMLDivElement
+    const sidebar = document.getElementById('sidebar')
+    toggleSidebar((isSidebar) => {
+      if (t == null) return false
+      if (t.id == 'open-sidebar') return true
+      if (t.id == 'close-sidebar') return false
+      return isSidebar && sidebar ? sidebar.contains(t) : false
     })
   }
   
   const resizeListener = () => {
-    // If page width is greater or equal to medium size, close sidebar
-    if (window.outerWidth >= 768)
-      toggleIsSidebarOpen(false)
+    // If page width is greater or equal to large size, close sidebar
+    if (window.outerWidth >= 1024)
+      toggleSidebar(false)
   }
   
   useEffect(() => {
@@ -77,20 +96,20 @@ const Header: FC = () => {
   }, [])
   
   return (
-      <header className='inline-flex items-center justify-between w-full layout mt-12'>
-        <Link href='/'><Logo /></Link>
-        <HamburgerMenu
-          id='sidebar-toggle'
-          className='lg:hidden'
-          width='24'
-          height='24'
-          viewBox='0 0 14 10'
-        />
-        <div className='hidden lg:block inline-flex items-center'>
-          <Link href='/blog'><a className='mr-4 hover-underline-animation'>Blog</a></Link>
-          <CTA text='Contact Me' />
-        </div>
-      </header>
+    <header className="inline-flex items-center justify-between w-full layout mt-12">
+      <Link href="/"><Logo/></Link>
+      <HamburgerMenu
+        id="open-sidebar"
+        className="lg:hidden"
+        width="24"
+        height="24"
+        viewBox="0 0 14 10"
+      />
+      <div className="hidden lg:block inline-flex items-center">
+        <Link href="/blog"><a className="mr-4 hover-underline-animation">Blog</a></Link>
+        <CTA text="Contact Me" onClick={() => push('/contact-me', { query: { prevUrl: route } })}/>
+      </div>
+    </header>
   )
 }
 

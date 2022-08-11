@@ -5,13 +5,16 @@ type Props = {
   onClick?: () => unknown
   className?: string
   icon?: ReactNode
+  isDisabled?: boolean
+  isLoading?: boolean
 }
 
-const CTA: FC<Props> = ({ text, className , icon, onClick}) => {
+const CTA: FC<Props> = ({ text, className, icon, onClick, isDisabled= false, isLoading = false }) => {
   return (
     <button
+      disabled={isDisabled || isLoading}
       onClick={onClick}
-      className={`${className} inline-flex items-center gap-x-2 w-fit h-fit px-4 py-2 rounded-3xl border-2 bg-electricViolet border-electricViolet text-white hover:text-electricViolet hover:bg-white transition-colors`}>
+      className={`${className} disabled:opacity-60 inline-flex items-center gap-x-2 w-fit h-fit px-4 py-2 rounded-3xl color-animation`}>
       {text}
       {icon}
     </button>

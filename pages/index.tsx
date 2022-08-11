@@ -9,12 +9,12 @@ import Startups from '../modules/Startups'
 
 const Index: NextPage = () => {
   return (
-    <div className="bg-white w-full h-full">
+    <div className="bg-white w-full h-full opacity-animation">
       <Header/>
-      <Hero />
-      <Projects />
-      <AboutMe />
-      <Posts />
+      <Hero/>
+      <Projects/>
+      <AboutMe/>
+      <Posts/>
       <Startups/>
       <Footer/>
     </div>

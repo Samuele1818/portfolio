@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@seznam/compose-react-refs": "^1.0.6",
     "next": "12.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sib-api-v3-sdk": "^8.4.0",
     "swiper": "^8.3.2"
   },
   "devDependencies": {

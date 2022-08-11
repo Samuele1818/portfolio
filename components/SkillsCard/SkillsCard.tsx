@@ -20,14 +20,14 @@ const SkillsCard: FC<Props> = ({ icon, title, description, sections }) => {
       {
         sections?.map((section, index) => {
           return (
-            <div key={index} className='flex flex-col'>
-              <h2 className='mt-8 text-electricViolet text-md font-bold'>
+            <div key={index} className="flex flex-col">
+              <h2 className="mt-8 text-electricViolet text-md font-bold">
                 {section.title}
               </h2>
-              <div className='flex flex-col'>
+              <div className="flex flex-col">
                 {
                   section.values?.map((value, index) => {
-                    return <p key={index} className='font-light text-sm'>{value}</p>
+                    return <p key={index} className="font-light text-sm">{value}</p>
                   })
                 }
               </div>
