@@ -1,33 +1,27 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-const ib = require('sib-api-v3-sdk')
+var SibApiV3Sdk = require('sib-api-v3-sdk');
+var defaultClient = SibApiV3Sdk.ApiClient.instance;
 
 export default async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
-  const client = ib.ApiClient.instance
-  const apiKey = client.authentications['api-key']
-  apiKey.apiKey = process.env.SEND_IN_BLUE_API_KEY
+  let apiKey = defaultClient.authentications['api-key'];
+  apiKey.apiKey = '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';
   
-  const tranEmailApi = new ib.TransactionalEmailsApi()
+  let apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
   
-  const sender = {
-    email: req.query.email,
-    name: req.query.name,
+  let sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
+  
+  sendSmtpEmail.subject = req.query.name;
+  sendSmtpEmail.htmlContent = "<html><body><h1>This is my first transactional email</h1></body></html>";
+  sendSmtpEmail.sender = {name:req.query.name,email:req.query.email};
+  sendSmtpEmail.to = [{email:"samsciatore.19@gmail.com",name:"Samuele"}];
+  
+  try {
+    const data = await apiInstance.sendTransacEmail(sendSmtpEmail)
+    res.status(200).json(data)
+  } catch(e) {
+    res.status(500).json(e)
   }
-  
-  const receivers = [
-    {
-      email: 'samsciatore.19@gmail.com',
-    },
-  ]
-  
-  tranEmailApi
-    .sendTransacEmail({
-      sender,
-      to: receivers,
-      textContent: req.query.message
-    })
-    .then(res.status(200).send("Email sent successfully"))
-    .catch(e => res.status(500).send(`Error: ${e}`))
 }
