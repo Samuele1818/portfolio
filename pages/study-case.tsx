@@ -179,8 +179,8 @@ const StudyCase: NextPage = () => {
       <div className='-mt-12 w-full layout relative'>
         <img src={currentCase.information.imagePath} className='w-full rounded-lg brightness-[0.2]'/>
         <div className='absolute left-0 right-0 top-0 bottom-0 my-auto mx-auto w-fit h-fit inline-flex gap-x-4'>
-          <CTALink fill='lochmara' link={currentCase.information.siteUrl} linkText='Visit website' />
-          <CTALink fill='lochmara' link={currentCase.information.sourceCodeUrl} linkText='Source code' />
+          <CTALink fill='lochmara' link={currentCase.information.siteUrl} text='Visit website' />
+          <CTALink fill='lochmara' link={currentCase.information.sourceCodeUrl} text='Source code' />
         </div>
       </div>
       <h1 className='mt-24 xl-text center'>Chooses</h1>
