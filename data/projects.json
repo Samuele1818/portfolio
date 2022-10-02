@@ -1,26 +1,32 @@
 [
   {
-    "description": "test-1 lorem ipsum sit amet atet patet papa",
-    "link": ""
+    "name": "portfolio",
+    "description": "test-1 lorem ipsum sit amet atet patet papa test-1 lorem ipsum sit amet atet patet papa test-1 lorem ipsum sit amet atet patet papa",
+    "background": "/assets/projects/portfolio.png"
   },
   {
-    "description": "test-2 lorem ipsum sit amet atet patet papa",
-    "link": ""
+    "name": "about all",
+    "description": "test-2 lorem ipsum sit amet atet patet papa test-2 lorem ipsum sit amet atet patet papa test-2 lorem ipsum sit amet atet patet papa",
+    "background": "/assets/projects/AboutAll.png"
   },
   {
+    "name": "",
     "description": "test-3 lorem ipsum sit amet atet patet papa",
-    "link": ""
+    "background": ""
   },
   {
+    "name": "",
     "description": "test-4 lorem ipsum sit amet atet patet papa",
-    "link": ""
+    "background": ""
   },
   {
+    "name": "",
     "description": "test-5 lorem ipsum sit amet atet patet papa",
-    "link": ""
+    "background": ""
   },
   {
+    "name": "",
     "description": "test-6 lorem ipsum sit amet atet patet papa",
-    "link": ""
+    "background": ""
   }
 ]

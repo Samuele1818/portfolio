@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800&display=swap');
 
 /* @tailwind base ecc.. not working */
 @import 'tailwindcss/base';
@@ -8,8 +8,8 @@
 @layer base {
   html,
   body {
-    font-family: 'Titillium Web', sans-serif;
-    @apply text-bastille scroll-smooth m-0 p-0
+    font-family: 'Nunito Sans', sans-serif;
+    @apply text-bastille scroll-smooth m-0 p-0 selection:bg-lochmara selection:text-hintOfRed
   }
   
   #__next {
@@ -32,7 +32,7 @@
     @apply cursor-pointer
   }
   
-  * {
+  *, *:before, *:after {
     box-sizing: border-box;
   }
   
@@ -46,7 +46,7 @@
     left: 0;
     transform-origin: bottom center;
     transition: transform 0.5s cubic-bezier(.52, .01, .16, 1);
-    @apply bg-violet-900;
+    @apply bg-electricViolet;
   }
   
   .hover-underline-animation:hover:after {
@@ -70,12 +70,16 @@
     position: relative;
   }
   
-  .color-animation {
+  .color-animation-electricViolet {
     @apply text-hintOfRed hover:text-electricViolet hover:bg-hintOfRed transition-colors bg-electricViolet border-electricViolet border-2
   }
   
+  .color-animation-lochmara {
+    @apply text-hintOfRed hover:text-lochmara hover:bg-hintOfRed transition-colors bg-lochmara border-lochmara border-2
+  }
+  
   .layout {
-    @apply px-8 md:px-16 lg:px-40
+    @apply px-8 md:px-16 lg:px-40 xl:px-52 2xl:px-64
   }
   
   .center {
@@ -90,16 +94,34 @@
     @apply flex flex-col md:flex-row
   }
   
-  .hr-align {
+  .hr-align-lg {
     @apply center lg:mx-0 lg:text-left
   }
   
+  .hr-align-md {
+    @apply center md:mx-0 md:text-left
+  }
+  
   .xl-text {
-    @apply text-4xl font-bold
+    font-size: clamp(1.875rem, 1.25rem + 1.5625vw, 2.25rem);
+    @apply font-bold leading-snug
   }
   
   .lg-text {
-    @apply text-2xl
+    font-size: clamp(1.25rem, 0.8333rem + 1.0417vw, 1.5rem);
+  }
+  
+  .md-text {
+    font-size: clamp(1.125rem, 0.9167rem + 0.5208vw, 1.25rem);
+  }
+  
+  .sm-text {
+    font-size: clamp(1rem, 0.7917rem + 0.5208vw, 1.125rem);
+  }
+  
+  .xs-text {
+    font-size: clamp(0.75rem, 0.5417rem + 0.5208vw, 0.875rem);
+    @apply tracking-wider
   }
   
   .opacity-animation {

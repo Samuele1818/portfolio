@@ -1,6 +1,7 @@
 import { FC, ReactNode } from 'react'
-import ExternalLink from '../../public/static/icons/ExternalLink.svg'
+import ExternalLink from '../../public/icons/ExternalLink.svg'
 import Link from 'next/link'
+import CTALink from '../CTALink'
 
 type Props = {
   logo: ReactNode
@@ -17,15 +18,10 @@ const Startup: FC<Props> = ({
                             }) => {
   
   return (
-    <div className="bg-white w-full h-full rounded-xl flex flex-col items-center px-8 py-8 text-bastille">
+    <div className="shadow-md shadow-gray-300 bg-white w-full h-full rounded-xl flex flex-col items-center px-8 py-8 text-bastille">
       {logo}
       <p className="mt-8 text-lg font-normal line-clamp-3">{description}</p>
-      <Link href={link}>
-        <a target="_blank" className="mt-4 inline-flex gap-x-2 items-center rounded-xl color-animation px-2 py-1">
-          {visibleLink}
-          <ExternalLink className="w-4 h-4" viewBox="0 0 50 50"/>
-        </a>
-      </Link>
+      <CTALink link={link} text={visibleLink} className='mt-4' />
     </div>
   )
 }

@@ -2,7 +2,7 @@ import { FC, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import Logo from '../../public/logo.svg'
 import CTA from '../CTA'
-import HamburgerMenu from '../../public/static/icons/HamburgerMenu.svg'
+import HamburgerMenu from '../../public/icons/HamburgerMenu.svg'
 import { useRouter } from 'next/router'
 
 const Header: FC = () => {
@@ -96,8 +96,13 @@ const Header: FC = () => {
   }, [])
   
   return (
-    <header className="inline-flex items-center justify-between w-full layout mt-12">
-      <Link href="/"><Logo/></Link>
+    <header className="inline-flex items-center justify-between w-full layout pt-12 bg-white text-electricViolet">
+      <Link href="/">
+        <a className='inline-flex items-center gap-x-2'>
+          <Logo className='fill-electricViolet'/>
+          <p className='font-extrabold md-text'>Samuele Sciatore</p>
+        </a>
+      </Link>
       <HamburgerMenu
         id="open-sidebar"
         className="lg:hidden"
@@ -106,7 +111,7 @@ const Header: FC = () => {
         viewBox="0 0 14 10"
       />
       <div className="hidden lg:block inline-flex items-center">
-        <Link href="/blog"><a className="mr-4 hover-underline-animation">Blog</a></Link>
+        <Link href="https://blog-samuele1818.vercel.app/"><a target='_blank' className="mr-4 hover-underline-animation text-bastille">Blog</a></Link>
         <CTA text="Contact Me" onClick={() => push('/contact-me', { query: { prevUrl: route } })}/>
       </div>
     </header>

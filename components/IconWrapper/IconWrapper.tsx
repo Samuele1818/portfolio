@@ -11,7 +11,7 @@ const IconWrapper: FC<Props> = ({ icon, theme, link }) => {
   return (
     <Link href={link}>
       <a target="_blank"
-         className={`${theme === 'light' ? 'text-hintOfRed border-hintOfRed hover:bg-hintOfRed hover:text-electricViolet' : 'color-animation'} border-[1px] rounded-full w-fit h-fit p-2 cursor-pointer [&_svg]:w-6 [&_svg]:h-6`}>
+         className={`${theme === 'light' ? 'transition-colors text-hintOfRed border-hintOfRed hover:bg-hintOfRed hover:text-electricViolet' : 'color-animation-electricViolet'} border-[1px] rounded-full w-fit h-fit p-2 cursor-pointer [&_svg]:w-6 [&_svg]:h-6`}>
         {icon}
       </a>
     </Link>

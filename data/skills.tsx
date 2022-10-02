@@ -1,4 +1,4 @@
-import WebDevelopment from '../public/static/icons/WebDevelopment.svg'
+import WebDevelopment from '../public/icons/WebDevelopment.svg'
 
 export default [
   {
@@ -7,38 +7,37 @@ export default [
     description: 'I like to transform ideas in reality with my coding skills',
     sections: [
       {
-        title: 'test1',
+        title: 'Languages',
         values: [
-          'Test1',
-          'Test2'
+          'Javascript',
+          'Typescript',
+          'CSS3',
+          'SCSS',
+          'HTML5'
         ]
       },
       {
-        title: 'test2',
+        title: 'Frameworks & Technologies',
         values: [
-          'Test2',
-          'Test3'
+          'React',
+          'NextJS',
+          'NodeJS',
+          'TailwindCSS',
         ]
       }
     ]
   },
   {
-    title: 'Web development',
+    title: 'Software Engineering',
     icon: <WebDevelopment viewBox="0 0 500 414"/>,
     description: 'I like to transform ideas in reality with my coding skills',
     sections: [
       {
-        title: 'test1',
+        title: 'Languages',
         values: [
-          'Test1',
-          'Test2'
-        ]
-      },
-      {
-        title: 'test2',
-        values: [
-          'Test2',
-          'Test3'
+          'C++',
+          'Kotlin',
+          'Java'
         ]
       }
     ]

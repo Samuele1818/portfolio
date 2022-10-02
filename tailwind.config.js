@@ -10,9 +10,9 @@ module.exports = {
     extend: {
       colors: {
         electricViolet: '#6600FF',
-        puertoRico: '#3ABEAA',
+        lochmara: '#0092DB',
         bastille: '#1f1926',
-        hintOfRed: '#f5f0f0'
+        hintOfRed: '#f5f0f0',
       },
     },
   },

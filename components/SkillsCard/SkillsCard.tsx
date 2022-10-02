@@ -13,10 +13,10 @@ type Props = {
 const SkillsCard: FC<Props> = ({ icon, title, description, sections }) => {
   return (
     <div
-      className="[&_svg]:w-12 [&_svg]:h-12 bg-white px-4 py-8 flex flex-col text-bastille text-center w-96 rounded-xl items-center">
+      className="[&_svg]:w-12 [&_svg]:h-12 bg-white px-4 py-8 flex flex-col text-bastille text-center max-w-[24rem] rounded-xl items-center">
       {icon}
-      <h1 className="font-bold text-xl">{title}</h1>
-      <p className="font-normal text-lg">{description}</p>
+      <h1 className="font-bold text-xl mt-2">{title}</h1>
+      <p className="font-normal text-lg mt-4">{description}</p>
       {
         sections?.map((section, index) => {
           return (

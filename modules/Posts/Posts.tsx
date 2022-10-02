@@ -8,7 +8,7 @@ const Posts: FC = () => {
   return (
     <section className="layout mt-24">
       <h1 className="center xl-text">Blog Posts</h1>
-      <h2 className="center lg-text mt-8">Explore my blog articles, discover my tutorials and
+      <h2 className="center lg-text mt-4">Explore my blog articles, discover my tutorials and
         reflections</h2>
       <Swiper
         effect="coverflow"
@@ -25,12 +25,12 @@ const Posts: FC = () => {
           slideShadows: false
         }}
         modules={[EffectCoverflow]}
-        className="w-full !pt-16 !pb-32"
+        className="w-full !my-16 !py-2"
       >
         {
           PostsList.map((post, index) => {
             return (
-              <SwiperSlide key={index} className="!w-80 !shadow-2xl !rounded-xl">
+              <SwiperSlide key={index} className="!w-80 !shadow-lg !rounded-xl">
                 <BlogPost title={post.title} description={post.description} date={post.date}
                           author={post.author} timeToRead={post.timeToRead}/>
               </SwiperSlide>)

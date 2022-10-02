@@ -14,7 +14,7 @@ export default async (
   let sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
   
   sendSmtpEmail.subject = req.query.name;
-  sendSmtpEmail.htmlContent = "<html><body><h1>This is my first transactional email</h1></body></html>";
+  sendSmtpEmail.textContent = req.query.message
   sendSmtpEmail.sender = {name:req.query.name,email:req.query.email};
   sendSmtpEmail.to = [{email:"samsciatore.19@gmail.com",name:"Samuele"}];
   

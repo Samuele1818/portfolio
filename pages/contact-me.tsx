@@ -1,17 +1,19 @@
 import { NextPage } from 'next'
-import RightArrow from '../public/static/icons/RightArrow.svg'
+import RightArrow from '../public/icons/RightArrow.svg'
 import IconWrapper from '../components/IconWrapper'
-import Github from '../public/static/icons/Github.svg'
-import Email from '../public/static/icons/Email.svg'
-import Checkmark from '../public/static/icons/Checkmark.svg'
-import ErrorCloud from '../public/static/icons/ErrorCloud.svg'
+import Github from '../public/icons/Github.svg'
+import Email from '../public/icons/Email.svg'
+import Checkmark from '../public/icons/Checkmark.svg'
+import ErrorCloud from '../public/icons/ErrorCloud.svg'
+import StackOverflow from '../public/icons/StackOverflow.svg'
 import Input from '../components/Input'
 import useFormFieldStorage from '../hooks/useFormFieldStorage'
 import CTA from '../components/CTA'
 import { useRouter } from 'next/router'
-import Send from '../public/static/icons/Send.svg'
+import Send from '../public/icons/Send.svg'
 import { getWithExpiry, isValidEmail, isValidMessage, isValidName, setWithExpiry } from '../utils/validator'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import Head from 'next/head'
 
 const ContactMe: NextPage = () => {
   const { push, query } = useRouter()
@@ -48,6 +50,7 @@ const ContactMe: NextPage = () => {
   }, [])
   
   const sendEmail = async () => {
+    setCTAInformation(prev => ({ ...prev, isLoading: true }))
     if (emailRef.current && nameRef.current && messageRef.current) {
       const res = await fetch(`/api/sendEmail?email=${emailRef.current.value}&name=${nameRef.current.value}&message=${messageRef.current.value}`)
       if (res.status == 200) {
@@ -59,10 +62,15 @@ const ContactMe: NextPage = () => {
     } else {
       setFormStatus({ status: 'error', information: 'Refresh the page and retry or contact me in another way' })
     }
+    setCTAInformation(prev => ({ ...prev, isLoading: false }))
   }
   
   return (
     <div className="opacity-animation bg-white w-full h-full layout pb-12">
+      <Head>
+        <title>Contact Me</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <section
         className="flex flex-row border-bastille border-opacity-30 border-b-[0.5px] mt-12 items-center justify-between p-4">
         <RightArrow onClick={() => push(prevUrl as string || '/')} className="rotate-180 w-6 h-6 text-electricViolet"
@@ -70,13 +78,14 @@ const ContactMe: NextPage = () => {
         <div className="flex flex-row gap-x-4">
           <IconWrapper link="https://github.com/Samuele1818" icon={<Github viewBox="0 0 18 20"/>} theme="dark"/>
           <IconWrapper link="mailto:samuelesciatore.19@gmail.com" icon={<Email viewBox="0 0 134 97"/>} theme="dark"/>
+          <IconWrapper link="https://stackoverflow.com/users/12119966/samuele1818" icon={<StackOverflow viewBox="0 0 16 16"/>} theme="dark"/>
         </div>
       </section>
       {
         formStatus.status === 'form' ? (
           <section className="w-full">
-            <h1 className="xl-text center mt-12">Send me a message, I will contact you on your email</h1>
-            <h1 className="lg-text center mt-8">I&apos;m happy to see that you are dedicating your time to me!</h1>
+            <h1 className="xl-text mt-12">Send me a message, I will contact you on your email</h1>
+            <h1 className="lg-text mt-4">I&apos;m happy to see that you are dedicating your time to me!</h1>
             <form className="w-full flex flex-col" onSubmit={e => {
               e.preventDefault()
               sendEmail()
@@ -93,7 +102,7 @@ const ContactMe: NextPage = () => {
                        statusInformation={messageInformation}/>
               </div>
               <CTA isDisabled={CTAInformation.isDisabled} isLoading={CTAInformation.isLoading} text="Send"
-                   icon={<Send className="w-3 h-3" viewBox="0 0 9 9"/>} className="center mt-8"/>
+                   icon={<Send className="w-3 h-3" viewBox="0 0 9 9"/>} className="mt-8"/>
             </form>
           </section>
         ) : formStatus.status === 'error' ?
