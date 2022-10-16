@@ -10,11 +10,9 @@
   },
   "dependencies": {
     "@seznam/compose-react-refs": "^1.0.6",
-    "aos": "^2.3.4",
     "next": "12.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-scroll-parallax": "^3.3.1",
     "sib-api-v3-sdk": "^8.4.0",
     "swiper": "^8.3.2"
   },

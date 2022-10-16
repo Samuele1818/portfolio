@@ -2,10 +2,11 @@ import { FC } from 'react'
 import CTA from '../../components/CTA'
 import CTALink from '../../components/CTALink'
 import RightArrow from '../../public/icons/RightArrow.svg'
-import AboutallDark from '../../public/assets/projects/AboutAll/About_Dark.svg'
-import AboutallLight from '../../public/assets/projects/AboutAll/About_Light.svg'
-import AboutallTablet from '../../public/assets/projects/AboutAll/AboutAllTablet.svg'
-import { useParallax } from 'react-scroll-parallax'
+import dynamic from 'next/dynamic'
+
+const AboutallDarkDyn = dynamic(() => import('../../public/assets/projects/AboutAll/About_Dark.svg')) as any
+const AboutallLightDyn = dynamic(() => import('../../public/assets/projects/AboutAll/About_Light.svg')) as any
+const AboutallTabletDyn = dynamic(() => import('../../public/assets/projects/AboutAll/AboutAllTablet.svg')) as any
 
 const Projects: FC = () => {
   /*  const path = useRef<SVGPathElement>()
@@ -52,9 +53,9 @@ const Projects: FC = () => {
             </div>
           </div>
           <div className="flex w-full bg-[#25005b] bg-opacity-25 rounded-xl justify-center -mb-36 pb-48 md:justify-start md:pb-0 md:mb-0 md:pt-12 md:mt-12 md:w-10/12 md:ml-auto md:mr-0">
-            <AboutallDark viewBox="0 0 78 129" className='hidden md:block w-[200px] h-fit ml-[40%] mr-auto mb-0 mt-auto' />
-            <AboutallLight viewBox="0 0 78 129" className='hidden md:block w-[200px] h-fit ml-[15%] mr-auto -mb-16 mt-auto overflow-visible' />
-            <AboutallTablet viewBox="0 0 212 162" className='w-[80%] h-fit md:hidden h-fit -mt-20 mb-auto' />
+            <AboutallDarkDyn viewBox="0 0 78 129" className='hidden md:block w-[200px] h-fit ml-[40%] mr-auto mb-0 mt-auto' />
+            <AboutallLightDyn viewBox="0 0 78 129" className='hidden md:block w-[200px] h-fit ml-[15%] mr-auto -mb-16 mt-auto overflow-visible' />
+            <AboutallTabletDyn viewBox="0 0 212 162" className='w-[80%] h-fit md:hidden h-fit -mt-20 mb-auto' />
           </div>
         </section>
       </div>
