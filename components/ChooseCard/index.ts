@@ -1,3 +1,3 @@
-import ChooseCard from "./ChooseCard";
+import ChooseCard from './ChooseCard'
 
 export default ChooseCard

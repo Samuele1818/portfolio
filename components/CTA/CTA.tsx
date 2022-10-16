@@ -10,7 +10,15 @@ type Props = {
   fill?: 'electricViolet' | 'lochmara'
 }
 
-const CTA: FC<Props> = ({ text, className, icon, onClick, isDisabled= false, isLoading = false, fill = 'electricViolet' }) => {
+const CTA: FC<Props> = ({
+                          text,
+                          className,
+                          icon,
+                          onClick,
+                          isDisabled = false,
+                          isLoading = false,
+                          fill = 'electricViolet'
+                        }) => {
   return (
     <button
       disabled={isDisabled || isLoading}

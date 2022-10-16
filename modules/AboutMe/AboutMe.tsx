@@ -13,7 +13,6 @@ import Java from '../../public/assets/skills/Java.svg'
 import Kotlin from '../../public/assets/skills/Kotlin.svg'
 import Firebase from '../../public/assets/skills/Firebase.svg'
 import MySQL from '../../public/assets/skills/MySQL.svg'
-import FlexibleArrow from '../../public/icons/FlexibleArrow.svg'
 import SkillCard from '../../components/SkillCard'
 
 const AboutMe: FC = () => {
@@ -25,7 +24,7 @@ const AboutMe: FC = () => {
         <h2 className="lg-text mt-4">I&apos;m a full stack developer and software engineer that love </h2>
       </div>
       <section className="mt-12">
-        <h1 className='sm-text opacity-75 text-hintOfRed'>Languages</h1>
+        <h1 className="sm-text opacity-75 text-hintOfRed">Languages</h1>
         <div className="mt-2 grid md:grid-cols-4 md:gap-x-14 gap-y-8">
           <SkillCard text="HTML" icon={<HTML viewBox="0 0 48 55"/>}/>
           <SkillCard text="CSS" icon={<CSS viewBox="0 0 48 55"/>}/>
@@ -37,7 +36,7 @@ const AboutMe: FC = () => {
         </div>
       </section>
       <section className="mt-12">
-        <h1 className='sm-text opacity-75 text-hintOfRed'>Technologies</h1>
+        <h1 className="sm-text opacity-75 text-hintOfRed">Technologies</h1>
         <div className="mt-2 grid md:grid-cols-4 md:gap-x-14 gap-y-8">
           <SkillCard text="TailwindCSS" icon={<TailwindCSS viewBox="0 0 48 48"/>}/>
           <SkillCard text="SASS" icon={<SASS viewBox="0 0 48 36"/>}/>
@@ -49,7 +48,7 @@ const AboutMe: FC = () => {
         </div>
       </section>
       <section className="mt-12">
-        <h1 className='sm-text opacity-75 text-hintOfRed'>Tools</h1>
+        <h1 className="sm-text opacity-75 text-hintOfRed">Tools</h1>
         <div className="mt-2 grid md:grid-cols-4 md:gap-x-14 gap-y-8">
           <SkillCard text="TailwindCSS" icon={<TailwindCSS viewBox="0 0 48 48"/>}/>
           <SkillCard text="SASS" icon={<SASS viewBox="0 0 48 36"/>}/>

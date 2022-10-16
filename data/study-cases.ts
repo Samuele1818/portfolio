@@ -11,7 +11,7 @@ const studyCases = {
         'Tailwindcss'
       ],
       timeline: 'August 2022',
-      imagePath: '/assets/study-cases/portfolio.png',
+      imagePath: '/assets/study-cases/portfolio.png'
     },
     project: {
       title: 'Project Portfolio',
@@ -33,7 +33,7 @@ const studyCases = {
         {
           name: 'Style: Minimalistic',
           description: 'I Choose a minimalistic style to make sure that user focus on what matter without useless distractions on animations'
-        },
+        }
       ],
       uiElements: {
         fonts: [

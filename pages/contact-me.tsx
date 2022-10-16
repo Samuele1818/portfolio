@@ -46,7 +46,10 @@ const ContactMe: NextPage = () => {
   
   useLayoutEffect(() => {
     const item = getWithExpiry('SENT_EMAIL')
-    if(item !== null) setFormStatus({ status: 'already', information: "You have already contacted me, if I haven't already respond, be patient, I will respond ASAP" })
+    if (item !== null) setFormStatus({
+      status: 'already',
+      information: 'You have already contacted me, if I haven\'t already respond, be patient, I will respond ASAP'
+    })
   }, [])
   
   const sendEmail = async () => {
@@ -55,9 +58,12 @@ const ContactMe: NextPage = () => {
       const res = await fetch(`/api/sendEmail?email=${emailRef.current.value}&name=${nameRef.current.value}&message=${messageRef.current.value}`)
       if (res.status == 200) {
         setWithExpiry('SENT_EMAIL', '', 172800000)
-        setFormStatus({ status: 'already', information: "Your message was sent successful" })
+        setFormStatus({ status: 'already', information: 'Your message was sent successful' })
       } else {
-        setFormStatus({ status: 'error', information: `${res.statusText}, suggest to contact me in another way or retry a bit later` })
+        setFormStatus({
+          status: 'error',
+          information: `${res.statusText}, suggest to contact me in another way or retry a bit later`
+        })
       }
     } else {
       setFormStatus({ status: 'error', information: 'Refresh the page and retry or contact me in another way' })
@@ -69,7 +75,7 @@ const ContactMe: NextPage = () => {
     <div className="opacity-animation bg-white w-full h-full layout pb-12">
       <Head>
         <title>Contact Me</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
       </Head>
       <section
         className="flex flex-row border-bastille border-opacity-30 border-b-[0.5px] mt-12 items-center justify-between p-4">
@@ -78,7 +84,8 @@ const ContactMe: NextPage = () => {
         <div className="flex flex-row gap-x-4">
           <IconWrapper link="https://github.com/Samuele1818" icon={<Github viewBox="0 0 18 20"/>} theme="dark"/>
           <IconWrapper link="mailto:samuelesciatore.19@gmail.com" icon={<Email viewBox="0 0 134 97"/>} theme="dark"/>
-          <IconWrapper link="https://stackoverflow.com/users/12119966/samuele1818" icon={<StackOverflow viewBox="0 0 16 16"/>} theme="dark"/>
+          <IconWrapper link="https://stackoverflow.com/users/12119966/samuele1818"
+                       icon={<StackOverflow viewBox="0 0 16 16"/>} theme="dark"/>
         </div>
       </section>
       {

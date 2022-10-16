@@ -43,7 +43,7 @@ const Input = forwardRef<HTMLInputElement | HTMLTextAreaElement,
       onFocus,
       onBlur,
       statusInformation,
-      required= false
+      required = false
     },
     forwardedInputRef
   ) => {

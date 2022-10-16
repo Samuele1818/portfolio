@@ -22,7 +22,7 @@ export default [
           'React',
           'NextJS',
           'NodeJS',
-          'TailwindCSS',
+          'TailwindCSS'
         ]
       }
     ]

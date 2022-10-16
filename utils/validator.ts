@@ -12,11 +12,11 @@ export const isValidEmail: (email: string) => {
   )
     return {
       error: true,
-      text: 'Email is invalid, please insert a valid email',
+      text: 'Email is invalid, please insert a valid email'
     }
   return {
     error: false,
-    text: '',
+    text: ''
   }
 }
 
@@ -26,11 +26,11 @@ export const isValidName: (message: string) => ({ text: string; error: boolean }
   if (isEmpty(name) || name.length > 20 || name.length < 2)
     return {
       error: true,
-      text: 'Name length has to be between 2 and 20 chars',
+      text: 'Name length has to be between 2 and 20 chars'
     }
   return {
     error: false,
-    text: '',
+    text: ''
   }
 }
 
@@ -40,11 +40,11 @@ export const isValidMessage: (message: string) => ({ text: string; error: boolea
   if (isEmpty(message) || message.length > 1000 || message.length < 10)
     return {
       error: true,
-      text: 'Message length has to be between 10 and 1000 chars',
+      text: 'Message length has to be between 10 and 1000 chars'
     }
   return {
     error: false,
-    text: '',
+    text: ''
   }
 }
 
@@ -53,7 +53,7 @@ export const setWithExpiry = (key, value, ttl) => {
   
   const item = {
     value: value,
-    expiry: now.getTime() + ttl,
+    expiry: now.getTime() + ttl
   }
   localStorage.setItem(key, JSON.stringify(item))
 }
@@ -63,7 +63,7 @@ export const getWithExpiry = (key) => {
   if (!itemStr) return null
   const item = JSON.parse(itemStr)
   const now = new Date()
-
+  
   if (now.getTime() > item.expiry) {
     localStorage.removeItem(key)
     return null
