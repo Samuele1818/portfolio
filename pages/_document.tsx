@@ -8,6 +8,15 @@ class Document extends NextDocument {
       <Html>
         <Head>
           <link rel="shortcut icon" href="/favicon.svg" />
+          <link
+            rel='preconnect'
+            href='https://fonts.gstatic.com'
+            crossOrigin='anonymous'
+          />
+          <link
+            href='https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800&display=swap'
+            rel='stylesheet'
+          />
         </Head>
         <body>
         <Sidebar/>
