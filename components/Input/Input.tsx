@@ -77,7 +77,7 @@ const Input = forwardRef<HTMLInputElement | HTMLTextAreaElement,
           className={`cursor-text relative w-full h-fit border-bastille border-opacity-30 border-[0.5px] px-4 py-2 bg-white shadow-sm rounded-xl ${inputContainerClassname}`}
           onClick={() => inputRef.current?.focus()}>
           <label
-            className={`absolute left-4 -top-6 z-20 text-bastille opacity-80 ${labelClassname}`}>
+            className={`absolute left-0 -top-6 z-20 text-bastille opacity-80 ${labelClassname}`}>
             {label}
           </label>
           {children}

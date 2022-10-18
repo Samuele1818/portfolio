@@ -1,4 +1,4 @@
-import { NextPage } from 'next'
+import { GetStaticProps, NextPage } from 'next'
 import Header from '../components/Header'
 import Hero from '../modules/Hero'
 import Head from 'next/head'
@@ -12,7 +12,7 @@ const PostsDyn = dynamic(() => import('../modules/Posts'))
 
 const Index: NextPage = () => {
   return (
-    <div className="bg-white w-full h-full opacity-animation">
+    <div className="bg-white w-full h-full">
       <Head>
         <title>Samuele Sciatore</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
@@ -26,6 +26,12 @@ const Index: NextPage = () => {
       <FooterDyn/>
     </div>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  return{
+    props: {}
+  }
 }
 
 export default Index

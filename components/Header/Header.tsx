@@ -6,7 +6,7 @@ import HamburgerMenu from '../../public/icons/HamburgerMenu.svg'
 import { useRouter } from 'next/router'
 
 const Header: FC = () => {
-  const { push, route } = useRouter()
+  const { push } = useRouter()
   
   const [isSidebar, toggleSidebar] =
     useState<boolean>(false)
@@ -113,7 +113,7 @@ const Header: FC = () => {
       <div className="hidden lg:block inline-flex items-center">
         <Link href="https://blog-samuele1818.vercel.app/"><a target="_blank"
                                                              className="mr-4 hover-underline-animation text-bastille">Blog</a></Link>
-        <CTA text="Contact Me" onClick={() => push('/contact-me', { query: { prevUrl: route } })}/>
+        <CTA text="Contact Me" onClick={() => push('/', { href: 'contact-me' })}/>
       </div>
     </header>
   )
