@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 const Header: FC = () => {
   const { push } = useRouter()
   
-  const [isSidebar, toggleSidebar] =
+/*  const [isSidebar, toggleSidebar] =
     useState<boolean>(false)
   
   const timeout = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
@@ -52,10 +52,10 @@ const Header: FC = () => {
       document.documentElement.style.overflow =
         isSidebar ? 'hidden' : 'auto'
     }
-  }, [isSidebar])
+  }, [isSidebar])*/
   
   // https://stackoverflow.com/questions/60540985/react-usestate-doesnt-update-in-window-events
-  const mouseDownListener = (e: Event) => {
+/*  const mouseDownListener = (e: Event) => {
     // Fix typescript error "Property 'id' does not exist on type 'EventTarget'"
     const t = e.target as HTMLDivElement
     const sidebar = document.getElementById('sidebar')
@@ -93,24 +93,24 @@ const Header: FC = () => {
         resizeListener
       )
     }
-  }, [])
+  }, [])*/
   
   return (
     <header className="inline-flex items-center justify-between w-full layout pt-12 bg-white text-electricViolet">
       <Link href="/">
         <a className="inline-flex items-center gap-x-2">
           <Logo className="fill-electricViolet"/>
-          <p className="font-extrabold md-text">Samuele Sciatore</p>
+          <p className="hidden md:block font-extrabold md-text">Samuele Sciatore</p>
         </a>
       </Link>
-      <HamburgerMenu
+{/*      <HamburgerMenu
         id="open-sidebar"
         className="lg:hidden"
         width="24"
         height="24"
         viewBox="0 0 14 10"
-      />
-      <div className="hidden lg:block inline-flex items-center">
+      />*/}
+      <div className="inline-flex items-center">
         <Link href="https://blog-samuele1818.vercel.app/"><a target="_blank"
                                                              className="mr-4 hover-underline-animation text-bastille">Blog</a></Link>
         <CTA text="Contact Me" onClick={() => push('/', { href: 'contact-me' })}/>
