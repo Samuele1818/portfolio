@@ -19,12 +19,13 @@ const AboutMe: FC = () => {
  // @ts-ignore
  useEffect(() => {
   // If container is not initialized return
-  if (!containerRef) return
   // Put panels in an array
   const panels = gsap.utils.toArray('#new-skill')
   gsap.set(panels, {
    xPercent: -100 * (panels.length - 1),
   })
+  if (!containerRef.current) return
+  // @ts-ignore
   let ctx = gsap.to(panels, {
    xPercent: 0,
    ease: 'none',
@@ -43,6 +44,7 @@ const AboutMe: FC = () => {
     // Set the end of the container
     end: () =>
      '+=' +
+     // @ts-ignore
      (containerRef.current.offsetWidth -
       innerWidth),
    },
