@@ -1,0 +1,134 @@
+/* @tailwind base ecc.. not working */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+    html,
+    body {
+        font-family: 'Nunito Sans', sans-serif;
+        @apply text-bastille scroll-smooth m-0 p-0 selection:bg-lochmara selection:text-hintOfRed h-full min-h-screen
+    }
+
+    a {
+        text-decoration: none;
+        @apply text-inherit
+    }
+
+    h1 {
+        @apply xl-text
+    }
+
+    h2 {
+        @apply lg-text
+    }
+
+    p, button {
+        @apply md-text
+    }
+
+    textarea:focus,
+    input:focus {
+        outline: none;
+    }
+
+    svg {
+        @apply cursor-pointer
+    }
+
+    *, *:before, *:after {
+        box-sizing: border-box;
+    }
+
+    .hover-underline-animation:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        transform-origin: bottom center;
+        transition: transform 0.5s cubic-bezier(.52, .01, .16, 1);
+        @apply bg-electricViolet;
+    }
+
+    .hover-underline-animation:hover:after {
+        transform: scaleX(1);
+        transform-origin: bottom center;
+    }
+
+    @keyframes opacityAnimation {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 100%;
+        }
+    }
+}
+
+@layer utilities {
+    .hover-underline-animation {
+        display: inline-block;
+        position: relative;
+    }
+
+    .color-animation-electricViolet {
+        @apply text-hintOfRed hover:text-electricViolet hover:bg-hintOfRed transition-colors bg-electricViolet border-electricViolet border-2
+    }
+
+    .color-animation-lochmara {
+        @apply text-hintOfRed hover:text-lochmara hover:bg-hintOfRed transition-colors bg-lochmara border-lochmara border-2
+    }
+
+    .layout {
+        @apply px-8 md:px-16 lg:px-32 xl:px-56 2xl:px-[18rem] 3xl:px-[26rem]
+    }
+
+    .center {
+        @apply text-center mx-auto
+    }
+
+    .flex-align-lg {
+        @apply flex flex-col lg:flex-row
+    }
+
+    .flex-align-md {
+        @apply flex flex-col md:flex-row
+    }
+
+    .hr-align-lg {
+        @apply center lg:mx-0 lg:text-left
+    }
+
+    .hr-align-md {
+        @apply center md:mx-0 md:text-left
+    }
+
+    .xl-text {
+        font-size: clamp(1.5rem, 2rem + 0.9375vw, 2.5rem);
+        @apply font-bold leading-snug;
+    }
+
+    .lg-text {
+        font-size: clamp(1.25rem, 1.5rem + 0.625vw, 1.875rem);
+    }
+
+    .md-text {
+        font-size: clamp(1.125rem, 1.25rem + 0.3125vw, 1.5rem);
+    }
+
+    .sm-text {
+        font-size: clamp(1rem, 1.125rem + 0.3125vw, 1.25rem);
+    }
+
+    .xs-text {
+        font-size: clamp(0.875rem, 1rem + 0.3125vw, 1.125rem);
+        @apply tracking-wider;
+    }
+
+    .opacity-animation {
+        animation: opacityAnimation 0.3s ease;
+    }
+}

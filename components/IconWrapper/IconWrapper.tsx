@@ -1,0 +1,29 @@
+import { FC, ReactNode } from 'react'
+import Link from 'next/link'
+
+type Props = {
+ icon: ReactNode
+ theme: 'light' | 'dark'
+ link: string
+}
+
+const IconWrapper: FC<Props> = ({
+ icon,
+ theme,
+ link,
+}) => {
+ return (
+  <Link
+   href={link}
+   target='_blank'
+   className={`${
+    theme === 'light'
+     ? 'transition-colors text-hintOfRed border-hintOfRed hover:bg-hintOfRed hover:text-electricViolet'
+     : 'color-animation-electricViolet'
+   } border-[1px] rounded-full w-fit h-fit p-2 cursor-pointer [&_svg]:w-6 [&_svg]:h-6`}>
+   {icon}
+  </Link>
+ )
+}
+
+export default IconWrapper

@@ -1,0 +1,33 @@
+{
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@seznam/compose-react-refs": "^1.0.6",
+    "gsap": "^3.11.5",
+    "next": "^13.4.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sib-api-v3-sdk": "^8.5.0",
+    "swiper": "^9.3.2"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^8.0.1",
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "@types/node": "^20.2.3",
+    "@types/react": "^18.2.7",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.41.0",
+    "eslint-config-next": "^13.4.3",
+    "postcss": "^8.4.23",
+    "prettier": "^2.8.8",
+    "tailwindcss": "^3.3.2",
+    "typescript": "^5.0.4"
+  }
+}
