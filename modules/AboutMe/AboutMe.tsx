@@ -1,21 +1,7 @@
 'use client'
 import { FC, useEffect, useRef } from 'react'
-import HTML from '../../public/assets/skills/HTML.svg'
-import CSS from '../../public/assets/skills/CSS.svg'
-import TailwindCSS from '../../public/assets/skills/TailwindCSS.svg'
-import SASS from '../../public/assets/skills/SASS.svg'
-import Javascript from '../../public/assets/skills/Javascript.svg'
-import Typescript from '../../public/assets/skills/Typescript.svg'
 import React from '../../public/assets/skills/React.svg'
-import NodeJS from '../../public/assets/skills/NodeJS.svg'
-import NextJS from '../../public/assets/skills/NextJS.svg'
-import CPP from '../../public/assets/skills/C++.svg'
-import Java from '../../public/assets/skills/Java.svg'
-import Kotlin from '../../public/assets/skills/Kotlin.svg'
-import Firebase from '../../public/assets/skills/Firebase.svg'
-import MySQL from '../../public/assets/skills/MySQL.svg'
 import CyberSec from '../../public/assets/skills/new/Cybersecurity.svg'
-import SkillCard from '../../components/SkillCard'
 import NewSkillCard from '../../components/NewSkillCard'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -30,6 +16,7 @@ const AboutMe: FC = () => {
 
  const containerRef = useRef(null)
 
+ // @ts-ignore
  useEffect(() => {
   // If container is not initialized return
   if (!containerRef) return
@@ -65,7 +52,7 @@ const AboutMe: FC = () => {
 
  return (
   <>
-   <section className='layout pt-36 bg-bastille text-hintOfRed flex flex-col'>
+   <section className='layout pt-36 bg-bastille overflow-clip text-hintOfRed flex flex-col'>
     <div className='flex flex-col md:flex-row'>
      <div className='md:max-w-4xl z-10'>
       <h1>Call me Sam1818</h1>
@@ -78,79 +65,79 @@ const AboutMe: FC = () => {
      </div>
      <Map
       viewBox='0 0 1440 560'
-      className='w-[120%] lg:w-[125%] h-fit -mt-48 lg:-mt-20 -mr-48 lg:-mr-[40%] ml-auto'
+      className='sticky w-[120%] lg:w-[125%] h-fit'
      />
     </div>
-    <section className='md:mx-0 mt-12'>
-     <h2 className='sm-text opacity-75 text-hintOfRed'>
-      Languages
-     </h2>
-     <div className='mt-2 grid gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-14'>
-      <SkillCard
-       text='HTML'
-       icon={<HTML viewBox='0 0 48 55' />}
-      />
-      <SkillCard
-       text='CSS'
-       icon={<CSS viewBox='0 0 48 55' />}
-      />
-      <SkillCard
-       text='Javascript'
-       icon={<Javascript viewBox='0 0 48 48' />}
-      />
-      <SkillCard
-       text='Typescript'
-       icon={<Typescript viewBox='0 0 48 48' />}
-      />
-      <SkillCard
-       text='C++'
-       icon={<CPP viewBox='0 0 48 55' />}
-      />
-      <SkillCard
-       text='Java'
-       icon={<Java viewBox='0 0 48 66' />}
-      />
-      <SkillCard
-       text='Kotlin'
-       icon={<Kotlin viewBox='0 0 48 48' />}
-      />
-     </div>
-    </section>
-    <section className='mx-auto md:mx-0 mt-12'>
-     <h2 className='sm-text opacity-75 text-hintOfRed'>
-      Technologies
-     </h2>
-     <div className='mt-2 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-14 gap-y-8'>
-      <SkillCard
-       text='TailwindCSS'
-       icon={<TailwindCSS viewBox='0 0 48 48' />}
-      />
-      <SkillCard
-       text='SASS'
-       icon={<SASS viewBox='0 0 48 36' />}
-      />
-      <SkillCard
-       text='React'
-       icon={<React viewBox='0 0 48 43' />}
-      />
-      <SkillCard
-       text='NodeJS'
-       icon={<NodeJS viewBox='0 0 48 55' />}
-      />
-      <SkillCard
-       text='NextJS'
-       icon={<NextJS viewBox='0 0 48 48' />}
-      />
-      <SkillCard
-       text='Firebase'
-       icon={<Firebase viewBox='0 0 48 66' />}
-      />
-      <SkillCard
-       text='MySQL'
-       icon={<MySQL viewBox='0 0 48 48' />}
-      />
-     </div>
-    </section>
+    {/*<section className='md:mx-0 mt-12'>*/}
+    {/* <h2 className='sm-text opacity-75 text-hintOfRed'>*/}
+    {/*  Languages*/}
+    {/* </h2>*/}
+    {/* <div className='mt-2 grid gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-14'>*/}
+    {/*  <SkillCard*/}
+    {/*   text='HTML'*/}
+    {/*   icon={<HTML viewBox='0 0 48 55' />}*/}
+    {/*  />*/}
+    {/*  <SkillCard*/}
+    {/*   text='CSS'*/}
+    {/*   icon={<CSS viewBox='0 0 48 55' />}*/}
+    {/*  />*/}
+    {/*  <SkillCard*/}
+    {/*   text='Javascript'*/}
+    {/*   icon={<Javascript viewBox='0 0 48 48' />}*/}
+    {/*  />*/}
+    {/*  <SkillCard*/}
+    {/*   text='Typescript'*/}
+    {/*   icon={<Typescript viewBox='0 0 48 48' />}*/}
+    {/*  />*/}
+    {/*  <SkillCard*/}
+    {/*   text='C++'*/}
+    {/*   icon={<CPP viewBox='0 0 48 55' />}*/}
+    {/*  />*/}
+    {/*  <SkillCard*/}
+    {/*   text='Java'*/}
+    {/*   icon={<Java viewBox='0 0 48 66' />}*/}
+    {/*  />*/}
+    {/*  <SkillCard*/}
+    {/*   text='Kotlin'*/}
+    {/*   icon={<Kotlin viewBox='0 0 48 48' />}*/}
+    {/*  />*/}
+    {/* </div>*/}
+    {/*</section>*/}
+    {/*<section className='mx-auto md:mx-0 mt-12'>*/}
+    {/* <h2 className='sm-text opacity-75 text-hintOfRed'>*/}
+    {/*  Technologies*/}
+    {/* </h2>*/}
+    {/* <div className='mt-2 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-14 gap-y-8'>*/}
+    {/*  <SkillCard*/}
+    {/*   text='TailwindCSS'*/}
+    {/*   icon={<TailwindCSS viewBox='0 0 48 48' />}*/}
+    {/*  />*/}
+    {/*  <SkillCard*/}
+    {/*   text='SASS'*/}
+    {/*   icon={<SASS viewBox='0 0 48 36' />}*/}
+    {/*  />*/}
+    {/*  <SkillCard*/}
+    {/*   text='React'*/}
+    {/*   icon={<React viewBox='0 0 48 43' />}*/}
+    {/*  />*/}
+    {/*  <SkillCard*/}
+    {/*   text='NodeJS'*/}
+    {/*   icon={<NodeJS viewBox='0 0 48 55' />}*/}
+    {/*  />*/}
+    {/*  <SkillCard*/}
+    {/*   text='NextJS'*/}
+    {/*   icon={<NextJS viewBox='0 0 48 48' />}*/}
+    {/*  />*/}
+    {/*  <SkillCard*/}
+    {/*   text='Firebase'*/}
+    {/*   icon={<Firebase viewBox='0 0 48 66' />}*/}
+    {/*  />*/}
+    {/*  <SkillCard*/}
+    {/*   text='MySQL'*/}
+    {/*   icon={<MySQL viewBox='0 0 48 48' />}*/}
+    {/*  />*/}
+    {/* </div>*/}
+    {/*</section>*/}
     {/*<h2 className="sm-text opacity-75 text-hintOfRed">Next goals</h2>*/}
    </section>
    <section
