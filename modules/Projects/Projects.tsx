@@ -24,6 +24,7 @@ const Projects: FC = () => {
 
  const containerRef = useRef(null)
 
+ // @ts-ignore
  useEffect(() => {
   // If container is not initialized return
   if (!containerRef) return
@@ -47,6 +48,7 @@ const Projects: FC = () => {
     // Set the end of the container
     end: () =>
      '+=' +
+     // @ts-ignore
      (containerRef.current.offsetWidth -
       innerWidth),
    },
