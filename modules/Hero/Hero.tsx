@@ -56,6 +56,7 @@ const Hero: FC = () => {
      I&apos;m a full stack developer and software
      engineer
     </h2>
+    {/*TODO: Fix push to anchor*/}
     <CTA
      onClick={() => push('#projects')}
      icon={<RightArrow />}

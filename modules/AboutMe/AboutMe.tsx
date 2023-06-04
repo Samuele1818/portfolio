@@ -188,7 +188,9 @@ const AboutMe: FC = () => {
      description="I'm studying cyber security. I want to attend the eJPT certification from eLearnSecurity and in future the OSCP certification from offensive security."
     />
    </section>
-   <section className='layout mt-24'>
+   <section
+    id='process-section'
+    className='layout mt-24'>
     <h1 className='mb-12'>Trust the process</h1>
     <Process />
    </section>

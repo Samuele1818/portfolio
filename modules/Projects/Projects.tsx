@@ -24,28 +24,6 @@ const Projects: FC = () => {
 
  const containerRef = useRef(null)
 
- useEffect(() => {
-  const container =
-   document.getElementById('projects')
-  if (!container) return
-  const tl = gsap.timeline({
-   scrollTrigger: {
-    trigger: container,
-    scrub: true,
-   },
-  })
-
-  tl.to(
-   container,
-   {
-    duration: 0.5,
-    backgroundColor: '#1f1926',
-    ease: 'none',
-   },
-   0
-  )
- }, [])
-
  // @ts-ignore
  useEffect(() => {
   // If container is not initialized return
@@ -82,7 +60,7 @@ const Projects: FC = () => {
   <section
    ref={containerRef}
    id='projects'
-   className={`py-24 h-screen w-max flex flex-nowrap overflow-hidden`}>
+   className={`py-24 h-screen bg-bastille w-max flex flex-nowrap overflow-hidden`}>
    {Projects.map((project, index) => {
     return (
      <ProjectContainer

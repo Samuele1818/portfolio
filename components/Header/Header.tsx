@@ -6,6 +6,7 @@ import CTA from '../CTA'
 import { useRouter } from 'next/navigation'
 
 const Header: FC = () => {
+ //TODO: Fix push to anchor
  const { push } = useRouter()
 
  // Slidebar with hamburger menu for mobile devices with animation (works with the next container so in NextJs13 this code needs adjustments )
