@@ -5,6 +5,9 @@ import RightArrow from '../../public/icons/RightArrow.svg'
 import DesktopIllustration from '../../public/illustrations/Desktop.svg'
 import { useRouter } from 'next/navigation'
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const Hero: FC = () => {
  const { push } = useRouter()

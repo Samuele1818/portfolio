@@ -4,6 +4,7 @@ import Footer from '../components/Footer/Footer'
 import Hero from '../modules/Hero/Hero'
 import Projects from '../modules/Projects/Projects'
 import Header from '../components/Header/Header'
+import React from '../public/assets/skills/React.svg'
 
 // Set metadata of the page
 export const metadata: Metadata = {
