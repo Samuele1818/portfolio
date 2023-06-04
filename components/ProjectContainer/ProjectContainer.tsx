@@ -52,7 +52,7 @@ const ProjectContainer: FC<Props> = ({
     <p className='first-letter:capitalize mt-2'>
      {description}
     </p>
-    <div className='flex flex-row mt-8 gap-x-8 items-center'>
+    <div className='flex-align-md mt-8 gap-x-8 md:items-center'>
      <div className='flex flex-row gap-x-2 items-center'>
       <User
        viewBox='0 0 1000 1046'
