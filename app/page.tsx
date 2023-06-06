@@ -1,6 +1,10 @@
 import {Metadata, NextPage} from 'next'
 import React from '../public/assets/skills/React.svg'
 import Footer from '../components/Footer'
+import AboutMe from '../modules/AboutMe'
+import Projects from '../modules/Projects'
+import Hero from '../modules/Hero'
+import Header from '../components/Header'
 
 // Set metadata of the page
 export const metadata: Metadata = {
@@ -14,10 +18,10 @@ export const metadata: Metadata = {
 const Index: NextPage = () => {
  return (
   <div className='bg-white w-full h-full overflow-x-clip'>
-   {/*<Header />*/}
-   {/*<Hero />*/}
-   {/*<Projects />*/}
-   {/*<AboutMe />*/}
+   <Header />
+   <Hero />
+   <Projects />
+   <AboutMe />
    {/*<PostsDyn/>*/}
    {/*<Startups/>*/}
    <Footer />
