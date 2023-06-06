@@ -9,3 +9,11 @@ Through this portfolio you can contact me directly with an embedded contact form
 - NextJS
 - TailwindCSS
 - GSAP
+
+## TODOs
+
+- [ ] Add comment on each component / module
+- [ ] Add TODOs in files which are required
+- [ ] Delete old components / modules that is not in use anymore
+- [ ] Rename every file to follow the CamelCase convention
+- [ ] Check dependencies and remove what is not used anymore
