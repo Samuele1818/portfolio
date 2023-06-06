@@ -12,7 +12,7 @@ const Process: FC = () => {
   const tl = gsap.timeline({
    scrollTrigger: {
     trigger: '#process-container',
-    start: 'top top',
+    start: 'center top',
    },
   })
 
@@ -26,7 +26,7 @@ const Process: FC = () => {
     fillOpacity: 1,
    })
    .to('#process', {
-    duration: 1,
+    duration: 0.5,
     fillOpacity: 1,
     stagger: 0.1,
    })
