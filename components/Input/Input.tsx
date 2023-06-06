@@ -12,13 +12,13 @@ import { Property } from 'csstype'
 import BorderColor = Property.BorderColor
 
 type Props = {
- elementType: 'input' | 'textarea'
- initialValue?: string
- inputType?: string
- label?: string
- placeholder?: string
- containerClassName?: string
- inputContainerClassname?: string
+ elementType: 'input' | 'textarea' // Choose if the input is a textarea or an input
+ initialValue?: string // Value that input has at begin
+ inputType?: string // Type of the input field
+ label?: string // Label of the input
+ placeholder?: string // Placeholder of the input
+ containerClassName?: string // Inject className in the container
+ inputContainerClassname?: string // Inject className in the input
  inputClassname?: string
  labelClassname?: string
  onChange: (value: string) => unknown

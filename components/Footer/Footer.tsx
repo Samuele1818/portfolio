@@ -6,31 +6,14 @@ import SecurityShield from '../../public/icons/SecurityShield.svg'
 import Weight from '../../public/icons/Weight.svg'
 import Binary from '../../public/icons/Binary.svg'
 import React from '../../public/assets/skills/React.svg'
+import NContactForm from '../NContactForm/NContactForm'
 
 const Footer: FC = () => {
  return (
   <footer className="flex flex-row bg-[url('/illustrations/Footer.svg')] bg-cover bg-bottom w-full h-full layout">
    <div className='z-10 flex flex-col bg-white h-[85%] w-2/3 mb-0 mt-auto rounded-t-xl py-12 px-24'>
-    <h1>Contact me</h1>
-    {/*<section className='relative flex flex-row gap-x-4 mt-12'>*/}
-    {/*    <IconWrapper*/}
-    {/*        link='https://github.com/Samuele1818'*/}
-    {/*        icon={<Github viewBox='0 0 18 20' />}*/}
-    {/*        theme='light'*/}
-    {/*    />*/}
-    {/*    <IconWrapper*/}
-    {/*        link='mailto:samuelesciatore.19@gmail.com'*/}
-    {/*        icon={<Email viewBox='0 0 134 97' />}*/}
-    {/*        theme='light'*/}
-    {/*    />*/}
-    {/*    <IconWrapper*/}
-    {/*        link='https://stackoverflow.com/users/12119966/samuele1818'*/}
-    {/*        icon={*/}
-    {/*            <StackOverflow viewBox='0 0 16 16' />*/}
-    {/*        }*/}
-    {/*        theme='light'*/}
-    {/*    />*/}
-    {/*</section>*/}
+    <h1 className='mb-12'>Contact me</h1>
+    <NContactForm />
     <p className='lg-text mb-0 mt-auto'>
      Copyright © {new Date().getFullYear()}{' '}
      Samuele Sciatore
