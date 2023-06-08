@@ -13,27 +13,38 @@ There are also three buttons to link my email, GitHub and StackOverflow
 */
 const NContactForm = () => {
  return (
-  <form className='flex flex-col w-full gap-y-12'>
+  <form
+   className='flex flex-col w-full gap-y-12'
+   onSubmit={(e) => {
+    e.preventDefault()
+    e.currentTarget.reset()
+   }}
+   action='/api/sendEmail'
+   method='POST'>
    <div className='flex flex-col xl:flex-row gap-x-12 gap-y-12 w-full'>
     <NInput
      label='Email'
      inputType='email'
      errorText='Provided email is invalid!'
+     name='email'
     />
     <NInput
      label='Name'
      inputType='text'
      minLength={4}
-     errorText='Message invalid. Your name has to be as least 4 chars length'
+     errorText='Name invalid. Your name has to be as least 4 chars length'
+     name='name'
     />
    </div>
    <NInput
     label='Message'
     elementType='textarea'
     minLength={10}
-    errorText='Name invalid. Your message has to be as least 10 chars length'
+    errorText='Message invalid. Your message has to be as least 10 chars length'
+    name='message'
    />
    <div className='flex flex-col gap-y-12 lg:flex-row w-full lg:justify-between lg:items-center'>
+    {/*  TODO: If errors in form disable button */}
     <CTA
      className='rounded-none'
      icon={

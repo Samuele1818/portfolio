@@ -2,6 +2,7 @@ import { createElement, FC } from 'react'
 
 interface Props {
  elementType?: 'input' | 'textarea' // Specify if element has to be an input or a textarea
+ name?: string // Name of the field
  label?: string // Text of the floating label
  inputType?: string // Choose the input type (e.g. email, text)
  rows?: number // Specify number of rows in a textarea
@@ -20,6 +21,7 @@ const NInput: FC<Props> = ({
  minLength,
  maxLength,
  errorText,
+ name,
 }) => {
  // Create a unique id to link label and input
  const id = Math.random().toPrecision(1)
@@ -39,6 +41,7 @@ const NInput: FC<Props> = ({
      required: required, // specify if the filed is required to submit the form
      minLength: minLength, // Required is a mandatory to make minLength works
      maxLength: maxLength,
+     name: name,
     })
    }
    <label

@@ -15,7 +15,7 @@ Provide a contact form with some graphic details
 // TODO: Create animations / transitions
 const Footer: FC = () => {
  return (
-  <footer className="flex flex-col lg:flex-row bg-[url('/illustrations/Footer.svg')] bg-cover bg-bottom w-full h-full layout">
+  <footer className="flex flex-col lg:flex-row bg-[url('/illustrations/Footer.svg')] bg-cover bg-bottom w-full h-full layout mt-24">
    <div className='z-10 flex flex-col bg-white h-[80%] xl:w-2/3 mb-0 mt-12 lg:mt-auto rounded-t-xl px-8 py-4 lg:py-12 lg:px-24 gap-y-12'>
     <h1 className='mb-12'>Contact me</h1>
     <NContactForm />
