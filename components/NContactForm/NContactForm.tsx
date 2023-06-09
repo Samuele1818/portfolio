@@ -1,3 +1,4 @@
+'use client'
 import NInput from '../NInput/NInput'
 import CTA from '../CTA'
 import Send from '../../public/icons/Send.svg'
@@ -6,21 +7,66 @@ import Email from '../../public/icons/Email.svg'
 import StackOverflow from '../../public/icons/StackOverflow.svg'
 import React from '../../public/assets/skills/React.svg'
 import IconWrapper from '../IconWrapper'
+import {POST} from '../../app/api/sendEmail/route'
+import {useRef} from 'react'
 
 /*
 Contact form with three inputs (email, name, message) and a button to send.
 There are also three buttons to link my email, GitHub and StackOverflow 
 */
 const NContactForm = () => {
+ const helperTextRef =
+  useRef<HTMLParagraphElement>(null)
+
  return (
   <form
    className='flex flex-col w-full gap-y-12'
-   onSubmit={(e) => {
+   onSubmit={async (e) => {
+    // Prevent form to redirect / refresh the page
     e.preventDefault()
-    e.currentTarget.reset()
-   }}
-   action='/api/sendEmail'
-   method='POST'>
+
+    // Send a POST request to the endpoint to send the email
+    const res = await fetch('/api/sendEmail', {
+     method: 'POST',
+     // Pass the body in JSON format
+     body: JSON.stringify({
+      // Take values from input fields
+      email:
+       e.currentTarget.elements['email'].value,
+      name:
+       e.currentTarget.elements['name'].value,
+      message:
+       e.currentTarget.elements['message'].value,
+     }),
+    })
+
+    // Check if response is successful
+    if (res.ok) {
+     // Reset the form (suppress error cause on target reset not exist)
+     // @ts-ignore
+     e.target.reset()
+     // Check if ref is initialized
+     if (helperTextRef.current) {
+      // Set text and color of the helper text
+      helperTextRef.current.classList.add(
+       'text-green-700'
+      )
+      helperTextRef.current.innerText =
+       'Email has been delivered! Thank you.'
+     }
+    }
+    // Check if ref is initialized
+    else if (helperTextRef.current) {
+     // Set text (response text) and color of the helper text
+     helperTextRef.current.classList.add(
+      'text-red-600'
+     )
+     helperTextRef.current.innerText = (
+      await res.json()
+     ).error
+    }
+   }}>
+   {/*  Input fields */}
    <div className='flex flex-col xl:flex-row gap-x-12 gap-y-12 w-full'>
     <NInput
      label='Email'
@@ -45,16 +91,24 @@ const NContactForm = () => {
    />
    <div className='flex flex-col gap-y-12 lg:flex-row w-full lg:justify-between lg:items-center'>
     {/*  TODO: If errors in form disable button */}
-    <CTA
-     className='rounded-none'
-     icon={
-      <Send
-       viewBox='0 0 9 9'
-       className='w-4 h-4'
-      />
-     }
-     text='Send'
-    />
+    {/*  CTA to send the form with helper text */}
+    <div className='flex flex-col'>
+     <CTA
+      className='rounded-none'
+      icon={
+       <Send
+        viewBox='0 0 9 9'
+        className='w-4 h-4'
+       />
+      }
+      text='Send'
+     />
+     <p
+      ref={helperTextRef}
+      className='mt-2 xs-text'
+     />
+    </div>
+    {/*  Icons with social links */}
     <div className='flex flex-row gap-x-8 items-center'>
      <IconWrapper
       link='https://github.com/Samuele1818'
