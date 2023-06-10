@@ -1,5 +1,5 @@
 'use client'
-import {FC, useEffect, useRef} from 'react'
+import {FC, useEffect, useMemo, useRef,} from 'react'
 import gsap from 'gsap'
 import {ScrollTrigger} from 'gsap/ScrollTrigger'
 import ProjectContainer from '../../components/ProjectContainer'
@@ -8,19 +8,22 @@ import ProjectContainer from '../../components/ProjectContainer'
 gsap.registerPlugin(ScrollTrigger)
 
 const Projects: FC = () => {
- const Projects = [
-  {
-   image1: '/assets/projects/AboutAll/home.png',
-   image2: '/assets/projects/AboutAll/about.png',
-   image3: '/assets/projects/AboutAll/topic.png',
-   type: 'website',
-   title: 'AboutAll',
-   description:
-    'a monitored community in which everyone can review products, services and almost all.',
-   role: 'front / back end developer',
-   date: 'aug 2022 - now',
-  },
- ]
+ const Projects = useMemo(
+  () => [
+   {
+    image1: '/assets/projects/AboutAll/home.png',
+    image2: '/assets/projects/AboutAll/about.png',
+    image3: '/assets/projects/AboutAll/topic.png',
+    type: 'website',
+    title: 'AboutAll',
+    description:
+     'a monitored community in which everyone can review products, services and almost all.',
+    role: 'front / back end developer',
+    date: 'aug 2022 - now',
+   },
+  ],
+  []
+ )
 
  const containerRef = useRef(null)
 

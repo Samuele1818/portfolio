@@ -1,15 +1,4 @@
-import {
- createElement,
- forwardRef,
- ReactNode,
- useLayoutEffect,
- useRef,
- useState,
-} from 'react'
-import debounce from 'lodash.debounce'
-import composeRefs from '@seznam/compose-react-refs'
-import { Property } from 'csstype'
-import BorderColor = Property.BorderColor
+import { forwardRef, ReactNode } from 'react'
 
 type Props = {
  elementType: 'input' | 'textarea' // Choose if the input is a textarea or an input
@@ -56,81 +45,83 @@ const Input = forwardRef<
   },
   forwardedInputRef
  ) => {
-  const [isFocussed, setIsFocussed] =
-   useState(false)
-
-  const handleChange = debounce(
-   (value: string) => {
-    onChange && onChange(value)
-   },
-   800
-  )
-
-  const inputRef = useRef<HTMLInputElement>(null)
-
-  const isFilled: boolean = inputRef.current
-   ? inputRef.current.value !== ''
-   : false
-
-  useLayoutEffect(() => {
-   if (initialValue && inputRef.current)
-    inputRef.current.value = initialValue
-  }, [inputRef])
-
-  return (
-   <div
-    className={`${containerClassName} rounded-xl relative w-full`}>
-    <div
-     style={{
-      borderColor: (statusInformation?.error &&
-      isFilled
-       ? 'red'
-       : isFocussed && '#6600FF') as BorderColor,
-     }}
-     className={`cursor-text relative w-full h-fit border-bastille border-2 px-4 py-2 bg-white shadow-sm rounded-xl ${inputContainerClassname}`}
-     onClick={() => inputRef.current?.focus()}>
-     <label
-      className={`absolute left-0 -top-8 z-20 text-bastille opacity-80 sm-text ${labelClassname}`}>
-      {label}
-     </label>
-     {children}
-     {createElement(
-      elementType,
-      {
-       required: required,
-       placeholder: placeholder,
-       className: `w-full min-h-fit h-full resize-none ${inputClassname}`,
-       type: inputType,
-       ref: composeRefs(
-        forwardedInputRef,
-        inputRef
-       ),
-       onChange: (v) =>
-        handleChange(v.currentTarget.value),
-       onFocus: () => {
-        onFocus && onFocus()
-        setIsFocussed(true)
-       },
-       onBlur: () => {
-        onBlur && onBlur()
-        setIsFocussed(false)
-       },
-      },
-      null
-     )}
-    </div>
-    {statusInformation.error && isFilled && (
-     <p
-      style={{
-       maxWidth: inputRef.current?.offsetWidth,
-      }}
-      className='relative break-words text-red-500 mt-2 '>
-      {statusInformation.text}
-     </p>
-    )}
-   </div>
-  )
+  return <></>
  }
+ //  const [isFocussed, setIsFocussed] =
+ //   useState(false)
+ //
+ //  const handleChange = debounce(
+ //   (value: string) => {
+ //    onChange && onChange(value)
+ //   },
+ //   800
+ //  )
+ //
+ //  const inputRef = useRef<HTMLInputElement>(null)
+ //
+ //  const isFilled: boolean = inputRef.current
+ //   ? inputRef.current.value !== ''
+ //   : false
+ //
+ //  useLayoutEffect(() => {
+ //   if (initialValue && inputRef.current)
+ //    inputRef.current.value = initialValue
+ //  }, [inputRef])
+ //
+ //  return (
+ //   <div
+ //    className={`${containerClassName} rounded-xl relative w-full`}>
+ //    <div
+ //     style={{
+ //      borderColor: (statusInformation?.error &&
+ //      isFilled
+ //       ? 'red'
+ //       : isFocussed && '#6600FF') as BorderColor,
+ //     }}
+ //     className={`cursor-text relative w-full h-fit border-bastille border-2 px-4 py-2 bg-white shadow-sm rounded-xl ${inputContainerClassname}`}
+ //     onClick={() => inputRef.current?.focus()}>
+ //     <label
+ //      className={`absolute left-0 -top-8 z-20 text-bastille opacity-80 sm-text ${labelClassname}`}>
+ //      {label}
+ //     </label>
+ //     {children}
+ //     {createElement(
+ //      elementType,
+ //      {
+ //       required: required,
+ //       placeholder: placeholder,
+ //       className: `w-full min-h-fit h-full resize-none ${inputClassname}`,
+ //       type: inputType,
+ //       ref: composeRefs(
+ //        forwardedInputRef,
+ //        inputRef
+ //       ),
+ //       onChange: (v) =>
+ //        handleChange(v.currentTarget.value),
+ //       onFocus: () => {
+ //        onFocus && onFocus()
+ //        setIsFocussed(true)
+ //       },
+ //       onBlur: () => {
+ //        onBlur && onBlur()
+ //        setIsFocussed(false)
+ //       },
+ //      },
+ //      null
+ //     )}
+ //    </div>
+ //    {statusInformation.error && isFilled && (
+ //     <p
+ //      style={{
+ //       maxWidth: inputRef.current?.offsetWidth,
+ //      }}
+ //      className='relative break-words text-red-500 mt-2 '>
+ //      {statusInformation.text}
+ //     </p>
+ //    )}
+ //   </div>
+ //  )
+ // }
 )
 
 Input.displayName = 'Input'
