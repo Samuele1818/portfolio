@@ -1,7 +1,7 @@
 'use client'
 import { FC, useEffect, useRef } from 'react'
-import VerticalProcess from '../../public/assets/about-me/vertical-process.svg'
-import HorizontalProcess from '../../public/assets/about-me/horizontal-process.svg'
+import VerticalProcess from '../../public/assets/AboutMe/VerticalProcess.svg'
+import HorizontalProcess from '../../public/assets/AboutMe/HorizontalProcess.svg'
 import React from '../../public/assets/skills/React.svg'
 import gsap from 'gsap'
 

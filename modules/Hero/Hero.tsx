@@ -2,7 +2,7 @@
 import { FC, useEffect } from 'react'
 import CTA from '../../components/CTA'
 import RightArrow from '../../public/icons/RightArrow.svg'
-import DesktopIllustration from '../../public/illustrations/Desktop.svg'
+import DesktopIllustration from '../../public/illustrations/desktop.svg'
 import { useRouter } from 'next/navigation'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
