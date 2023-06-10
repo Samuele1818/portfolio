@@ -6,7 +6,7 @@ import SecurityShield from '../../public/icons/SecurityShield.svg'
 import Weight from '../../public/icons/Weight.svg'
 import Binary from '../../public/icons/Binary.svg'
 import React from '../../public/assets/skills/React.svg'
-import NContactForm from '../NContactForm/NContactForm'
+import ContactForm from '../ContactForm/ContactForm'
 
 /*
 Provide a contact form with some graphic details
@@ -18,7 +18,7 @@ const Footer: FC = () => {
   <footer className="flex flex-col lg:flex-row bg-[url('/illustrations/Footer.svg')] bg-cover bg-bottom w-full h-full layout mt-24">
    <div className='z-10 flex flex-col bg-white h-[80%] xl:w-2/3 mb-0 mt-12 lg:mt-auto rounded-t-xl px-8 py-4 lg:py-12 lg:px-24 gap-y-12'>
     <h1 className='mb-12'>Contact me</h1>
-    <NContactForm />
+    <ContactForm />
     <p className='lg-text mb-0 mt-auto'>
      Copyright © {new Date().getFullYear()}{' '}
      Samuele Sciatore

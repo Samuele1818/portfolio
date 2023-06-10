@@ -1,192 +1,131 @@
-import { FC } from 'react'
+'use client'
+import Input from '../Input/Input'
+import CTA from '../CTA'
+import Send from '../../public/icons/Send.svg'
+import Github from '../../public/icons/Github.svg'
+import Email from '../../public/icons/Email.svg'
+import StackOverflow from '../../public/icons/StackOverflow.svg'
+import React from '../../public/assets/skills/React.svg'
+import IconWrapper from '../IconWrapper'
+import {POST} from '../../app/api/sendEmail/route'
+import {useRef} from 'react'
 
-const ContactForm: FC = () => {
- return <></>
- // const [formStatus, setFormStatus] = useState<{
- //  status: 'form' | 'error' | 'already'
- //  information: string | undefined
- // }>({
- //  status: 'form',
- //  information: undefined,
- // })
- //
- // const [emailInformation, setEmailInformation] =
- //  useFormFieldStorage()
- // const [nameInformation, setNameInformation] =
- //  useFormFieldStorage()
- // const [
- //  messageInformation,
- //  setMessageInformation,
- // ] = useFormFieldStorage()
- //
- // const emailRef = useRef<HTMLInputElement>(null)
- // const nameRef = useRef<HTMLInputElement>(null)
- // const messageRef = useRef<HTMLInputElement>(null)
- //
- // const [CTAInformation, setCTAInformation] =
- //  useState<{
- //   isDisabled: boolean
- //   isLoading: boolean
- //  }>({
- //   isDisabled: true,
- //   isLoading: false,
- //  })
- //
- // useEffect(() => {
- //  setCTAInformation((prev) => ({
- //   ...prev,
- //   isDisabled:
- //    emailInformation.error ||
- //    nameInformation.error ||
- //    messageInformation.error,
- //  }))
- // }, [
- //  emailInformation,
- //  nameInformation,
- //  messageInformation,
- // ])
- //
- // useLayoutEffect(() => {
- //  const item = getWithExpiry('SENT_EMAIL')
- //  if (item !== null)
- //   setFormStatus({
- //    status: 'already',
- //    information:
- //     "You have already contacted me, if I haven't already respond, be patient, I will ASAP",
- //   })
- // }, [])
- //
- // const sendEmail = async () => {
- //  setCTAInformation((prev) => ({
- //   ...prev,
- //   isLoading: true,
- //  }))
- //  if (
- //   emailRef.current &&
- //   nameRef.current &&
- //   messageRef.current
- //  ) {
- //   const res = await fetch(
- //    `/api/sendEmail?email=${emailRef.current.value}&name=${nameRef.current.value}&message=${messageRef.current.value}`
- //   )
- //   if (res.status == 200) {
- //    setWithExpiry('SENT_EMAIL', '', 172800000)
- //    setFormStatus({
- //     status: 'already',
- //     information:
- //      'Your message was sent successful',
- //    })
- //   } else {
- //    setFormStatus({
- //     status: 'error',
- //     information: `${res.statusText}, suggest to contact me in another way or retry a bit later`,
- //    })
- //   }
- //  } else {
- //   setFormStatus({
- //    status: 'error',
- //    information:
- //     'Refresh the page and retry or contact me in another way',
- //   })
- //  }
- //  setCTAInformation((prev) => ({
- //   ...prev,
- //   isLoading: false,
- //  }))
- // }
- //
- // return formStatus.status === 'form' ? (
- //  <section className='w-full'>
- //   <form
- //    className='w-full flex flex-col text-bastille'
- //    onSubmit={(e) => {
- //     e.preventDefault()
- //     sendEmail()
- //    }}>
- //    <h1 className='font-bold'>Contact me</h1>
- //    <div className='flex flex-col md:grid md:grid-cols-2 md:grid-rows-2 md:gap-x-12'>
- //     <Input
- //      ref={emailRef}
- //      required
- //      label='Your Email'
- //      labelClassname=''
- //      containerClassName='mt-16'
- //      elementType='input'
- //      inputType='email'
- //      onChange={(email) =>
- //       setEmailInformation(isValidEmail(email))
- //      }
- //      statusInformation={emailInformation}
- //     />
- //     <Input
- //      ref={nameRef}
- //      required
- //      label='Name'
- //      labelClassname=''
- //      containerClassName='mt-16'
- //      elementType='input'
- //      inputType='text'
- //      onChange={(name) =>
- //       setNameInformation(isValidName(name))
- //      }
- //      statusInformation={nameInformation}
- //     />
- //     <Input
- //      ref={messageRef}
- //      required
- //      label='Message'
- //      labelClassname=''
- //      containerClassName='col-span-2 mt-12'
- //      elementType='textarea'
- //      onChange={(message) =>
- //       setMessageInformation(
- //        isValidMessage(message)
- //       )
- //      }
- //      statusInformation={messageInformation}
- //     />
- //    </div>
- //    <CTA
- //     isDisabled={CTAInformation.isDisabled}
- //     isLoading={CTAInformation.isLoading}
- //     text='Send'
- //     icon={
- //      <Send
- //       className='w-3 h-3'
- //       viewBox='0 0 9 9'
- //      />
- //     }
- //     className='mt-8 !bg-bastille hover:bg-white hover:text-bastille !text-white !border-bastille'
- //    />
- //   </form>
- //  </section>
- // ) : formStatus.status === 'error' ? (
- //  <section className='w-full'>
- //   <h1 className='center mt-12'>
- //    An error happened
- //   </h1>
- //   <h2 className='center mt-8'>
- //    {formStatus.information}
- //   </h2>
- //   <ErrorCloud
- //    viewBox='0 0 100 100'
- //    className='center w-1/4 h-fit mt-16 fill-red-500'
- //   />
- //  </section>
- // ) : (
- //  <section className='w-full'>
- //   <h1 className='center mt-12'>
- //    Grateful things!
- //   </h1>
- //   <h2 className='center mt-8'>
- //    {formStatus.information}
- //   </h2>
- //   <Checkmark
- //    viewBox='0 0 50 50'
- //    className='center w-1/4 h-fit mt-16 fill-green-500'
- //   />
- //  </section>
- // )
+/*
+Contact form with three inputs (email, name, message) and a button to send.
+There are also three buttons to link my email, GitHub and StackOverflow 
+*/
+const ContactForm = () => {
+ const helperTextRef =
+  useRef<HTMLParagraphElement>(null)
+
+ return (
+  <form
+   className='flex flex-col w-full gap-y-12'
+   onSubmit={async (e) => {
+    // Prevent form to redirect / refresh the page
+    e.preventDefault()
+
+    // Send a POST request to the endpoint to send the email
+    const res = await fetch('/api/sendEmail', {
+     method: 'POST',
+     // Pass the body in JSON format
+     body: JSON.stringify({
+      // Take values from input fields
+      email:
+       e.currentTarget.elements['email'].value,
+      name:
+       e.currentTarget.elements['name'].value,
+      message:
+       e.currentTarget.elements['message'].value,
+     }),
+    })
+
+    // Check if response is successful
+    if (res.ok) {
+     // Reset the form (suppress error cause on target reset not exist)
+     // @ts-ignore
+     e.target.reset()
+     // Check if ref is initialized
+     if (helperTextRef.current) {
+      // Set text and color of the helper text
+      helperTextRef.current.classList.add(
+       'text-green-700'
+      )
+      helperTextRef.current.innerText =
+       'Email has been delivered! Thank you.'
+     }
+    }
+    // Check if ref is initialized
+    else if (helperTextRef.current) {
+     // Set text (response text) and color of the helper text
+     helperTextRef.current.classList.add(
+      'text-red-600'
+     )
+     helperTextRef.current.innerText = (
+      await res.json()
+     ).error
+    }
+   }}>
+   {/*  Input fields */}
+   <div className='flex flex-col xl:flex-row gap-x-12 gap-y-12 w-full'>
+    <Input
+     label='Email'
+     inputType='email'
+     errorText='Provided email is invalid!'
+     name='email'
+    />
+    <Input
+     label='Name'
+     inputType='text'
+     minLength={4}
+     errorText='Name invalid. Your name has to be as least 4 chars length'
+     name='name'
+    />
+   </div>
+   <Input
+    label='Message'
+    elementType='textarea'
+    minLength={10}
+    errorText='Message invalid. Your message has to be as least 10 chars length'
+    name='message'
+   />
+   <div className='flex flex-col gap-y-12 lg:flex-row w-full lg:justify-between lg:items-center'>
+    {/*  TODO: If errors in form disable button */}
+    {/*  CTA to send the form with helper text */}
+    <div className='flex flex-col'>
+     <CTA
+      className='rounded-none'
+      icon={
+       <Send
+        viewBox='0 0 9 9'
+        className='w-4 h-4'
+       />
+      }
+      text='Send'
+     />
+     <p
+      ref={helperTextRef}
+      className='mt-2 xs-text'
+     />
+    </div>
+    {/*  Icons with social links */}
+    <div className='flex flex-row gap-x-8 items-center'>
+     <IconWrapper
+      link='https://github.com/Samuele1818'
+      icon={<Github viewBox='0 0 18 20' />}
+     />
+     <IconWrapper
+      link='mailto:samuelesciatore.19@gmail.com'
+      icon={<Email viewBox='0 0 134 97' />}
+     />
+     <IconWrapper
+      link='https://stackoverflow.com/users/12119966/samuele1818'
+      icon={<StackOverflow viewBox='0 0 16 16' />}
+     />
+    </div>
+   </div>
+  </form>
+ )
 }
 
 export default ContactForm

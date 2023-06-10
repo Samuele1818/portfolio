@@ -9,18 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@seznam/compose-react-refs": "^1.0.6",
     "gsap": "^3.12.1",
     "next": "^13.4.4",
     "node-mailjet": "^6.0.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "sib-api-v3-sdk": "^8.5.0",
-    "swiper": "^9.3.2"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.0.1",
-    "@tailwindcss/line-clamp": "^0.4.4",
     "@types/node": "^20.2.3",
     "@types/react": "^18.2.7",
     "autoprefixer": "^10.4.14",

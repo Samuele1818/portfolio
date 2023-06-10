@@ -1,129 +1,59 @@
-import { forwardRef, ReactNode } from 'react'
+import { createElement, FC } from 'react'
 
-type Props = {
- elementType: 'input' | 'textarea' // Choose if the input is a textarea or an input
- initialValue?: string // Value that input has at begin
- inputType?: string // Type of the input field
- label?: string // Label of the input
- placeholder?: string // Placeholder of the input
- containerClassName?: string // Inject className in the container
- inputContainerClassname?: string // Inject className in the input
- inputClassname?: string
- labelClassname?: string
- onChange: (value: string) => unknown
- onFocus?: () => unknown
- onBlur?: () => unknown
+interface Props {
+ elementType?: 'input' | 'textarea' // Specify if element has to be an input or a textarea
+ name?: string // Name of the field
+ label?: string // Text of the floating label
+ inputType?: string // Choose the input type (e.g. email, text)
+ rows?: number // Specify number of rows in a textarea
  required?: boolean
- statusInformation: {
-  error: boolean
-  text: string
- }
- children?: ReactNode
+ minLength?: number
+ maxLength?: number
+ errorText?: string
 }
 
-const Input = forwardRef<
- HTMLInputElement | HTMLTextAreaElement,
- Props
->(
- (
-  {
-   elementType,
-   inputType,
-   initialValue,
-   placeholder,
-   label,
-   containerClassName,
-   inputContainerClassname,
-   inputClassname,
-   labelClassname,
-   children,
-   onChange,
-   onFocus,
-   onBlur,
-   statusInformation,
-   required = false,
-  },
-  forwardedInputRef
- ) => {
-  return <></>
- }
- //  const [isFocussed, setIsFocussed] =
- //   useState(false)
- //
- //  const handleChange = debounce(
- //   (value: string) => {
- //    onChange && onChange(value)
- //   },
- //   800
- //  )
- //
- //  const inputRef = useRef<HTMLInputElement>(null)
- //
- //  const isFilled: boolean = inputRef.current
- //   ? inputRef.current.value !== ''
- //   : false
- //
- //  useLayoutEffect(() => {
- //   if (initialValue && inputRef.current)
- //    inputRef.current.value = initialValue
- //  }, [inputRef])
- //
- //  return (
- //   <div
- //    className={`${containerClassName} rounded-xl relative w-full`}>
- //    <div
- //     style={{
- //      borderColor: (statusInformation?.error &&
- //      isFilled
- //       ? 'red'
- //       : isFocussed && '#6600FF') as BorderColor,
- //     }}
- //     className={`cursor-text relative w-full h-fit border-bastille border-2 px-4 py-2 bg-white shadow-sm rounded-xl ${inputContainerClassname}`}
- //     onClick={() => inputRef.current?.focus()}>
- //     <label
- //      className={`absolute left-0 -top-8 z-20 text-bastille opacity-80 sm-text ${labelClassname}`}>
- //      {label}
- //     </label>
- //     {children}
- //     {createElement(
- //      elementType,
- //      {
- //       required: required,
- //       placeholder: placeholder,
- //       className: `w-full min-h-fit h-full resize-none ${inputClassname}`,
- //       type: inputType,
- //       ref: composeRefs(
- //        forwardedInputRef,
- //        inputRef
- //       ),
- //       onChange: (v) =>
- //        handleChange(v.currentTarget.value),
- //       onFocus: () => {
- //        onFocus && onFocus()
- //        setIsFocussed(true)
- //       },
- //       onBlur: () => {
- //        onBlur && onBlur()
- //        setIsFocussed(false)
- //       },
- //      },
- //      null
- //     )}
- //    </div>
- //    {statusInformation.error && isFilled && (
- //     <p
- //      style={{
- //       maxWidth: inputRef.current?.offsetWidth,
- //      }}
- //      className='relative break-words text-red-500 mt-2 '>
- //      {statusInformation.text}
- //     </p>
- //    )}
- //   </div>
- //  )
- // }
-)
+const Input: FC<Props> = ({
+ label,
+ inputType = 'text',
+ elementType = 'input',
+ rows = 8,
+ required = true,
+ minLength,
+ maxLength,
+ errorText,
+ name,
+}) => {
+ // Create a unique id to link label and input
+ const id = Math.random().toPrecision(1)
 
-Input.displayName = 'Input'
+ // TODO: Make error appear only after the input was modified (problems due to required attribute)
+ return (
+  <div className='w-full relative'>
+   {
+    // Create the element based on the elementType
+    createElement(elementType, {
+     type: inputType,
+     id: id,
+     className:
+      'resize-none block px-2.5 pb-2.5 pt-4 w-full md-text text-bastille bg-transparent border-[1px] border-bastille appearance-none focus:outline-none focus:ring-0 focus:border-electricViolet peer invalid:border-red-600',
+     placeholder: ' ',
+     rows: rows, // Assign the number of rows in case the element would be a textarea
+     required: required, // specify if the filed is required to submit the form
+     minLength: minLength, // Required is a mandatory to make minLength works
+     maxLength: maxLength,
+     name: name,
+    })
+   }
+   <label
+    htmlFor={`${id}`}
+    className='absolute sm-text text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-electricViolet peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-invalid:peer-placeholder-shown:top-1/4 peer-invalid:peer-focus:top-2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1 peer-invalid:text-red-600'>
+    {label}
+   </label>
+   <p className='peer-invalid:block hidden mt-2 xs-text text-red-600'>
+    {errorText}
+   </p>
+  </div>
+ )
+}
 
 export default Input
