@@ -1,10 +1,9 @@
 'use client'
-import { FC, useEffect, useRef } from 'react'
+import {FC, useEffect, useRef} from 'react'
 import React from '../../public/assets/skills/React.svg'
 import CyberSec from '../../public/assets/skills/new/Cybersecurity.svg'
 import NewSkillCard from '../../components/NewSkillCard'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Map from '../../public/illustrations/map.svg'
 import HTML from '../../public/assets/skills/HTML.svg'
 import CSS from '../../public/assets/skills/CSS.svg'
@@ -19,8 +18,9 @@ import NodeJS from '../../public/assets/skills/NodeJS.svg'
 import SkillCard from '../../components/SkillCard'
 import Process from '../../components/Process'
 
-gsap.registerPlugin(ScrollTrigger)
-
+/*
+  About me section with description of my self, skills and process that I use to build products
+*/
 const AboutMe: FC = () => {
  const containerRef = useRef(null)
 
@@ -88,7 +88,6 @@ const AboutMe: FC = () => {
      </div>
     </div>
     <div className='flex flex-col md:flex-row'>
-     {/* TODO: Implement something else in about me */}
     </div>
     <section className='md:mx-0 mt-12'>
      <h2 className='sm-text opacity-75 text-hintOfRed'>

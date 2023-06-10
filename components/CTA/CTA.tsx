@@ -1,15 +1,18 @@
 import { FC, ReactNode } from 'react'
 
 type Props = {
- text: string
- onClick?: () => unknown
- className?: string
- icon?: ReactNode
- isDisabled?: boolean
- isLoading?: boolean
- fill?: 'electricViolet' | 'lochmara'
+ text: string // Text of the button
+ onClick?: () => unknown // Function on click
+ className?: string // Additional classnames
+ icon?: ReactNode // Optional icon to display after the text
+ isDisabled?: boolean // Disable the button
+ isLoading?: boolean // Put the button in loading state
+ fill?: 'electricViolet' | 'lochmara' // Choose the color of the background
 }
 
+/*
+   Click to action button to grab user attention and made him click on it.
+*/
 const CTA: FC<Props> = ({
  text,
  className,

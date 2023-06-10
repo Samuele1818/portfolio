@@ -8,11 +8,11 @@ import Binary from '../../public/icons/Binary.svg'
 import React from '../../public/assets/skills/React.svg'
 import ContactForm from '../ContactForm/ContactForm'
 
-/*
-Provide a contact form with some graphic details
- */
 
 // TODO: Create animations / transitions
+/*
+  Provide a contact form with some graphic details
+*/
 const Footer: FC = () => {
  return (
   <footer className="flex flex-col lg:flex-row bg-[url('/illustrations/Footer.svg')] bg-cover bg-bottom w-full h-full layout mt-24">

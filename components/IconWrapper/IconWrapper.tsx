@@ -2,10 +2,14 @@ import { FC, ReactNode } from 'react'
 import Link from 'next/link'
 
 type Props = {
- icon: ReactNode
- link: string
+ icon: ReactNode // Icon to display in the wrapper
+ link: string // Link to redirect when user click the wrapper
 }
 
+/*
+   Wrapper that contains and icon and redirect on a link on user click.
+   Used to link social media
+*/
 const IconWrapper: FC<Props> = ({
  icon,
  link,

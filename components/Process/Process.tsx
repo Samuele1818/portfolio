@@ -1,10 +1,13 @@
 'use client'
-import { FC, useEffect, useRef } from 'react'
+import {FC, useEffect, useRef} from 'react'
 import VerticalProcess from '../../public/assets/AboutMe/VerticalProcess.svg'
 import HorizontalProcess from '../../public/assets/AboutMe/HorizontalProcess.svg'
 import React from '../../public/assets/skills/React.svg'
 import gsap from 'gsap'
 
+/*
+  Contains the process of the creation of a product with an animation on appear. Adapted based on screen size
+*/
 const Process: FC = () => {
  const svgPathRef = useRef(null)
  // @ts-ignore

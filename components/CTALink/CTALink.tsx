@@ -3,12 +3,15 @@ import Link from 'next/link'
 import ExternalLink from '../../public/icons/ExternalLink.svg'
 
 type Props = {
- link: string
- text: string
- className?: string
- fill?: 'electricViolet' | 'lochmara' | 'none'
+ link: string // Href to redirect
+ text: string // Text to display
+ className?: string // Additional classnames
+ fill?: 'electricViolet' | 'lochmara' | 'none' // Choose the background color
 }
 
+/*
+  Linked styles as a Click to action button to make it more visible and important
+*/
 const CTALink: FC<Props> = ({
  link,
  text,

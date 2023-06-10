@@ -11,8 +11,8 @@ import {POST} from '../../app/api/sendEmail/route'
 import {useRef} from 'react'
 
 /*
-Contact form with three inputs (email, name, message) and a button to send.
-There are also three buttons to link my email, GitHub and StackOverflow 
+   Contact form with three inputs (email, name, message) and a button to send.
+   There are also three buttons to link my email, GitHub and StackOverflow
 */
 const ContactForm = () => {
  const helperTextRef =

@@ -15,15 +15,17 @@ export const metadata: Metadata = {
   'initial-scale=1.0, width=device-width',
 }
 
+/*
+   Render the home page of the site
+*/
 const Index: NextPage = () => {
+ // TODO: Import modules dynamically to improve performance
  return (
   <div className='bg-white w-full h-full overflow-x-clip'>
    <Header />
    <Hero />
    <Projects />
    <AboutMe />
-   {/*<PostsDyn/>*/}
-   {/*<Startups/>*/}
    <Footer />
   </div>
  )

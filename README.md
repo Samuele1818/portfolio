@@ -12,8 +12,8 @@ Through this portfolio you can contact me directly with an embedded contact form
 
 ## TODOs
 
-- [ ] Add comment on each component / module
-- [ ] Add TODOs in files which are required
+- [x] Add comment on each component / module
+- [x] Add TODOs in files which are required
 - [x] Delete old components / modules that is not in use anymore
-- [ ] Rename every file to follow the CamelCase convention (when possible)
-- [ ] Check dependencies and remove what is not used anymore
+- [x] Rename every file to follow the CamelCase convention (when possible)
+- [x] Check dependencies and remove what is not used anymore

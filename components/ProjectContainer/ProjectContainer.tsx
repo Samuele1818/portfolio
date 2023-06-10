@@ -5,17 +5,21 @@ import RightArrow from '../../public/icons/RightArrow.svg'
 import Link from 'next/link'
 
 type Props = {
- id: string
- image1: string
- image2: string
- image3?: string
- title: string
- type: string
- description: string
- role: string
- date: string
+ id: string // Identifier of the container
+ image1: string // First image to display
+ image2: string // Second image to display
+ image3?: string // Third image to display
+ title: string // Title of the project
+ type: string // Type of the project (website, application, ecc.)
+ description: string // Description of the project
+ role: string // My role in the project
+ date: string // Date of start and end of the project
 }
 
+// TODO: Implement a study case for the projects and create a CTA to the study case and a secondary CTA that link to the site / product created
+/*
+  Show a project description and name with a link to the site / product created. Also show images of the project
+*/
 const ProjectContainer: FC<Props> = ({
  id,
  image1,

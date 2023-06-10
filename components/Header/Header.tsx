@@ -1,10 +1,13 @@
 'use client'
-import { FC } from 'react'
+import {FC} from 'react'
 import Link from 'next/link'
 import Logo from '../../public/logo.svg'
 import CTA from '../CTA'
-import { useRouter } from 'next/navigation'
+import {useRouter} from 'next/navigation'
 
+/*
+  Provides logo and the CTA to redirect to the Contact Form
+*/
 const Header: FC = () => {
  //TODO: Fix push to anchor
  const { push } = useRouter()

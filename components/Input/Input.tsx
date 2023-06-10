@@ -6,12 +6,15 @@ interface Props {
  label?: string // Text of the floating label
  inputType?: string // Choose the input type (e.g. email, text)
  rows?: number // Specify number of rows in a textarea
- required?: boolean
- minLength?: number
- maxLength?: number
- errorText?: string
+ required?: boolean // Specify if input is required
+ minLength?: number // Specify the min length of the content (works only if required is true)
+ maxLength?: number // Specify the max length of the content (works only if required is true)
+ errorText?: string // Text to display when input has error
 }
 
+/*
+  Take user input and check if it is valid, show error if not.
+*/
 const Input: FC<Props> = ({
  label,
  inputType = 'text',

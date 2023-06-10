@@ -9,6 +9,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+/*
+  Hero section to grab client attention, introduce my self and make the client click the CTA to view my works
+*/
 const Hero: FC = () => {
  const { push } = useRouter()
 

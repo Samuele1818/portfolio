@@ -1,12 +1,15 @@
 import { FC, ReactNode } from 'react'
 
 type Props = {
- illustration: ReactNode
- title: string
- description: string
- id?: string
+ illustration: ReactNode // Illustration to render
+ title: string // Title of the card
+ description: string // Specification on what to do
+ id?: string // Assign an id to the card
 }
 
+/*
+  Contains an illustration and a text in which is specified what I want to learn / do new
+*/
 const NewSkillCard: FC<Props> = ({
  illustration,
  title,

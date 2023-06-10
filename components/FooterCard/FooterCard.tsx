@@ -6,7 +6,7 @@ interface Props {
 }
 
 /*
-Card with an icon used in the Footer component
+   Card with an icon used in the Footer component
 */
 const FooterCard: FC<Props> = ({
  icon,

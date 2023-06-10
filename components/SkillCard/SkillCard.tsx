@@ -1,11 +1,15 @@
 import { FC, ReactNode } from 'react'
 
 type Props = {
- text: string
- icon: ReactNode
- className?: string
+ text: string // Name of the icon
+ icon: ReactNode // Icon of the skill
+ className?: string // Additional classnames
 }
 
+/*
+   Show an icon with the name of what represents.
+   Used to show skills.
+*/
 const SkillCard: FC<Props> = ({
  text,
  icon,

@@ -7,10 +7,14 @@ import {
 
 const mailjet = require('node-mailjet')
 const mailConn = mailjet.apiConnect(
- process.env.MAILJET_API_KEY,
+ process.env.MAILJET_API_KEY, // init api connection with environment variables
  process.env.MAILJET_API_SECRET
 )
 
+/*
+   Handle POST request, send the client email to samsciatore.19@gmail.com
+   @param req: Request received from the client
+*/
 export async function POST(req: Request) {
  if (req.method !== 'POST')
   return NextResponse.json(

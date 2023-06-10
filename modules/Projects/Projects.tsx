@@ -1,12 +1,11 @@
 'use client'
 import {FC, useEffect, useMemo, useRef,} from 'react'
 import gsap from 'gsap'
-import {ScrollTrigger} from 'gsap/ScrollTrigger'
 import ProjectContainer from '../../components/ProjectContainer'
 
-// Register ScrollTrigger here because it is client side
-gsap.registerPlugin(ScrollTrigger)
-
+/*
+  Projects section with products that I made
+*/
 const Projects: FC = () => {
  const Projects = useMemo(
   () => [
