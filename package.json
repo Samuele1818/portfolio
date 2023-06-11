@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "gsap": "^3.12.1",
+    "lodash.debounce": "^4.0.8",
     "next": "^13.4.4",
     "node-mailjet": "^6.0.2",
     "react": "^18.2.0",

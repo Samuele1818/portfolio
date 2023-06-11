@@ -23,6 +23,15 @@ export const isValidMessage: (
  )
 }
 
+export const isValidForm = (form: HTMLFormElement) => {
+ for (let element in form.elements) { // Check if all inputs in the form are valid
+  const input = form.elements[element]
+  if (input instanceof HTMLInputElement || input instanceof HTMLTextAreaElement) // Check if it is an input element or a textarea
+   if (!input.checkValidity() || !input.getAttribute("init")) return false // if one input is invalid and is initialized return false
+ }
+ return true
+}
+
 // export const setWithExpiry = (
 //  key,
 //  value,

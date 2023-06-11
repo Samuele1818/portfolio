@@ -1,6 +1,7 @@
-import { FC, ReactNode } from 'react'
+import { FC, ReactNode, RefObject } from 'react'
 
 type Props = {
+ sendButtonRef?: RefObject<HTMLButtonElement>
  text: string // Text of the button
  onClick?: () => unknown // Function on click
  className?: string // Additional classnames
@@ -14,6 +15,7 @@ type Props = {
    Click to action button to grab user attention and made him click on it.
 */
 const CTA: FC<Props> = ({
+ sendButtonRef,
  text,
  className,
  icon,
@@ -24,6 +26,7 @@ const CTA: FC<Props> = ({
 }) => {
  return (
   <button
+   ref={sendButtonRef}
    disabled={isDisabled || isLoading}
    onClick={onClick}
    className={`${className} ${

@@ -8,8 +8,9 @@ import StackOverflow from '../../public/icons/StackOverflow.svg'
 import React from '../../public/assets/skills/React.svg'
 import IconWrapper from '../IconWrapper'
 import {POST} from '../../app/api/sendEmail/route'
-import {useRef} from 'react'
-
+import {useMemo, useRef} from 'react'
+import debounce from 'lodash.debounce'
+import {isValidForm} from '../../utils/validator'
 /*
    Contact form with three inputs (email, name, message) and a button to send.
    There are also three buttons to link my email, GitHub and StackOverflow
@@ -18,8 +19,35 @@ const ContactForm = () => {
  const helperTextRef =
   useRef<HTMLParagraphElement>(null)
 
+ const formRef = useRef<HTMLFormElement>(null)
+ const sendButtonRef =
+  useRef<HTMLButtonElement>(null)
+
+ const debouncedChangeHandler = useMemo(
+  () =>
+   debounce(() => {
+    if (
+     !formRef.current ||
+     !sendButtonRef.current
+    )
+     return
+    if (isValidForm(formRef.current))
+     sendButtonRef.current.removeAttribute(
+      'disabled'
+     )
+    else
+     sendButtonRef.current.setAttribute(
+      'disabled',
+      'true'
+     )
+   }, 300),
+  []
+ )
+
  return (
   <form
+   ref={formRef}
+   onChange={debouncedChangeHandler}
    className='flex flex-col w-full gap-y-12'
    onSubmit={async (e) => {
     // Prevent form to redirect / refresh the page
@@ -94,6 +122,8 @@ const ContactForm = () => {
     {/*  CTA to send the form with helper text */}
     <div className='flex flex-col'>
      <CTA
+      sendButtonRef={sendButtonRef}
+      isDisabled
       className='rounded-none'
       icon={
        <Send

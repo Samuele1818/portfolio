@@ -30,7 +30,7 @@ const Input: FC<Props> = ({
  const id = Math.random().toPrecision(5)
 
  return (
-  <div className='w-full relative'>
+  <div className='w-full relative h-fit'>
    {
     // Create the element based on the elementType
     createElement(elementType, {
@@ -43,6 +43,9 @@ const Input: FC<Props> = ({
      minLength: minLength, // Required is a mandatory to make minLength works
      maxLength: maxLength,
      name: name,
+     onFocus: (e) => {
+      e.target.setAttribute('init', 'true') // Set an attribute to check that the input has been opened at least one time
+     },
      onBlur: (e) => {
       // On blur assign value to the input required attribute to avoid show error before input has been even selected if it's required
       e.target.required = required // specify if the filed is required to submit the form
