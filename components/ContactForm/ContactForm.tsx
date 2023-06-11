@@ -118,7 +118,6 @@ const ContactForm = () => {
     name='message'
    />
    <div className='flex flex-col gap-y-12 lg:flex-row w-full lg:justify-between lg:items-center'>
-    {/*  TODO: If errors in form disable button */}
     {/*  CTA to send the form with helper text */}
     <div className='flex flex-col'>
      <CTA
