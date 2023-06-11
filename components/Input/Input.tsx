@@ -27,7 +27,7 @@ const Input: FC<Props> = ({
  name,
 }) => {
  // Create a unique id to link label and input
- const id = Math.random().toPrecision(1)
+ const id = Math.random().toPrecision(5)
 
  return (
   <div className='w-full relative'>
@@ -54,7 +54,8 @@ const Input: FC<Props> = ({
     className='absolute sm-text text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-electricViolet peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-invalid:peer-placeholder-shown:top-1/4 peer-invalid:peer-focus:top-2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1 peer-invalid:text-red-600'>
     {label}
    </label>
-   <p className='peer-invalid:block hidden mt-2 xs-text text-red-600'>
+   {/* The paragraph has a fixed height to prevent total height of the div to be dynamically and so avoid label to be in different y position */}
+   <p className='peer-invalid:block hidden mt-2 xs-text text-red-600 h-12'>
     {errorText}
    </p>
   </div>
