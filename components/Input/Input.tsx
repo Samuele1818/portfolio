@@ -29,7 +29,6 @@ const Input: FC<Props> = ({
  // Create a unique id to link label and input
  const id = Math.random().toPrecision(1)
 
- // TODO: Make error appear only after the input was modified (problems due to required attribute)
  return (
   <div className='w-full relative'>
    {
@@ -41,10 +40,13 @@ const Input: FC<Props> = ({
       'resize-none block px-2.5 pb-2.5 pt-4 w-full md-text text-bastille bg-transparent border-[1px] border-bastille appearance-none focus:outline-none focus:ring-0 focus:border-electricViolet peer invalid:border-red-600',
      placeholder: ' ',
      rows: rows, // Assign the number of rows in case the element would be a textarea
-     required: required, // specify if the filed is required to submit the form
      minLength: minLength, // Required is a mandatory to make minLength works
      maxLength: maxLength,
      name: name,
+     onBlur: (e) => {
+      // On blur assign value to the input required attribute to avoid show error before input has been even selected if it's required
+      e.target.required = required // specify if the filed is required to submit the form
+     },
     })
    }
    <label
