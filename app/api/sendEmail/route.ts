@@ -59,7 +59,7 @@ export async function POST(req: Request) {
    .request({
     Messages: [
      {
-      // Set the sender informations
+      // Set the sender information
       From: {
        Email: 'samsciatore.19@gmail.com',
        Name: name,

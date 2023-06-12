@@ -59,20 +59,29 @@ const Projects: FC = () => {
  }, [Projects])
 
  return (
-  <section
-   ref={containerRef}
+  <div
    id='projects'
-   className={`py-24 h-screen bg-bastille w-max flex flex-nowrap overflow-hidden`}>
-   {Projects.map((project, index) => {
-    return (
-     <ProjectContainer
-      key={index}
-      id='panel'
-      {...project}
-     />
-    )
-   })}
-  </section>
+   className='bg-bastille relative py-24'>
+   <div className='text-hintOfRed layout mt-96'>
+    <h1>My Projects</h1>
+    <p className='absolute top-[26rem] left-6 text-9xl scale-150 opacity-[5%]'>
+     Explore my Projects Explore my Projects
+    </p>
+   </div>
+   <section
+    ref={containerRef}
+    className={`h-screen bg-bastille w-max flex flex-nowrap overflow-hidden`}>
+    {Projects.map((project, index) => {
+     return (
+      <ProjectContainer
+       key={index}
+       id='panel'
+       {...project}
+      />
+     )
+    })}
+   </section>
+  </div>
  )
 }
 

@@ -4,7 +4,6 @@ import React from '../../public/assets/skills/React.svg'
 import CyberSec from '../../public/assets/skills/new/Cybersecurity.svg'
 import NewSkillCard from '../../components/NewSkillCard'
 import gsap from 'gsap'
-import Map from '../../public/illustrations/map.svg'
 import HTML from '../../public/assets/skills/HTML.svg'
 import CSS from '../../public/assets/skills/CSS.svg'
 import Javascript from '../../public/assets/skills/Javascript.svg'
@@ -62,10 +61,15 @@ const AboutMe: FC = () => {
 
  return (
   <>
-   <section className='layout pt-36 bg-bastille overflow-clip text-hintOfRed flex flex-col'>
-    <div className='flex-align-lg items-center'>
+   <section className='layout pt-24 bg-bastille overflow-clip text-hintOfRed flex flex-col'>
+    <div className='flex-align-lg items-center gap-x-24 z-10 relative'>
      <div className='lg:w-1/3'>
-      <h1>Call me Sam1818</h1>
+      <h1>
+       Call me{' '}
+       <span className='text-[#E4049A]'>
+        Sam1818
+       </span>
+      </h1>
       <p className='mt-4'>
        I&apos;m a full stack developer and
        software engineer that love transform good
@@ -80,20 +84,10 @@ const AboutMe: FC = () => {
        books and lift (heavy) weights.
       </p>
      </div>
-     <div className='lg:w-2/3 h-fit overflow-clip flex mt-12 lg:mt-0'>
-      <Map
-       viewBox='0 0 1440 560'
-       className='scale-[1.60] w-full h-full ml-auto mt-12 lg:-mr-[20%] lg:-mt-[5%] mb-auto'
-      />
-     </div>
+     <div className='flex flex-col bg-[#E4049A] h-full w-96 rounded-xl'></div>
     </div>
-    <div className='flex flex-col md:flex-row'>
-    </div>
-    <section className='md:mx-0 mt-12'>
-     <h2 className='sm-text opacity-75 text-hintOfRed'>
-      Languages
-     </h2>
-     <div className='mt-2 grid gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-14'>
+    <section className='md:mx-0 mt-24 lg:mt-48 2xl:mt-72 z-10'>
+     <div className='grid gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-x-14 even:bg-bastille'>
       <SkillCard
        text='HTML'
        icon={<HTML viewBox='0 0 48 55' />}
@@ -110,25 +104,6 @@ const AboutMe: FC = () => {
        text='Typescript'
        icon={<Typescript viewBox='0 0 48 48' />}
       />
-      {/*<SkillCard*/}
-      {/* text='C++'*/}
-      {/* icon={<CPP viewBox='0 0 48 55' />}*/}
-      {/*/>*/}
-      {/*<SkillCard*/}
-      {/* text='Java'*/}
-      {/* icon={<Java viewBox='0 0 48 66' />}*/}
-      {/*/>*/}
-      {/*<SkillCard*/}
-      {/* text='Kotlin'*/}
-      {/* icon={<Kotlin viewBox='0 0 48 48' />}*/}
-      {/*/>*/}
-     </div>
-    </section>
-    <section className='mx-auto md:mx-0 mt-12'>
-     <h2 className='sm-text opacity-75 text-hintOfRed'>
-      Technologies
-     </h2>
-     <div className='mt-2 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-14 gap-y-8'>
       <SkillCard
        text='TailwindCSS'
        icon={<TailwindCSS viewBox='0 0 48 48' />}
@@ -159,34 +134,41 @@ const AboutMe: FC = () => {
       />
      </div>
     </section>
-    {/*<h2 className="sm-text opacity-75 text-hintOfRed">Next goals</h2>*/}
    </section>
-   <section
-    className='pb-24 bg-bastille fill-hintOfRed flex flex-nowrap items-center h-screen w-max overflow-hidden'
-    ref={containerRef}>
-    <NewSkillCard
-     id='new-skill'
-     illustration={
-      <CyberSec
-       viewBox='0 0 1205 853'
-       className='w-full h-fit'
-      />
-     }
-     title='Cyber security'
-     description="I'm studying cyber security. I want to attend the eJPT certification from eLearnSecurity and in future the OSCP certification from offensive security."
-    />
-    <NewSkillCard
-     id='new-skill'
-     illustration={
-      <CyberSec
-       viewBox='0 0 1205 853'
-       className='w-full h-fit'
-      />
-     }
-     title='Cyber security'
-     description="I'm studying cyber security. I want to attend the eJPT certification from eLearnSecurity and in future the OSCP certification from offensive security."
-    />
-   </section>
+   <div className='w-full h-fit pt-48 pb-24 bg-bastille text-hintOfRed relative'>
+    <div className='layout'>
+     <h1>Next Goals</h1>
+     <p className='absolute top-[10rem] left-6 text-9xl scale-150 opacity-[5%]'>
+      Next Goals Next Goals Next Goals
+     </p>
+    </div>
+    <section
+     className='flex flex-nowrap items-center w-max overflow-hidden h-screen py-24'
+     ref={containerRef}>
+     <NewSkillCard
+      id='new-skill'
+      illustration={
+       <CyberSec
+        viewBox='0 0 1205 853'
+        className='w-full h-fit'
+       />
+      }
+      title='Cyber security'
+      description="I'm studying cyber security. I want to attend the eJPT certification from eLearnSecurity and in future the OSCP certification from offensive security."
+     />
+     <NewSkillCard
+      id='new-skill'
+      illustration={
+       <CyberSec
+        viewBox='0 0 1205 853'
+        className='w-full h-fit'
+       />
+      }
+      title='Cyber security'
+      description="I'm studying cyber security. I want to attend the eJPT certification from eLearnSecurity and in future the OSCP certification from offensive security."
+     />
+    </section>
+   </div>
    <section
     id='process-section'
     className='layout mt-24'>

@@ -9,7 +9,6 @@ import {useRouter} from 'next/navigation'
   Provides logo and the CTA to redirect to the Contact Form
 */
 const Header: FC = () => {
- //TODO: Fix push to anchor
  const { push } = useRouter()
 
  // Slidebar with hamburger menu for mobile devices with animation (works with the next container so in NextJs13 this code needs adjustments )
@@ -118,7 +117,6 @@ const Header: FC = () => {
         viewBox="0 0 14 10"
       />*/}
    <div className='inline-flex items-center'>
-    {/* TODO: Implement a resume page with CV */}
     {/*<Link href="resume" target="_blank" className="mr-4 hover-underline-animation text-bastille">Resume</Link>*/}
     <CTA
      text='Contact Me'
