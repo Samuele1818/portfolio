@@ -64,7 +64,7 @@ const Projects: FC = () => {
    className='bg-bastille relative py-24'>
    <div className='text-hintOfRed layout mt-96'>
     <h1>My Projects</h1>
-    <p className='absolute top-[26rem] left-6 text-9xl scale-150 opacity-[5%]'>
+    <p className='absolute top-[26rem] left-6 text-9xl scale-150 opacity-[2%]'>
      Explore my Projects Explore my Projects
     </p>
    </div>

@@ -4,18 +4,8 @@ import React from '../../public/assets/skills/React.svg'
 import CyberSec from '../../public/assets/skills/new/Cybersecurity.svg'
 import NewSkillCard from '../../components/NewSkillCard'
 import gsap from 'gsap'
-import HTML from '../../public/assets/skills/HTML.svg'
-import CSS from '../../public/assets/skills/CSS.svg'
-import Javascript from '../../public/assets/skills/Javascript.svg'
-import Typescript from '../../public/assets/skills/Typescript.svg'
-import TailwindCSS from '../../public/assets/skills/TailwindCSS.svg'
-import SASS from '../../public/assets/skills/SASS.svg'
-import NextJS from '../../public/assets/skills/NextJS.svg'
-import Firebase from '../../public/assets/skills/Firebase.svg'
-import MySQL from '../../public/assets/skills/MySQL.svg'
-import NodeJS from '../../public/assets/skills/NodeJS.svg'
-import SkillCard from '../../components/SkillCard'
 import Process from '../../components/Process'
+import SkillsScroller from './SkillsScroller'
 
 /*
   About me section with description of my self, skills and process that I use to build products
@@ -62,7 +52,8 @@ const AboutMe: FC = () => {
  return (
   <>
    <section className='layout pt-24 bg-bastille overflow-clip text-hintOfRed flex flex-col'>
-    <div className='flex-align-lg items-center gap-x-24 z-10 relative'>
+    {/* Description and image container */}
+    <div className='flex-align-lg items-center relative'>
      <div className='lg:w-1/3'>
       <h1>
        Call me{' '}
@@ -84,61 +75,23 @@ const AboutMe: FC = () => {
        books and lift (heavy) weights.
       </p>
      </div>
-     <div className='flex flex-col bg-[#E4049A] h-full w-96 rounded-xl'></div>
-    </div>
-    <section className='md:mx-0 mt-24 lg:mt-48 2xl:mt-72 z-10'>
-     <div className='grid gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-x-14 even:bg-bastille'>
-      <SkillCard
-       text='HTML'
-       icon={<HTML viewBox='0 0 48 55' />}
-      />
-      <SkillCard
-       text='CSS'
-       icon={<CSS viewBox='0 0 48 55' />}
-      />
-      <SkillCard
-       text='Javascript'
-       icon={<Javascript viewBox='0 0 48 48' />}
-      />
-      <SkillCard
-       text='Typescript'
-       icon={<Typescript viewBox='0 0 48 48' />}
-      />
-      <SkillCard
-       text='TailwindCSS'
-       icon={<TailwindCSS viewBox='0 0 48 48' />}
-      />
-      <SkillCard
-       text='SASS'
-       icon={<SASS viewBox='0 0 48 36' />}
-      />
-      <SkillCard
-       text='React'
-       icon={<React viewBox='0 0 48 43' />}
-      />
-      <SkillCard
-       text='NodeJS'
-       icon={<NodeJS viewBox='0 0 48 55' />}
-      />
-      <SkillCard
-       text='NextJS'
-       icon={<NextJS viewBox='0 0 48 48' />}
-      />
-      <SkillCard
-       text='Firebase'
-       icon={<Firebase viewBox='0 0 48 66' />}
-      />
-      <SkillCard
-       text='MySQL'
-       icon={<MySQL viewBox='0 0 48 48' />}
+     <div className='bg-[#E4049A] h-[700px] w-1/3 rounded-xl mr-0 ml-auto'>
+      <img
+       className='w-[50%] h-[750px] aspect-[1/3] mb-auto -mt-[50px]'
+       src='/illustrations/ReadyPlayerMe-Avatar-removebg-preview-transformed%201.png'
       />
      </div>
-    </section>
+    </div>
    </section>
-   <div className='w-full h-fit pt-48 pb-24 bg-bastille text-hintOfRed relative'>
+   {/* Skills Scroller container (outside to avoid padding from layout class)*/}
+   <section className='w-full pt-48 lg:pt-96 bg-bastille'>
+    <SkillsScroller />
+   </section>
+   {/* Next Goals (padding is applied to title not to containers )*/}
+   <div className='w-full h-fit pt-48 lg:pt-96 pb-24 bg-bastille text-hintOfRed relative'>
     <div className='layout'>
      <h1>Next Goals</h1>
-     <p className='absolute top-[10rem] left-6 text-9xl scale-150 opacity-[5%]'>
+     <p className='absolute top-[22rem] left-6 text-9xl scale-150 opacity-[2%]'>
       Next Goals Next Goals Next Goals
      </p>
     </div>
@@ -169,11 +122,14 @@ const AboutMe: FC = () => {
      />
     </section>
    </div>
+   {/* Process container with padding applied to all, h-screen to make animation more visible and smooth */}
    <section
     id='process-section'
-    className='layout mt-24'>
-    <h1 className='mb-12'>Trust the process</h1>
-    <Process />
+    className='layout mt-24 h-screen flex flex-col justify-center'>
+    <div>
+     <h1 className='mb-12'>Trust the process</h1>
+     <Process />
+    </div>
    </section>
   </>
  )
