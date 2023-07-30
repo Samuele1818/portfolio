@@ -50,9 +50,9 @@ const Hero: FC = () => {
    <div className='flex-col flex lg:max-w-[400px] xl:max-w-[450px] 2xl:max-w-[600px] hr-align-lg'>
     <h1>
      Transform your ideas in{' '}
-     <a className='relative content after:absolute after:w-full after:-bottom-2 after:left-0 after:h-4 after:bg-cover after:bg-[url("/icons/CurlyAccent.svg")]'>
+     <span className=' relative content after:absolute after:w-full after:-bottom-2 after:left-0 after:h-4 after:bg-cover after:bg-[url("/icons/CurlyAccent.svg")]'>
       solid
-     </a>{' '}
+     </span>{' '}
      websites and applications
     </h1>
     <h2 className='mt-4'>

@@ -11,7 +11,7 @@ export default function RootLayout({
  children: ReactNode
 }) {
  return (
-  <html>
+  <html lang='en'>
    <head>
     {/*  Set the favicon */}
     <link
