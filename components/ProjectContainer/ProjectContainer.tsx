@@ -3,6 +3,7 @@ import User from '../../public/icons/User.svg'
 import Clock from '../../public/icons/Clock.svg'
 import RightArrow from '../../public/icons/RightArrow.svg'
 import Link from 'next/link'
+import Image from 'next/image'
 
 type Props = {
  id: string // Identifier of the container
@@ -74,18 +75,27 @@ const ProjectContainer: FC<Props> = ({
     </div>
    </div>
    <div className='w-full overflow-clip flex bg-bastille'>
-    <img
+    <Image
+     width={2000}
+     height={2000}
      src={image1}
      className='w-96 h-fit -rotate-12 rounded-xl hover:scale-125 transition-transform'
+     alt='Project image'
     />
-    <img
+    <Image
+     width={2000}
+     height={2000}
      src={image2}
      className='w-96 h-fit -rotate-12 rounded-xl ml-auto mr-0 xl:ml-auto xl:mr-auto hover:scale-150 transition-transform'
+     alt='Project image'
     />
     {image3 && (
-     <img
+     <Image
+      width={2000}
+      height={2000}
       src={image3}
       className='w-96 h-fit -rotate-12 rounded-xl hidden xl:block hover:scale-125 transition-transform'
+      alt='Project image'
      />
     )}
    </div>

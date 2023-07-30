@@ -1,11 +1,13 @@
 'use client'
 import {FC, useEffect, useRef} from 'react'
+import Image from 'next/image'
 import React from '../../public/assets/skills/React.svg'
 import CyberSec from '../../public/assets/skills/new/Cybersecurity.svg'
 import NewSkillCard from '../../components/NewSkillCard'
 import gsap from 'gsap'
 import Process from '../../components/Process'
 import SkillsScroller from './SkillsScroller'
+import Avatar from '../../public//illustrations/ReadyPlayerMe-Avatar-removebg-preview-transformed 1.png'
 
 /*
   About me section with description of my self, skills and process that I use to build products
@@ -54,7 +56,7 @@ const AboutMe: FC = () => {
    <section className='layout pt-24 bg-bastille overflow-clip text-hintOfRed flex flex-col'>
     {/* Description and image container */}
     <div className='flex-align-lg items-center relative'>
-     <div className='lg:w-1/3'>
+     <div className='mb-24 lg:mb-0 lg:w-1/3'>
       <h1>
        Call me{' '}
        <span className='text-[#E4049A]'>
@@ -75,10 +77,13 @@ const AboutMe: FC = () => {
        books and lift (heavy) weights.
       </p>
      </div>
-     <div className='bg-[#E4049A] h-[700px] w-1/3 rounded-xl mr-0 ml-auto'>
-      <img
-       className='w-[50%] h-[750px] aspect-[1/3] mb-auto -mt-[50px]'
-       src='/illustrations/ReadyPlayerMe-Avatar-removebg-preview-transformed%201.png'
+     <div className='bg-[#E4049A] h-[700px] w-full lg:w-1/3 rounded-xl mr-0 ml-auto'>
+      <Image
+       className='w-[50%] h-[750px] mb-auto -mt-[50px]'
+       src={Avatar}
+       alt='avator of me'
+       priority
+       quality={100}
       />
      </div>
     </div>

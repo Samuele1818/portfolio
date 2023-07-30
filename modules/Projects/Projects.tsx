@@ -62,6 +62,10 @@ const Projects: FC = () => {
   <div
    id='projects'
    className='bg-bastille relative py-24'>
+   {/*<div className="ml-auto mr-auto text-white w-fit -mt-12">*/}
+   {/* <p className="md-text mb-6">Scroll</p>*/}
+   {/* <RightArrow viewBox="0 0 13 8" className="w-16 h-fit rotate-90" />*/}
+   {/*</div>*/}
    <div className='text-hintOfRed layout mt-96'>
     <h1>My Projects</h1>
     <p className='absolute top-[26rem] left-6 text-9xl scale-150 opacity-[2%]'>
