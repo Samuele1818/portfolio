@@ -8,7 +8,6 @@ import Binary from '../../public/icons/Binary.svg'
 import React from '../../public/assets/skills/React.svg'
 import ContactForm from '../ContactForm/ContactForm'
 
-
 // TODO: Create animations / transitions
 /*
   Provide a contact form with some graphic details

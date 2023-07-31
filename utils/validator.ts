@@ -15,19 +15,30 @@ export const isValidName: (
 }
 
 export const isValidMessage: (
-    message: string
+ message: string
 ) => boolean = (message) => {
  // check if message length is < 1000 and > 10
  return (
-     message.length < 1000 || message.length > 10
+  message.length < 1000 || message.length > 10
  )
 }
 
-export const isValidForm = (form: HTMLFormElement) => {
- for (let element in form.elements) { // Check if all inputs in the form are valid
+export const isValidForm = (
+ form: HTMLFormElement
+) => {
+ for (let element in form.elements) {
+  // Check if all inputs in the form are valid
   const input = form.elements[element]
-  if (input instanceof HTMLInputElement || input instanceof HTMLTextAreaElement) // Check if it is an input element or a textarea
-   if (!input.checkValidity() || !input.getAttribute("init")) return false // if one input is invalid and is initialized return false
+  if (
+   input instanceof HTMLInputElement ||
+   input instanceof HTMLTextAreaElement
+  )
+   if (
+    !input.checkValidity() ||
+    !input.getAttribute('init')
+   )
+    // Check if it is an input element or a textarea
+    return false // if one input is invalid and is initialized return false
  }
  return true
 }

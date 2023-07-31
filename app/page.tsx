@@ -1,8 +1,7 @@
 import {Metadata, NextPage} from 'next'
 import React from '../public/assets/skills/React.svg'
-import Hero from '../modules/Hero'
-import Header from '../components/Header'
 import dynamic from 'next/dynamic'
+import Loader from '../components/Loader'
 
 // Set metadata of the page
 export const metadata: Metadata = {
@@ -17,31 +16,43 @@ export const metadata: Metadata = {
    Render the home page of the site
 */
 const Index: NextPage = () => {
+ const DynamicHeader = dynamic(
+  () => import('../components/Header'),
+  {
+   loading: () => <Loader />,
+  }
+ )
+ const DynamicHero = dynamic(
+  () => import('../modules/Hero'),
+  {
+   loading: () => <Loader />,
+  }
+ )
  const DynamicProjects = dynamic(
   () => import('../modules/Projects'),
   {
-   loading: () => <p>Loading...</p>, // TODO: Create a more fashion loader
+   loading: () => <Loader />,
   }
  )
 
  const DynamicAboutMe = dynamic(
   () => import('../modules/AboutMe'),
   {
-   loading: () => <p>Loading...</p>,
+   loading: () => <Loader />,
   }
  )
 
  const DynamicFooter = dynamic(
   () => import('../components/Footer'),
   {
-   loading: () => <p>Loading...</p>,
+   loading: () => <Loader />,
   }
  )
 
  return (
   <div className='bg-white w-full h-full overflow-x-clip'>
-   <Header />
-   <Hero />
+   <DynamicHeader />
+   <DynamicHero />
    <DynamicProjects />
    <DynamicAboutMe />
    <DynamicFooter />
