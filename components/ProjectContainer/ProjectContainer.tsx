@@ -79,6 +79,8 @@ const ProjectContainer: FC<Props> = ({
      width={2000}
      height={2000}
      src={image1}
+     layout='responsive'
+     sizes='(min-width: 60em) 24vw, (min-width: 28em) 45vw, 100vw'
      className='w-96 h-fit -rotate-12 rounded-xl hover:scale-125 transition-transform'
      alt='Project image'
     />
@@ -86,6 +88,7 @@ const ProjectContainer: FC<Props> = ({
      width={2000}
      height={2000}
      src={image2}
+     sizes='(min-width: 60em) 24vw, (min-width: 28em) 45vw, 100vw'
      className='w-96 h-fit -rotate-12 rounded-xl ml-auto mr-0 xl:ml-auto xl:mr-auto hover:scale-150 transition-transform'
      alt='Project image'
     />
@@ -94,6 +97,7 @@ const ProjectContainer: FC<Props> = ({
       width={2000}
       height={2000}
       src={image3}
+      sizes='(min-width: 60em) 24vw, (min-width: 28em) 45vw, 100vw'
       className='w-96 h-fit -rotate-12 rounded-xl hidden xl:block hover:scale-125 transition-transform'
       alt='Project image'
      />
