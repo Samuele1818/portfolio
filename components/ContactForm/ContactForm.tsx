@@ -6,6 +6,7 @@ import Github from '../../public/icons/Github.svg'
 import Email from '../../public/icons/Email.svg'
 import StackOverflow from '../../public/icons/StackOverflow.svg'
 import React from '../../public/assets/skills/React.svg'
+import LinkedIn from '../../public/icons/LinkedIn.svg'
 import IconWrapper from '../IconWrapper'
 import {POST} from '../../app/api/sendEmail/route'
 import {useMemo, useRef} from 'react'
@@ -150,6 +151,10 @@ const ContactForm = () => {
      <IconWrapper
       link='https://stackoverflow.com/users/12119966/samuele1818'
       icon={<StackOverflow viewBox='0 0 16 16' />}
+     />
+     <IconWrapper
+      link='https://www.linkedin.com/in/samuele-sciatore-19895b285/'
+      icon={<LinkedIn viewBox='0 0 50 50' />}
      />
     </div>
    </div>

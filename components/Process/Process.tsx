@@ -16,6 +16,7 @@ const Process: FC = () => {
    scrollTrigger: {
     trigger: '#process-container',
     start: 'center top',
+    toggleActions: 'play none reverse none',
    },
   })
 

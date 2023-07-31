@@ -130,9 +130,9 @@ const AboutMe: FC = () => {
    {/* Process container with padding applied to all, h-screen to make animation more visible and smooth */}
    <section
     id='process-section'
-    className='layout mt-24 h-screen flex flex-col justify-center'>
+    className='layout mt-24 lg:h-screen flex flex-col justify-center'>
     <div>
-     <h1 className='mb-12'>Trust the process</h1>
+     <h1 className='mb-48'>Trust the process</h1>
      <Process />
     </div>
    </section>
