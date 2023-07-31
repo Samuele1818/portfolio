@@ -79,14 +79,14 @@ const ProjectContainer: FC<Props> = ({
      width={2000}
      height={2000}
      src={image1}
-     sizes='1536px'
+     sizes='500px'
      className='w-96 h-fit -rotate-12 rounded-xl hover:scale-125 transition-transform'
      alt='Project image'
     />
     <Image
      width={2000}
      height={2000}
-     sizes='1536px'
+     sizes='500px'
      src={image2}
      className='w-96 h-fit -rotate-12 rounded-xl ml-auto mr-0 xl:ml-auto xl:mr-auto hover:scale-150 transition-transform'
      alt='Project image'
@@ -96,8 +96,8 @@ const ProjectContainer: FC<Props> = ({
       width={2000}
       height={2000}
       src={image3}
-      sizes='(max-width: 1280px) 0, 1536px'
-      className='w-96 h-fit -rotate-12 rounded-xl hidden xl:block hover:scale-125 transition-transform'
+      sizes='(max-width: 1536px) 0, 500px'
+      className='w-96 h-fit -rotate-12 rounded-xl hidden 2xl:block hover:scale-125 transition-transform'
       alt='Project image'
      />
     )}
