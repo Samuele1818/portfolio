@@ -17,7 +17,7 @@ type Props = {
  date: string // Date of start and end of the project
 }
 
-// TODO: Implement a study case for the projects and create a CTA to the study case and a secondary CTA that link to the site / product created
+// TODO-LATER: Implement a study case for the projects and create a CTA to the study case and a secondary CTA that link to the site / product created
 /*
   Show a project description and name with a link to the site / product created. Also show images of the project
 */
