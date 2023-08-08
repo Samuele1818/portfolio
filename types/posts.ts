@@ -1,0 +1,10 @@
+type Tag =
+ | 'tutorial'
+ | 'write-up'
+ | 'article'
+ | 'react'
+ | 'nextjs'
+ | 'javascript'
+ | 'html'
+ | 'css'
+ | 'tailwindcss'

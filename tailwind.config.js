@@ -18,13 +18,14 @@ module.exports = {
    screens: {
     '3xl': '1800px',
    },
-   shadows: {
+   boxShadow: {
     shadow:
      'box-shadow: 4px 12px 16px rgba(31, 25, 38, 0.22);',
    },
   },
  },
  plugins: [
+  require('@tailwindcss/typography'),
   process.env.NODE_ENV === 'production'
    ? { cssnano: {} }
    : {},

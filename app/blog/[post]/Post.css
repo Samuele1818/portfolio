@@ -1,0 +1,15 @@
+*:is(h1, h2, h3, h4, h5, h6) {
+    @apply flex items-center relative
+}
+
+*:is(h1, h2, h3, h4, h5, h6):hover > .autolink-header {
+    @apply block
+}
+
+.autolink-header {
+    @apply absolute pr-[2rem] -left-[2rem] hidden cursor-pointer
+}
+
+.prose .autolink-header {
+    @apply text-electricViolet transition-all font-bold
+}
