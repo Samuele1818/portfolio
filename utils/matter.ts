@@ -1,3 +1,4 @@
+/*
 import matter from 'gray-matter'
 
 const getPostsMetadata = (): Metadata[] => {
@@ -55,3 +56,4 @@ export {
  getTwoMoreRecentPost,
  getPostsMetadata,
 }
+*/
