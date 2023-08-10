@@ -33,7 +33,7 @@ const CTA: FC<Props> = ({
     fill == 'lochmara'
      ? 'color-animation-lochmara'
      : 'color-animation-electricViolet'
-   } disabled:opacity-60 inline-flex items-center gap-x-2 w-fit h-fit px-4 py-2 rounded-3xl`}>
+   } inline-flex h-fit w-fit items-center gap-x-2 rounded-3xl px-4 py-2 disabled:opacity-60`}>
    {text}
    {icon}
   </button>

@@ -1,5 +1,5 @@
 'use client'
-import {FC, useEffect, useRef} from 'react'
+import { FC, useEffect, useRef } from 'react'
 import VerticalProcess from '../../public/assets/AboutMe/VerticalProcess.svg'
 import HorizontalProcess from '../../public/assets/AboutMe/HorizontalProcess.svg'
 import React from '../../public/assets/skills/React.svg'
@@ -44,11 +44,11 @@ const Process: FC = () => {
    className='h-full w-full'>
    <HorizontalProcess
     viewBox='0 0 6375 2284'
-    className='hidden lg:block w-full h-fit'
+    className='hidden h-fit w-full lg:block'
    />
    <VerticalProcess
     viewBox='0 0 3508 7294'
-    className='block lg:hidden w-full h-fit'
+    className='block h-fit w-full lg:hidden'
    />
   </div>
  )

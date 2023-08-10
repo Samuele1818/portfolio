@@ -1,4 +1,4 @@
-import {Metadata, NextPage} from 'next'
+import { Metadata, NextPage } from 'next'
 import React from '../public/assets/skills/React.svg'
 import dynamic from 'next/dynamic'
 import Loader from '../components/Loader'
@@ -50,7 +50,7 @@ const Index: NextPage = () => {
  )
 
  return (
-  <div className='bg-white w-full h-full overflow-x-clip'>
+  <div className='h-full w-full overflow-x-clip bg-white'>
    <DynamicHeader />
    <DynamicHero />
    <DynamicProjects />

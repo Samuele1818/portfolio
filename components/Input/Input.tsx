@@ -30,7 +30,7 @@ const Input: FC<Props> = ({
  const id = Math.random().toPrecision(5)
 
  return (
-  <div className='w-full relative h-fit'>
+  <div className='relative h-fit w-full'>
    {
     // Create the element based on the elementType
     createElement(elementType, {
@@ -54,11 +54,11 @@ const Input: FC<Props> = ({
    }
    <label
     htmlFor={`${id}`}
-    className='absolute sm-text text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-electricViolet peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-invalid:peer-placeholder-shown:top-1/4 peer-invalid:peer-focus:top-2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1 peer-invalid:text-red-600'>
+    className='sm-text absolute left-1 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-white px-2 text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-invalid:text-red-600 peer-invalid:peer-placeholder-shown:top-1/4 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-electricViolet peer-invalid:peer-focus:top-2'>
     {label}
    </label>
    {/* The paragraph has a fixed height to prevent total height of the div to be dynamically and so avoid label to be in different y position */}
-   <p className='peer-invalid:block hidden mt-2 xs-text text-red-600 h-12'>
+   <p className='xs-text mt-2 hidden h-12 text-red-600 peer-invalid:block'>
     {errorText}
    </p>
   </div>

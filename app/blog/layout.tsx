@@ -1,7 +1,6 @@
 import { ReactNode } from 'react'
 import '../../styles/globals.css'
 import Header from '../../components/Header'
-import Footer from '../../components/Footer'
 
 /*
    Create the common layout to all pages
@@ -37,7 +36,6 @@ export default function RootLayout({
     <div className='layout mt-24 w-full'>
      {children}
     </div>
-    <Footer />
    </body>
   </html>
  )

@@ -1,5 +1,5 @@
 'use client'
-import {FC, useEffect, useRef} from 'react'
+import { FC, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import React from '../../public/assets/skills/React.svg'
 import CyberSec from '../../public/assets/skills/new/Cybersecurity.svg'
@@ -53,9 +53,9 @@ const AboutMe: FC = () => {
 
  return (
   <>
-   <section className='layout pt-24 bg-bastille overflow-clip text-hintOfRed flex flex-col'>
+   <section className='layout flex flex-col overflow-clip bg-bastille pt-24 text-hintOfRed'>
     {/* Description and image container */}
-    <div className='flex-align-lg items-center relative'>
+    <div className='flex-align-lg relative items-center'>
      <div className='mb-24 lg:mb-0 lg:w-1/3'>
       <h1>
        Call me{' '}
@@ -77,9 +77,9 @@ const AboutMe: FC = () => {
        books and lift (heavy) weights.
       </p>
      </div>
-     <div className='bg-[#E4049A] h-[700px] w-full lg:w-1/3 rounded-xl mr-0 ml-auto'>
+     <div className='ml-auto mr-0 h-[700px] w-full rounded-xl bg-[#E4049A] lg:w-1/3'>
       <Image
-       className='w-[50%] h-[750px] mb-auto -mt-[50px]'
+       className='-mt-[50px] mb-auto h-[750px] w-[50%]'
        src={Avatar}
        alt='avator of me'
        priority
@@ -89,26 +89,26 @@ const AboutMe: FC = () => {
     </div>
    </section>
    {/* Skills Scroller container (outside to avoid padding from layout class)*/}
-   <section className='w-full pt-48 lg:pt-96 bg-bastille'>
+   <section className='w-full bg-bastille pt-48 lg:pt-96'>
     <SkillsScroller />
    </section>
    {/* Next Goals (padding is applied to title not to containers )*/}
-   <div className='w-full h-fit pt-48 lg:pt-96 pb-24 bg-bastille text-hintOfRed relative'>
+   <div className='relative h-fit w-full bg-bastille pb-24 pt-48 text-hintOfRed lg:pt-96'>
     <div className='layout'>
      <h1>Next Goals</h1>
-     <p className='absolute top-[22rem] left-6 text-9xl scale-150 opacity-[2%]'>
+     <p className='absolute left-6 top-[22rem] scale-150 text-9xl opacity-[2%]'>
       Next Goals Next Goals Next Goals
      </p>
     </div>
     <section
-     className='flex flex-nowrap items-center w-max overflow-hidden h-screen py-24'
+     className='flex h-screen w-max flex-nowrap items-center overflow-hidden py-24'
      ref={containerRef}>
      <NewSkillCard
       id='new-skill'
       illustration={
        <CyberSec
         viewBox='0 0 1205 853'
-        className='w-full h-fit'
+        className='h-fit w-full'
        />
       }
       title='Cyber security'
@@ -119,7 +119,7 @@ const AboutMe: FC = () => {
       illustration={
        <CyberSec
         viewBox='0 0 1205 853'
-        className='w-full h-fit'
+        className='h-fit w-full'
        />
       }
       title='Cyber security'
@@ -130,7 +130,7 @@ const AboutMe: FC = () => {
    {/* Process container with padding applied to all, h-screen to make animation more visible and smooth */}
    <section
     id='process-section'
-    className='layout mt-24 lg:h-screen flex flex-col justify-center'>
+    className='layout mt-24 flex flex-col justify-center lg:h-screen'>
     <div>
      <h1 className='mb-48'>Trust the process</h1>
      <Process />

@@ -17,9 +17,9 @@ const SkillCard: FC<Props> = ({
 }) => {
  return (
   <div
-   className={`${className} bg-[#2B2236] w-36 h-36 md:w-48 md:h-48 lg:w-96 lg:h-64 rounded-xl flex flex-col items-center justify-center px-8 py-6 [&>svg]:w-16 [&>svg]:h-16 [&>svg]:lg:w-24 [&>svg]:lg:h-24`}>
+   className={`${className} flex h-36 w-36 flex-col items-center justify-center rounded-xl bg-[#2B2236] px-8 py-6 md:h-48 md:w-48 lg:h-64 lg:w-96 [&>svg]:h-16 [&>svg]:w-16 [&>svg]:lg:h-24 [&>svg]:lg:w-24`}>
    {icon}
-   <h1 className='md-text text-white lg:lg-text font-bold mt-6'>
+   <h1 className='md-text lg:lg-text mt-6 font-bold text-white'>
     {text}
    </h1>
   </div>

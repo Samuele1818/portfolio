@@ -46,11 +46,11 @@ const Hero: FC = () => {
  }, [])
 
  return (
-  <section className='mt-24 layout flex flex-col lg:flex-row lg:items-center lg:h-[600px] xl:h-[700px] 2xl:h-[800px] 3xl:h-[900px]'>
-   <div className='flex-col flex lg:max-w-[400px] xl:max-w-[450px] 2xl:max-w-[600px] hr-align-lg'>
+  <section className='layout mt-24 flex flex-col lg:h-[600px] lg:flex-row lg:items-center xl:h-[700px] 2xl:h-[800px] 3xl:h-[900px]'>
+   <div className='hr-align-lg flex flex-col lg:max-w-[400px] xl:max-w-[450px] 2xl:max-w-[600px]'>
     <h1>
      Transform your ideas in{' '}
-     <span className=' relative content after:absolute after:w-full after:-bottom-2 after:left-0 after:h-4 after:bg-cover after:bg-[url("/icons/CurlyAccent.svg")]'>
+     <span className=' content relative after:absolute after:-bottom-2 after:left-0 after:h-4 after:w-full after:bg-[url("/icons/CurlyAccent.svg")] after:bg-cover'>
       solid
      </span>{' '}
      websites and applications
@@ -63,14 +63,14 @@ const Hero: FC = () => {
     <CTA
      onClick={() => push('#projects')}
      icon={<RightArrow />}
-     className='mt-8 hr-align-lg font-bold'
+     className='hr-align-lg mt-8 font-bold'
      text='View projects'
     />
    </div>
-   <div className='relative isolate mx-auto mt-16 lg:mt-auto lg:-mr-[10%] mb-0 w-full h-full md:max-w-[450px] md:h-fit xl:max-w-xl 2xl:max-w-2xl'>
-    <div className='absolute top-[10%] left-[15%] w-[90%] h-[80%] -z-10 rounded-xl shadow-shadow bg-opacity-40 bg-[#50B56F]' />
+   <div className='relative isolate mx-auto mb-0 mt-16 h-full w-full md:h-fit md:max-w-[450px] lg:-mr-[10%] lg:mt-auto xl:max-w-xl 2xl:max-w-2xl'>
+    <div className='shadow-shadow absolute left-[15%] top-[10%] -z-10 h-[80%] w-[90%] rounded-xl bg-[#50B56F] bg-opacity-40' />
     <DesktopIllustration
-     className='w-full h-full'
+     className='h-full w-full'
      viewBox='0 0 2507 2472'></DesktopIllustration>
    </div>
   </section>

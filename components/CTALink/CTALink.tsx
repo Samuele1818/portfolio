@@ -27,11 +27,11 @@ const CTALink: FC<Props> = ({
      ? 'color-animation-lochmara'
      : fill == 'electricViolet'
      ? 'color-animation-electricViolet'
-     : 'bg-none text-white border-lochmara border-[1px] hover:color-animation-lochmara'
-   } inline-flex gap-x-2 items-center rounded-xl color-animation px-2 py-1`}>
+     : 'hover:color-animation-lochmara border-[1px] border-lochmara bg-none text-white'
+   } color-animation inline-flex items-center gap-x-2 rounded-xl px-2 py-1`}>
    {text}
    <ExternalLink
-    className='w-4 h-4'
+    className='h-4 w-4'
     viewBox='0 0 50 50'
    />
   </Link>

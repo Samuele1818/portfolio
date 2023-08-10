@@ -1,5 +1,10 @@
 'use client'
-import {FC, useEffect, useMemo, useRef,} from 'react'
+import {
+ FC,
+ useEffect,
+ useMemo,
+ useRef,
+} from 'react'
 import gsap from 'gsap'
 import ProjectContainer from '../../components/ProjectContainer'
 
@@ -61,20 +66,20 @@ const Projects: FC = () => {
  return (
   <div
    id='projects'
-   className='bg-bastille relative py-24'>
+   className='relative bg-bastille py-24'>
    {/*<div className="ml-auto mr-auto text-white w-fit -mt-12">*/}
    {/* <p className="md-text mb-6">Scroll</p>*/}
    {/* <RightArrow viewBox="0 0 13 8" className="w-16 h-fit rotate-90" />*/}
    {/*</div>*/}
-   <div className='text-hintOfRed layout mt-96'>
+   <div className='layout mt-96 text-hintOfRed'>
     <h1>My Projects</h1>
-    <p className='absolute top-[26rem] left-6 text-9xl scale-150 opacity-[2%]'>
+    <p className='absolute left-6 top-[26rem] scale-150 text-9xl opacity-[2%]'>
      Explore my Projects Explore my Projects
     </p>
    </div>
    <section
     ref={containerRef}
-    className={`h-screen bg-bastille w-max flex flex-nowrap overflow-hidden`}>
+    className={`flex h-screen w-max flex-nowrap overflow-hidden bg-bastille`}>
     {Projects.map((project, index) => {
      return (
       <ProjectContainer

@@ -8,10 +8,10 @@ import StackOverflow from '../../public/icons/StackOverflow.svg'
 import React from '../../public/assets/skills/React.svg'
 import LinkedIn from '../../public/icons/LinkedIn.svg'
 import IconWrapper from '../IconWrapper'
-import {POST} from '../../app/api/sendEmail/route'
-import {useMemo, useRef} from 'react'
+import { POST } from '../../app/api/sendEmail/route'
+import { useMemo, useRef } from 'react'
 import debounce from 'lodash.debounce'
-import {isValidForm} from '../../utils/validator'
+import { isValidForm } from '../../utils/validator'
 /*
    Contact form with three inputs (email, name, message) and a button to send.
    There are also three buttons to link my email, GitHub and StackOverflow
@@ -49,7 +49,7 @@ const ContactForm = () => {
   <form
    ref={formRef}
    onChange={debouncedChangeHandler}
-   className='flex flex-col w-full gap-y-12'
+   className='flex w-full flex-col gap-y-12'
    onSubmit={async (e) => {
     // Prevent form to redirect / refresh the page
     e.preventDefault()
@@ -96,7 +96,7 @@ const ContactForm = () => {
     }
    }}>
    {/*  Input fields */}
-   <div className='flex flex-col xl:flex-row gap-x-12 gap-y-12 w-full'>
+   <div className='flex w-full flex-col gap-x-12 gap-y-12 xl:flex-row'>
     <Input
      label='Email'
      inputType='email'
@@ -118,7 +118,7 @@ const ContactForm = () => {
     errorText='Message invalid. Your message has to be as least 10 chars length'
     name='message'
    />
-   <div className='flex flex-col gap-y-12 lg:flex-row w-full lg:justify-between lg:items-center'>
+   <div className='flex w-full flex-col gap-y-12 lg:flex-row lg:items-center lg:justify-between'>
     {/*  CTA to send the form with helper text */}
     <div className='flex flex-col'>
      <CTA
@@ -128,18 +128,18 @@ const ContactForm = () => {
       icon={
        <Send
         viewBox='0 0 9 9'
-        className='w-4 h-4'
+        className='h-4 w-4'
        />
       }
       text='Send'
      />
      <p
       ref={helperTextRef}
-      className='mt-2 xs-text'
+      className='xs-text mt-2'
      />
     </div>
     {/*  Icons with social links */}
-    <div className='flex flex-row gap-x-8 items-center'>
+    <div className='flex flex-row items-center gap-x-8'>
      <IconWrapper
       link='https://github.com/Samuele1818'
       icon={<Github viewBox='0 0 18 20' />}

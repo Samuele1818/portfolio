@@ -35,52 +35,52 @@ const ProjectContainer: FC<Props> = ({
  return (
   <section
    id={id}
-   className='w-screen layout flex flex-col-reverse lg:flex-row gap-x-4 text-hintOfRed fill-hintOfRed mb-auto mt-auto h-[600px]'>
-   <div className='flex-col flex mt-12 lg:mt-auto lg:mb-auto'>
-    <p className='xs-text opacity-75 -mb-2'>
+   className='layout mb-auto mt-auto flex h-[600px] w-screen flex-col-reverse gap-x-4 fill-hintOfRed text-hintOfRed lg:flex-row'>
+   <div className='mt-12 flex flex-col lg:mb-auto lg:mt-auto'>
+    <p className='xs-text -mb-2 opacity-75'>
      {type}
     </p>
     <Link
      href='https://a-boutall.com'
      target='_blank'
-     className='group cursor-pointer text-hintOfRed xl-text font-bold inline-flex items-center'>
+     className='xl-text group inline-flex cursor-pointer items-center font-bold text-hintOfRed'>
      <RightArrow
       viewBox='0 0 13 8'
-      className='transition-all w-0 h-fit group-hover:w-10 delay-75'
+      className='h-fit w-0 transition-all delay-75 group-hover:w-10'
      />
      {title}
      <RightArrow
       viewBox='0 0 13 8'
-      className='ml-4 w-10 h-fit opacity-75 group-hover:w-0 group-hover:translate-x-12 transition-all'
+      className='ml-4 h-fit w-10 opacity-75 transition-all group-hover:w-0 group-hover:translate-x-12'
      />
     </Link>
-    <p className='first-letter:capitalize mt-2'>
+    <p className='mt-2 first-letter:capitalize'>
      {description}
     </p>
     <div className='flex-align-md mt-8 gap-x-8 md:items-center'>
-     <div className='flex flex-row gap-x-2 items-center'>
+     <div className='flex flex-row items-center gap-x-2'>
       <User
        viewBox='0 0 1000 1046'
-       className='w-4 h-4 lg:w-8 lg:h-8'
+       className='h-4 w-4 lg:h-8 lg:w-8'
       />
       <p className='sm-text capitalize'>{role}</p>
      </div>
-     <div className='flex flex-row gap-x-2 items-center'>
+     <div className='flex flex-row items-center gap-x-2'>
       <Clock
        viewBox='0 0 1000 1000'
-       className='w-4 h-4 lg:w-8 lg:h-8 text-hintOfRed'
+       className='h-4 w-4 text-hintOfRed lg:h-8 lg:w-8'
       />
       <p className='sm-text capitalize'>{date}</p>
      </div>
     </div>
    </div>
-   <div className='w-full overflow-clip flex bg-bastille'>
+   <div className='flex w-full overflow-clip bg-bastille'>
     <Image
      width={2000}
      height={2000}
      src={image1}
      sizes='500px'
-     className='w-96 h-fit -rotate-12 rounded-xl hover:scale-125 transition-transform'
+     className='h-fit w-96 -rotate-12 rounded-xl transition-transform hover:scale-125'
      alt='Project image'
     />
     <Image
@@ -88,7 +88,7 @@ const ProjectContainer: FC<Props> = ({
      height={2000}
      sizes='500px'
      src={image2}
-     className='w-96 h-fit -rotate-12 rounded-xl ml-auto mr-0 xl:ml-auto xl:mr-auto hover:scale-150 transition-transform'
+     className='ml-auto mr-0 h-fit w-96 -rotate-12 rounded-xl transition-transform hover:scale-150 xl:ml-auto xl:mr-auto'
      alt='Project image'
     />
     {image3 && (
@@ -97,7 +97,7 @@ const ProjectContainer: FC<Props> = ({
       height={2000}
       src={image3}
       sizes='(max-width: 1536px) 0, 500px'
-      className='w-96 h-fit -rotate-12 rounded-xl hidden 2xl:block hover:scale-125 transition-transform'
+      className='hidden h-fit w-96 -rotate-12 rounded-xl transition-transform hover:scale-125 2xl:block'
       alt='Project image'
      />
     )}

@@ -14,7 +14,7 @@ const FooterCard: FC<Props> = ({
 }) => {
  return (
   <div
-   className={`${className} bg-white rounded-xl shadow-xl flex items-center justify-center rotate-[15deg] w-fit h-fit px-12 py-8`}>
+   className={`${className} flex h-fit w-fit rotate-[15deg] items-center justify-center rounded-xl bg-white px-12 py-8 shadow-xl`}>
    {icon}
   </div>
  )

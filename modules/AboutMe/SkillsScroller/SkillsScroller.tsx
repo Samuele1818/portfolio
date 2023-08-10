@@ -37,7 +37,7 @@ const SkillsScroller = () => {
   <div className='w-full'>
    <div
     id='skills-section'
-    className='w-full md:mr-auto md:-ml-12 flex flex-row justify-between mb-48 gap-x-4'>
+    className='mb-48 flex w-full flex-row justify-between gap-x-4 md:-ml-12 md:mr-auto'>
     <SkillCard
      text='HTML'
      icon={<HTML viewBox='0 0 48 55' />}
@@ -65,7 +65,7 @@ const SkillsScroller = () => {
    </div>
    <div
     id='skills-section'
-    className='w-full md:mr-auto md:-ml-12 flex flex-row justify-between gap-x-12'>
+    className='flex w-full flex-row justify-between gap-x-12 md:-ml-12 md:mr-auto'>
     <SkillCard
      text='React'
      icon={<React viewBox='0 0 48 43' />}

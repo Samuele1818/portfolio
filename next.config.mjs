@@ -1,4 +1,3 @@
-import rehypeToc from "@jsdevtools/rehype-toc";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkGmf from "remark-gfm";
@@ -37,16 +36,7 @@ const withMDX = createMDX({
                 ]
             },
             ],
-            [rehypeToc, {
-                headings: ["h1"],     // Only include <h1> headings in the TOC
-                cssClasses: {
-                    toc: "toc not-prose",
-                    link: "toc-link"
-                },
-            }]
         ],
-        // If you use `MDXProvider`, uncomment the following line.
-        // providerImportSource: "@mdx-js/react",
     },
 })
 

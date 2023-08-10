@@ -19,13 +19,13 @@ const NewSkillCard: FC<Props> = ({
  return (
   <div
    id={id}
-   className='layout w-screen text-white flex-align-lg items-center lg:gap-x-12'>
+   className='layout flex-align-lg w-screen items-center text-white lg:gap-x-12'>
    <div className='w-full lg:max-w-2xl 2xl:max-w-3xl 3xl:max-w-4xl'>
     {illustration}
    </div>
-   <div className='flex flex-col w-full mt-12 lg:mt-0 lg:max-w-2/5'>
+   <div className='lg:max-w-2/5 mt-12 flex w-full flex-col lg:mt-0'>
     <h1 className='lg-text font-bold'>{title}</h1>
-    <p className='sm-text opacity-75 mt-2'>
+    <p className='sm-text mt-2 opacity-75'>
      {description}
     </p>
    </div>
