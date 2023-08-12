@@ -44,14 +44,14 @@ const Post: FC<Props> = ({
      {description}
     </p>
    </div>
-   <div className='mt-6 flex flex-row items-center'>
-    <div className='flex max-w-[50%] flex-row flex-wrap items-center gap-x-6 gap-y-4'>
+   <div className='mt-4 flex flex-row flex-wrap-reverse items-center justify-between gap-x-4 gap-y-4'>
+    <div className='flex flex-row flex-wrap items-center gap-x-4 gap-y-4'>
      {tags.map((item, index) => {
       return <Tag key={index} text={item} />
      })}
     </div>
     <Link
-     className='md-text ml-auto mr-0 font-bold text-[#1E429F] transition-opacity hover:opacity-60'
+     className='md-text font-bold text-[#1E429F] transition-opacity hover:opacity-60'
      href={`/blog/${slug}`}>
      Read More...
     </Link>
