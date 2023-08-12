@@ -1,6 +1,8 @@
 import { ReactNode } from 'react'
 import '../../styles/globals.css'
 import Header from '../../components/Header'
+import Footer from '../../components/blog/Footer'
+import Contact from '../../components/blog/Contact'
 
 /*
    Create the common layout to all pages
@@ -36,6 +38,8 @@ export default function RootLayout({
     <div className='layout mt-36 w-full'>
      {children}
     </div>
+    <Contact />
+    <Footer />
    </body>
   </html>
  )
