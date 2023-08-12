@@ -60,7 +60,7 @@ const Index: NextPage = async () => {
       </p>
      </div>
 
-     <div className='mt-6 flex flex-col gap-x-6 md:flex-row'>
+     <div className='mt-6 flex flex-col gap-x-6 gap-y-12 md:flex-row'>
       {recentPosts?.map((post, index) => {
        return <Post key={index} {...post.meta} />
       })}
