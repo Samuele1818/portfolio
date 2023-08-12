@@ -64,9 +64,9 @@ const TOCInline = ({
       }}
       className={`${
        currentHref.indexOf(heading.url) != -1
-        ? 'text-lochmara'
+        ? 'text-[#76A9FA]'
         : ''
-      } md-text text-bastille transition-colors hover:text-gray-500`}
+      } md-text text-dark transition-colors hover:text-gray-500`}
       href={heading.url}>
       {heading.value}
      </Link>

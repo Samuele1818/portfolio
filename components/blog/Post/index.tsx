@@ -1,8 +1,11 @@
 import { FC } from 'react'
 import Tag from '../Tag'
 import Link from 'next/link'
+import { formatDate } from '../../../utils/dates'
+import './post.css'
 
 type Props = {
+ slug: string
  category: 'writeup' | 'article' | 'tutorial'
  title: string
  description: string
@@ -12,6 +15,7 @@ type Props = {
 }
 
 const Post: FC<Props> = ({
+ slug,
  category,
  title,
  description,
@@ -20,23 +24,25 @@ const Post: FC<Props> = ({
  tags,
 }) => {
  return (
-  <div className='bg-white px-6 py-12 text-bastille shadow-xl'>
+  <div className='post bg-white px-6 py-12 text-dark'>
    <div className='flex flex-row flex-wrap items-center justify-between gap-x-2 gap-y-4'>
     <Tag
      text={category}
      className='border-[#B876FA] bg-[#F5E1FE] text-[#661E9F]'
     />
-    <p>
-     {author}, {date}
+    <p className='sm-text'>
+     {author}, {formatDate(date)}
     </p>
    </div>
    <div className='mt-4'>
     <Link
      href='/'
-     className='xl-text font-bold text-[#4300A8] underline-offset-4 hover:underline'>
+     className='lg-text line-clamp-1 font-bold text-violet-800 underline-offset-4 hover:underline'>
      {title}
     </Link>
-    <p>{description}</p>
+    <p className='sm-text line-clamp-3'>
+     {description}
+    </p>
    </div>
    <div className='mt-6 flex flex-row items-center'>
     <div className='flex max-w-[50%] flex-row flex-wrap items-center gap-x-6 gap-y-4'>
@@ -46,7 +52,7 @@ const Post: FC<Props> = ({
     </div>
     <Link
      className='md-text ml-auto mr-0 font-bold text-[#1E429F] transition-opacity hover:opacity-60'
-     href='/'>
+     href={`/blog/${slug}`}>
      Read More...
     </Link>
    </div>

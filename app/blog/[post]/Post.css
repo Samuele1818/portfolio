@@ -11,5 +11,5 @@
 }
 
 .prose .autolink-header {
-    @apply text-electricViolet transition-all font-bold
+    @apply text-violet-800 transition-all font-bold
 }

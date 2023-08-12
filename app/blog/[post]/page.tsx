@@ -6,8 +6,13 @@ import { notFound } from 'next/navigation'
 import './Post.css'
 import { extractTocHeadings } from '../../../utils/remark-toc-headings'
 import TOCInline from '../../../components/blog/TOC'
-import { getStaticPost } from '../../../utils/files'
+import {
+ getPost,
+ getRelatedPosts,
+} from '../../../utils/files'
 import Tag from '../../../components/blog/Tag'
+import { formatDate } from '../../../utils/dates'
+import RelatedPost from '../../../components/blog/RelatedPost'
 
 export const metadata: Metadata = {
  title: 'Samuele Sciatore',
@@ -35,34 +40,50 @@ const Index: NextPage = async ({
   `/posts/${post}.mdx`
  )
 
- const postContent = getStaticPost(post)
+ const postContent = getPost(post)
 
  const toc = await extractTocHeadings(postContent)
 
+ const relatedPosts = await getRelatedPosts(
+  meta.slug,
+  meta.tags
+ )
+
  return (
-  <main className='flex flex-wrap justify-between'>
-   <aside className=''>
-    <p className='lg-text mb-2 font-bold'>
-     On this page
+  <main className='relative flex gap-x-12'>
+   {/* First aside - Visible when there is enough space */}
+   <aside className='order-first hidden w-[284px] xl:flex-shrink-0 3xl:block'>
+    <p className='lg-text mb-2 font-bold text-[#4300A8]'>
+     Related posts
     </p>
-    <hr />
+    {relatedPosts?.map((post, index) => (
+     <RelatedPost key={index} {...post.meta} />
+    ))}
    </aside>
-   <article className='prose prose-slate lg:prose-xl'>
-    <section className='not-prose flex flex-col gap-y-0'>
-     <h1>{meta.title}</h1>
-     <p>
-      {meta.author} - {meta.date}
+
+   {/* Article content */}
+   <section className='w-full'>
+    <div>
+     <p className='whitespace-pre-wrap break-all'>
+      {meta.author} - {formatDate(meta.date)}
      </p>
-    </section>
-    <PostFile />
-   </article>
-   <aside className='sticky top-24 h-full'>
-    <p className='lg-text mb-2 font-bold text-electricViolet'>
+     <h1 className='xl2-text -mt-2 whitespace-pre-wrap break-all'>
+      {meta.title}
+     </h1>
+    </div>
+    <article className='md:prose-md prose prose-slate mt-24 max-w-none xl:prose-lg prose-h1:text-[#4300A8]'>
+     <PostFile />
+    </article>
+   </section>
+
+   {/* Second aside - Visible on large screens */}
+   <aside className='sticky top-24 order-last hidden h-full w-56 flex-shrink-0 md:block'>
+    <p className='lg-text mb-2 font-bold text-[#4300A8]'>
      On this page
     </p>
     <TOCInline toc={toc} />
-    <hr className='my-4 h-0.5 w-full bg-bastille' />
-    <div className='flex flex-row flex-wrap items-center justify-between gap-x-2 gap-y-4'>
+    <hr className='bg-bastille my-4 h-0.5 w-full' />
+    <div className='flex flex-row flex-wrap items-center gap-x-6 gap-y-4'>
      {meta?.tags?.map((text, index) => {
       return <Tag key={index} text={text} />
      })}

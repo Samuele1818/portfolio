@@ -7,24 +7,24 @@
     html,
     body {
         font-family: 'Nunito Sans', sans-serif;
-        @apply text-bastille scroll-smooth m-0 p-0 selection:bg-lochmara selection:text-hintOfRed h-full min-h-screen
+        @apply text-dark scroll-smooth m-0 p-0 selection:text-blue-600 h-full min-h-screen font-normal
     }
 
     a {
         text-decoration: none;
-        @apply text-inherit
+        @apply md-text
+    }
+
+    p {
+        @apply md-text
     }
 
     h1 {
-        @apply xl-text
+        @apply xl-text font-bold
     }
 
-    h2 {
-        @apply lg-text
-    }
-
-    p, button {
-        @apply md-text
+    strong {
+        @apply font-medium text-dark
     }
 
     textarea:focus,
@@ -44,7 +44,7 @@
     select:-webkit-autofill:enabled,
     select:-webkit-autofill:hover,
     select:-webkit-autofill:focus {
-        @apply bg-white text-bastille;
+        @apply bg-white text-dark;
         -webkit-box-shadow: 0 0 0 1000px #fff inset;
         box-shadow: 0 0 0 1000px #fff inset;
     }
@@ -67,7 +67,7 @@
         left: 0;
         transform-origin: bottom center;
         transition: transform 0.5s cubic-bezier(.52, .01, .16, 1);
-        @apply bg-electricViolet;
+        @apply bg-violet-800;
     }
 
     .hover-underline-animation:hover:after {
@@ -92,15 +92,18 @@
     }
 
     .color-animation-electricViolet {
-        @apply text-hintOfRed hover:text-electricViolet hover:bg-hintOfRed transition-colors bg-electricViolet border-electricViolet border-2
+        @apply text-light hover:text-violet-800 hover:bg-light transition-colors bg-violet-800 border-violet-800 border-2
     }
 
     .color-animation-lochmara {
-        @apply text-hintOfRed hover:text-lochmara hover:bg-hintOfRed transition-colors bg-lochmara border-lochmara border-2
+        @apply text-light hover:text-blue-600 hover:bg-light transition-colors text-blue-600 border-blue-600 border-2
     }
 
+    /*.layout {*/
+    /*    @apply px-8 md:px-16 lg:px-32 xl:px-56 2xl:px-[18rem] 3xl:px-[26rem]*/
+    /*}*/
     .layout {
-        @apply px-8 md:px-16 lg:px-32 xl:px-56 2xl:px-[18rem] 3xl:px-[26rem]
+        @apply px-6 md:px-8 lg:px-12 xl:px-24 2xl:px-[14rem] 3xl:px-[22rem]
     }
 
     .center {
@@ -123,6 +126,21 @@
         @apply center md:mx-0 md:text-left
     }
 
+    .hero-title {
+        font-size: max(48px, min(5vw, 76px));
+        @apply font-extrabold text-violet-800
+    }
+
+    .hero-sub {
+        font-size: max(15px, min(2vw, 20px));
+        @apply text-lightDark
+    }
+
+    .xl2-text {
+        font-size: clamp(2.5rem, 3rem + 0.9375vw, 3.5rem);
+        @apply font-black leading-snug;
+    }
+
     .xl-text {
         font-size: clamp(1.5rem, 2rem + 0.9375vw, 2.5rem);
         @apply font-bold leading-snug;
@@ -135,11 +153,9 @@
     .md-text {
         font-size: clamp(1.125rem, 1.25rem + 0.3125vw, 1.5rem);
     }
-
     .sm-text {
         font-size: clamp(1rem, 1.125rem + 0.3125vw, 1.25rem);
     }
-
     .xs-text {
         font-size: clamp(0.875rem, 1rem + 0.3125vw, 1.125rem);
         @apply tracking-wider;

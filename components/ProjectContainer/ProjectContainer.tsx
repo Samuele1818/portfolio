@@ -35,7 +35,7 @@ const ProjectContainer: FC<Props> = ({
  return (
   <section
    id={id}
-   className='layout mb-auto mt-auto flex h-[600px] w-screen flex-col-reverse gap-x-4 fill-hintOfRed text-hintOfRed lg:flex-row'>
+   className='layout fill-hintOfRed mb-auto mt-auto flex h-[600px] w-screen flex-col-reverse gap-x-4 text-light lg:flex-row'>
    <div className='mt-12 flex flex-col lg:mb-auto lg:mt-auto'>
     <p className='xs-text -mb-2 opacity-75'>
      {type}
@@ -43,7 +43,7 @@ const ProjectContainer: FC<Props> = ({
     <Link
      href='https://a-boutall.com'
      target='_blank'
-     className='xl-text group inline-flex cursor-pointer items-center font-bold text-hintOfRed'>
+     className='xl-text group inline-flex cursor-pointer items-center font-bold text-light'>
      <RightArrow
       viewBox='0 0 13 8'
       className='h-fit w-0 transition-all delay-75 group-hover:w-10'
@@ -68,13 +68,13 @@ const ProjectContainer: FC<Props> = ({
      <div className='flex flex-row items-center gap-x-2'>
       <Clock
        viewBox='0 0 1000 1000'
-       className='h-4 w-4 text-hintOfRed lg:h-8 lg:w-8'
+       className='h-4 w-4 text-light lg:h-8 lg:w-8'
       />
       <p className='sm-text capitalize'>{date}</p>
      </div>
     </div>
    </div>
-   <div className='flex w-full overflow-clip bg-bastille'>
+   <div className='bg-bastille flex w-full overflow-clip'>
     <Image
      width={2000}
      height={2000}

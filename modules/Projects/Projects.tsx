@@ -66,12 +66,12 @@ const Projects: FC = () => {
  return (
   <div
    id='projects'
-   className='relative bg-bastille py-24'>
+   className='bg-bastille relative py-24'>
    {/*<div className="ml-auto mr-auto text-white w-fit -mt-12">*/}
    {/* <p className="md-text mb-6">Scroll</p>*/}
    {/* <RightArrow viewBox="0 0 13 8" className="w-16 h-fit rotate-90" />*/}
    {/*</div>*/}
-   <div className='layout mt-96 text-hintOfRed'>
+   <div className='layout mt-96 text-light'>
     <h1>My Projects</h1>
     <p className='absolute left-6 top-[26rem] scale-150 text-9xl opacity-[2%]'>
      Explore my Projects Explore my Projects
@@ -79,7 +79,7 @@ const Projects: FC = () => {
    </div>
    <section
     ref={containerRef}
-    className={`flex h-screen w-max flex-nowrap overflow-hidden bg-bastille`}>
+    className={`bg-bastille flex h-screen w-max flex-nowrap overflow-hidden`}>
     {Projects.map((project, index) => {
      return (
       <ProjectContainer

@@ -1,7 +1,4 @@
 type Tag =
- | 'tutorial'
- | 'write-up'
- | 'article'
  | 'react'
  | 'nextjs'
  | 'javascript'
@@ -15,5 +12,6 @@ type Metadata = {
  date: string
  description?: string
  author: string
+ category: 'tutorial' | 'write-up' | 'article'
  tags: Tag[]
 }

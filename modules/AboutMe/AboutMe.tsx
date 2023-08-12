@@ -53,7 +53,7 @@ const AboutMe: FC = () => {
 
  return (
   <>
-   <section className='layout flex flex-col overflow-clip bg-bastille pt-24 text-hintOfRed'>
+   <section className='layout bg-bastille flex flex-col overflow-clip pt-24 text-light'>
     {/* Description and image container */}
     <div className='flex-align-lg relative items-center'>
      <div className='mb-24 lg:mb-0 lg:w-1/3'>
@@ -89,11 +89,11 @@ const AboutMe: FC = () => {
     </div>
    </section>
    {/* Skills Scroller container (outside to avoid padding from layout class)*/}
-   <section className='w-full bg-bastille pt-48 lg:pt-96'>
+   <section className='bg-bastille w-full pt-48 lg:pt-96'>
     <SkillsScroller />
    </section>
    {/* Next Goals (padding is applied to title not to containers )*/}
-   <div className='relative h-fit w-full bg-bastille pb-24 pt-48 text-hintOfRed lg:pt-96'>
+   <div className='bg-bastille relative h-fit w-full pb-24 pt-48 text-light lg:pt-96'>
     <div className='layout'>
      <h1>Next Goals</h1>
      <p className='absolute left-6 top-[22rem] scale-150 text-9xl opacity-[2%]'>

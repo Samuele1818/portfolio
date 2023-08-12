@@ -1,0 +1,40 @@
+.border-thin {
+    animation: opacityBorderAnimation 1s ease-in-out;
+    @apply relative overflow-hidden border-blue-600 border-[1px] border-dashed border-t-0 border-b-0 border-opacity-30 px-12 py-6 rounded-lg
+}
+
+.border-thin::before {
+    content: "";
+    transform-origin: center top;
+    animation: translateBorder 1s forwards;
+    @apply border-b-blue-600 border-b-[1px] border-dashed bottom-0 absolute overflow-visible w-full
+}
+
+@keyframes opacityBorderAnimation {
+    0% {
+        @apply border-opacity-0
+    }
+    25% {
+        @apply border-opacity-10
+    }
+    50% {
+        @apply border-opacity-20
+    }
+    100% {
+        @apply border-opacity-30
+    }
+}
+
+@keyframes translateBorder {
+    0% {
+        transform: translateX(100%);
+        @apply opacity-100
+    }
+    50% {
+        transform: translateX(20%);
+    }
+    100% {
+        transform: translateX(0);
+        @apply opacity-30
+    }
+}

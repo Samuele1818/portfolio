@@ -10,17 +10,15 @@ module.exports = {
  theme: {
   extend: {
    colors: {
-    electricViolet: '#6600FF',
-    lochmara: '#0092DB',
-    bastille: '#1f1926',
-    hintOfRed: '#f5f0f0',
+    dark: '#1f1926',
+    lightDark: '#474747',
+    light: '#f5f0f0',
    },
    screens: {
     '3xl': '1800px',
    },
    boxShadow: {
-    shadow:
-     'box-shadow: 4px 12px 16px rgba(31, 25, 38, 0.22);',
+    cs: '4px 12px 16px rgba(31, 25, 38, 0.22);',
    },
   },
  },

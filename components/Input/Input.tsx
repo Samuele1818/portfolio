@@ -37,7 +37,7 @@ const Input: FC<Props> = ({
      type: inputType,
      id: id,
      className:
-      'resize-none block px-2.5 pb-2.5 pt-4 w-full md-text text-bastille bg-transparent border-[1px] border-bastille appearance-none focus:outline-none focus:ring-0 focus:border-electricViolet peer invalid:border-red-600',
+      'resize-none block px-2.5 pb-2.5 pt-4 w-full md-text text-dark bg-transparent border-[1px] border-bastille appearance-none focus:outline-none focus:ring-0 focus:border-violet-800 peer invalid:border-red-600',
      placeholder: ' ',
      rows: rows, // Assign the number of rows in case the element would be a textarea
      minLength: minLength, // Required is a mandatory to make minLength works
@@ -54,7 +54,7 @@ const Input: FC<Props> = ({
    }
    <label
     htmlFor={`${id}`}
-    className='sm-text absolute left-1 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-white px-2 text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-invalid:text-red-600 peer-invalid:peer-placeholder-shown:top-1/4 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-electricViolet peer-invalid:peer-focus:top-2'>
+    className='sm-text absolute left-1 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-white px-2 text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-invalid:text-red-600 peer-invalid:peer-placeholder-shown:top-1/4 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-violet-800 peer-invalid:peer-focus:top-2'>
     {label}
    </label>
    {/* The paragraph has a fixed height to prevent total height of the div to be dynamically and so avoid label to be in different y position */}

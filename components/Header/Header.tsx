@@ -100,11 +100,11 @@ const Header: FC = () => {
                                                 }, [])*/
 
  return (
-  <header className='layout inline-flex w-full items-center justify-between bg-white pt-12 text-electricViolet'>
+  <header className='layout inline-flex w-full items-center justify-between bg-white pt-12 text-violet-800'>
    <Link
     className='inline-flex items-center gap-x-2'
     href='/'>
-    <Logo className='fill-electricViolet' />
+    <Logo className='fill-violet-800' />
     <p className='hidden font-extrabold md:block'>
      Samuele Sciatore
     </p>
@@ -116,11 +116,15 @@ const Header: FC = () => {
         height="24"
         viewBox="0 0 14 10"
       />*/}
-   <div className='inline-flex items-center'>
-    {/*<Link href="resume" target="_blank" className="mr-4 hover-underline-animation text-bastille">Resume</Link>*/}
+   <div className='md-text inline-flex items-center gap-x-4'>
+    <Link
+     href='/blog'
+     className='hover-underline-animation mr-4 text-dark'>
+     Blog
+    </Link>
     <CTA
      text='Contact Me'
-     onClick={() => push('#contact-form')}
+     onClick={() => push('/#contact-form')}
     />
    </div>
   </header>

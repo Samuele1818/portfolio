@@ -33,7 +33,7 @@ export default function RootLayout({
    </head>
    <body>
     <Header />
-    <div className='layout mt-24 w-full'>
+    <div className='layout mt-36 w-full'>
      {children}
     </div>
    </body>

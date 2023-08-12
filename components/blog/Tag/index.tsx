@@ -8,8 +8,8 @@ type Props = {
 const Tag: FC<Props> = ({ text, className }) => {
  return (
   <div
-   className={`${className} w-fit cursor-pointer rounded-md border-2 border-[#76A9FA] bg-[#E1EFFE] px-2 text-[#1E429F]`}>
-   <p className='sm-text capitalize'>{text}</p>
+   className={`${className} w-fit cursor-pointer rounded-md border-2 border-[#76A9FA] bg-[#E1EFFE] px-1 text-[#1E429F]`}>
+   <p className='xs-text capitalize'>{text}</p>
   </div>
  )
 }

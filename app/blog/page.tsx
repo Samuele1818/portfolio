@@ -1,7 +1,9 @@
 import { Metadata, NextPage } from 'next'
 import Post from '../../components/blog/Post'
 import Tag from '../../components/blog/Tag'
-import AbstractDesktop from '../../public/illustrations/abstract-blog.svg'
+import { getRecentPosts } from '../../utils/files'
+import Searchbar from '../../components/blog/Searchbar'
+import './blog.css'
 
 export const metadata: Metadata = {
  title: 'Samuele Sciatore',
@@ -11,53 +13,61 @@ export const metadata: Metadata = {
   'initial-scale=1.0, width=device-width',
 }
 
-const Index: NextPage = () => {
- return (
-  <>
-   <div className='flex items-center justify-between overflow-clip md:h-[500px]'>
-    <div>
-     <h1>Discover beautiful contents!</h1>
-     <h2 className='mt-4'>
-      Well made and useful write-ups, tutorial and
-      articles
-     </h2>
-    </div>
-    <AbstractDesktop
-     className='hidden md:block'
-     viewBox='0 0 305 204'
-    />
-   </div>
+const Index: NextPage = async () => {
+ const recentPosts = await getRecentPosts(2)
 
-   <div className='mt-24 flex flex-col justify-between gap-x-12 lg:flex-row'>
-    <div className='mt-24 w-fit'>
-     <h2 className='font-bold'>
-      Recently Published
+ return (
+  <main className='flex w-full flex-col items-center'>
+   <div className='max-w-screen-xl'>
+    <div className='flex w-full flex-col items-center'>
+     <h1 className='hero-title border-thin w-full !border-t-[1px] text-center'>
+      See experiences of developing
+     </h1>
+
+     <h2 className='hero-sub border-thin w-full text-center'>
+      Well made and useful write-ups, tutorials
+      and articles,{' '}
+      <strong>
+       computer science seasoned with a bit of
+       life stories.
+      </strong>
      </h2>
-     <div className='flex flex-col gap-y-12'>
-      <Post
-       category='tutorial'
-       title='Best practices for successful prototypes'
-       description='Before going digital, you might benefit from scribbling down some ideas in a sketchbook. This way, you can think things through before committing to an actual design project.
-But then I found a component library based on Tailwind CSS called Flowbite. It comes with the most....'
-       author='Samuele Sciatore'
-       date='Aug, 7, 2023'
-       tags={['React', 'NextJS', 'Javascript']}
-      />
+
+     <div className='border-thin flex w-full flex-col items-center'>
+      <div className='mt-6 flex w-full max-w-2xl flex-col items-center'>
+       <Searchbar />
+       <p className='sm-text mt-2'>
+        or search popular categories
+       </p>
+
+       <div className='mt-4 flex flex-row flex-wrap items-center justify-center gap-x-4 gap-y-4'>
+        <Tag text='React' />
+        <Tag text='NextJS' />
+        <Tag text='Javascript' />
+        <Tag text='HTML' />
+       </div>
+      </div>
      </div>
     </div>
-    <div className='mt-24'>
-     <h2 className='font-bold'>
-      Popular Categories
-     </h2>
-     <div className='mt-4 flex flex-row flex-wrap items-center gap-x-6 gap-y-4'>
-      <Tag text='React' />
-      <Tag text='NextJS' />
-      <Tag text='Javascript' />
-      <Tag text='HTML' />
+
+    <div className='mt-36 flex w-fit flex-col items-center'>
+     <div className='flex flex-wrap items-center justify-center gap-x-3'>
+      <h1 className='font-bold text-violet-800'>
+       Recently published posts
+      </h1>
+      <p className='sm-text font-normal'>
+       Check either the old!
+      </p>
+     </div>
+
+     <div className='mt-6 flex flex-col gap-x-6 md:flex-row'>
+      {recentPosts?.map((post, index) => {
+       return <Post key={index} {...post.meta} />
+      })}
      </div>
     </div>
    </div>
-  </>
+  </main>
  )
 }
 
