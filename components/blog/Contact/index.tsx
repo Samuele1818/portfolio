@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import CTA from '../../CTA'
+import CTALink from '../../CTALink'
 
 const Contact: FC = ({}) => {
  return (
@@ -8,8 +8,15 @@ const Contact: FC = ({}) => {
     Connect with me when you want, anywhere
    </h1>
    <div className='flex flex-wrap items-center gap-x-6 gap-y-6'>
-    <CTA fill='blue' text='Contact me' />
-    <CTA
+    <CTALink
+     linkIcon={false}
+     link='/#contact-me'
+     fill='blue'
+     text='Contact me'
+    />
+    <CTALink
+     linkIcon={false}
+     link='/'
      fill='blue'
      variant='secondary'
      text='See portfolio'

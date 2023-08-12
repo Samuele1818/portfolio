@@ -1,12 +1,15 @@
 import { FC } from 'react'
 import Link from 'next/link'
 import ExternalLink from '../../public/icons/ExternalLink.svg'
+import '../CTA/cta.css'
 
 type Props = {
  link: string // Href to redirect
  text: string // Text to display
+ linkIcon?: boolean
  className?: string // Additional classnames
- fill?: 'electricViolet' | 'lochmara' | 'none' // Choose the background color
+ fill?: 'violet' | 'blue' // Choose the background color
+ variant?: 'primary' | 'secondary' // Primary or secondary style
 }
 
 /*
@@ -15,25 +18,31 @@ type Props = {
 const CTALink: FC<Props> = ({
  link,
  text,
- fill = 'electricViolet',
+ linkIcon = true,
+ fill = 'violet',
  className,
+ variant = 'primary',
 }) => {
  return (
   <Link
    href={link}
    target='_blank'
    className={`${className} ${
-    fill == 'lochmara'
-     ? 'color-animation-lochmara'
-     : fill == 'electricViolet'
-     ? 'color-animation-electricViolet'
-     : 'hover:color-animation-lochmara border-[1px] border-blue-600 bg-none text-white'
-   } color-animation inline-flex items-center gap-x-2 rounded-xl px-2 py-1`}>
+    fill == 'blue'
+     ? variant == 'primary'
+       ? 'primary-blue'
+       : 'secondary-blue'
+     : variant == 'primary'
+     ? 'primary-violet'
+     : 'secondary-violet'
+   } inline-flex h-fit w-fit items-center gap-x-2 rounded-lg border-2 px-4 py-2 text-white transition-all disabled:opacity-60`}>
    {text}
-   <ExternalLink
-    className='h-4 w-4'
-    viewBox='0 0 50 50'
-   />
+   {linkIcon && (
+    <ExternalLink
+     className='h-4 w-4'
+     viewBox='0 0 50 50'
+    />
+   )}
   </Link>
  )
 }

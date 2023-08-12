@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import CTA from '../../CTA'
 
 type Props = {}
 
@@ -30,15 +31,15 @@ const Searchbar: FC<Props> = ({}) => {
     <input
      type='search'
      id='default-search'
-     className='xs-text md:sm-text block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 pl-10 text-gray-900 focus:border-blue-500 focus:ring-blue-500'
+     className='xs-text md:sm-text block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 pl-10 text-lightDark focus:border-blue-500 focus:ring-blue-500'
      placeholder='Search posts or categories...'
      required
     />
-    <button
-     type='submit'
-     className='xs-text md:sm-text absolute right-2.5 rounded-lg bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-300'>
-     Search
-    </button>
+    <CTA
+     text='Search'
+     fill='blue'
+     className='absolute right-2'
+    />
    </div>
   </form>
  )
