@@ -153,9 +153,11 @@
     .md-text {
         font-size: clamp(1.125rem, 1.25rem + 0.3125vw, 1.5rem);
     }
+
     .sm-text {
         font-size: clamp(1rem, 1.125rem + 0.3125vw, 1.25rem);
     }
+
     .xs-text {
         font-size: clamp(0.875rem, 1rem + 0.3125vw, 1.125rem);
         @apply tracking-wider;
