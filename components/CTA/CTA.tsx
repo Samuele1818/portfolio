@@ -1,4 +1,5 @@
 import { FC, ReactNode, RefObject } from 'react'
+import './cta.css'
 
 type Props = {
  sendButtonRef?: RefObject<HTMLButtonElement>
@@ -8,7 +9,8 @@ type Props = {
  icon?: ReactNode // Optional icon to display after the text
  isDisabled?: boolean // Disable the button
  isLoading?: boolean // Put the button in loading state
- fill?: 'electricViolet' | 'lochmara' // Choose the color of the background
+ fill?: 'violet' | 'blue' // Choose the color of the background
+ variant?: 'primary' | 'secondary' // Primary or secondary style
 }
 
 /*
@@ -22,7 +24,8 @@ const CTA: FC<Props> = ({
  onClick,
  isDisabled = false,
  isLoading = false,
- fill = 'electricViolet',
+ fill = 'violet',
+ variant = 'primary',
 }) => {
  return (
   <button
@@ -30,10 +33,14 @@ const CTA: FC<Props> = ({
    disabled={isDisabled || isLoading}
    onClick={onClick}
    className={`${className} ${
-    fill == 'lochmara'
-     ? 'color-animation-lochmara'
-     : 'color-animation-electricViolet'
-   } inline-flex h-fit w-fit items-center gap-x-2 rounded-lg px-4 py-2 disabled:opacity-60`}>
+    fill == 'blue'
+     ? variant == 'primary'
+       ? 'primary-blue'
+       : 'secondary-blue'
+     : variant == 'primary'
+     ? 'primary-violet'
+     : 'secondary-violet'
+   } inline-flex h-fit w-fit items-center gap-x-2 rounded-lg border-2 px-4 py-2 text-white transition-all disabled:opacity-60`}>
    {text}
    {icon}
   </button>

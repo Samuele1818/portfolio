@@ -15,7 +15,7 @@
         @apply md-text
     }
 
-    p {
+    p, button {
         @apply md-text
     }
 
@@ -89,14 +89,6 @@
     .hover-underline-animation {
         display: inline-block;
         position: relative;
-    }
-
-    .color-animation-electricViolet {
-        @apply text-light hover:text-violet-800 hover:bg-light transition-colors bg-violet-800 border-violet-800 border-2
-    }
-
-    .color-animation-lochmara {
-        @apply text-light hover:text-blue-600 hover:bg-light transition-colors text-blue-600 border-blue-600 border-2
     }
 
     /*.layout {*/

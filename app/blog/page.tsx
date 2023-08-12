@@ -51,7 +51,7 @@ const Index: NextPage = async () => {
     </div>
 
     <div className='mt-36 flex w-fit flex-col items-center'>
-     <div className='flex flex-wrap items-center justify-center gap-x-3'>
+     <div className='flex flex-wrap items-center justify-center gap-x-3 text-center'>
       <h1 className='font-bold text-violet-800'>
        Recently published posts
       </h1>

@@ -73,7 +73,7 @@ const Footer: FC = ({}) => {
      </span>
      <div className='mt-4 flex space-x-6 sm:mt-0 sm:justify-center'>
       <Link
-       href='#'
+       href='https://github.com/Samuele1818'
        className='text-lightDark hover:text-gray-500'>
        <svg
         className='h-8 w-8'

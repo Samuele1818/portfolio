@@ -8,14 +8,10 @@ const Contact: FC = ({}) => {
     Connect with me when you want, anywhere
    </h1>
    <div className='flex flex-wrap items-center gap-x-6 gap-y-6'>
+    <CTA fill='blue' text='Contact me' />
     <CTA
-     fill='lochmara'
-     className='!md-text !bg-blue-600 !text-white'
-     text='Contact me'
-    />
-    <CTA
-     fill='lochmara'
-     className='!md-text !bg-transparent !text-lightDark'
+     fill='blue'
+     variant='secondary'
      text='See portfolio'
     />
    </div>
