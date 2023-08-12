@@ -36,7 +36,7 @@ const Post: FC<Props> = ({
    </div>
    <div className='mt-4'>
     <Link
-     href='/'
+     href={`/blog/${slug}`}
      className='lg-text line-clamp-1 font-bold text-violet-800 underline-offset-4 hover:underline'>
      {title}
     </Link>
