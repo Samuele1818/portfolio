@@ -1,5 +1,5 @@
-'use client'
-import { FC, useRef } from 'react'
+// 'use client'
+import { FC } from 'react'
 import Image from 'next/image'
 import React from '../../public/assets/skills/React.svg'
 import CyberSec from '../../public/assets/skills/new/Cybersecurity.svg'
@@ -13,7 +13,7 @@ import Avatar from '../../public//illustrations/ReadyPlayerMe-Avatar-removebg-pr
   About me section with description of my self, skills and process that I use to build products
 */
 const AboutMe: FC = () => {
- const containerRef = useRef(null)
+ // const containerRef = useRef(null)
 
  // // @ts-ignore
  // useEffect(() => {
@@ -100,9 +100,7 @@ const AboutMe: FC = () => {
       Next Goals Next Goals Next Goals
      </p>
     </div>
-    <section
-     className='flex h-screen w-max flex-nowrap items-center overflow-hidden py-24'
-     ref={containerRef}>
+    <section className='flex h-screen w-max flex-nowrap items-center overflow-hidden py-24'>
      <NewSkillCard
       id='new-skill'
       illustration={
