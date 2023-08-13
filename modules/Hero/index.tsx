@@ -1,45 +1,43 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import RightArrow from '../../public/icons/RightArrow.svg'
 import DesktopIllustration from '../../public/illustrations/desktop.svg'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import CTALink from '../../components/CTALink'
 
-gsap.registerPlugin(ScrollTrigger)
+// gsap.registerPlugin(ScrollTrigger)
 
 /*
   Hero section to grab client attention, introduce my self and make the client click the CTA to view my works
 */
 const Hero: FC = () => {
- useEffect(() => {
-  const darkWindow = document.getElementById(
-   'dark-window'
-  )
-  const purpleWindow = document.getElementById(
-   'purple-window'
-  )
-
-  window.addEventListener('mousemove', (e) => {
-   const { clientX, clientY } = e
-   const x =
-    Math.round(
-     (clientX / window.innerWidth) * 100
-    ) / 5
-   const y =
-    Math.round(
-     (clientY / window.innerHeight) * 100
-    ) / 5
-
-   gsap.to(darkWindow, {
-    translateX: `${x * 2}%`,
-    translateY: `${y * 2}%`,
-   })
-   gsap.to(purpleWindow, {
-    translateX: `${x / 2}%`,
-    translateY: `${y}%`,
-   })
-  })
- }, [])
+ // useEffect(() => {
+ //  const darkWindow = document.getElementById(
+ //   'dark-window'
+ //  )
+ //  const purpleWindow = document.getElementById(
+ //   'purple-window'
+ //  )
+ //
+ //  window.addEventListener('mousemove', (e) => {
+ //   const { clientX, clientY } = e
+ //   const x =
+ //    Math.round(
+ //     (clientX / window.innerWidth) * 100
+ //    ) / 5
+ //   const y =
+ //    Math.round(
+ //     (clientY / window.innerHeight) * 100
+ //    ) / 5
+ //
+ //   gsap.to(darkWindow, {
+ //    translateX: `${x * 2}%`,
+ //    translateY: `${y * 2}%`,
+ //   })
+ //   gsap.to(purpleWindow, {
+ //    translateX: `${x / 2}%`,
+ //    translateY: `${y}%`,
+ //   })
+ //  })
+ // }, [])
 
  return (
   <section className='layout mt-24 flex flex-row flex-wrap lg:h-[600px] lg:items-center xl:h-[700px] 2xl:h-[800px] 3xl:h-[900px]'>
