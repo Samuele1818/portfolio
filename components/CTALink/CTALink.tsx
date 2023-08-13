@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 import Link from 'next/link'
 import ExternalLink from '../../public/icons/ExternalLink.svg'
 import '../CTA/cta.css'
@@ -6,7 +6,8 @@ import '../CTA/cta.css'
 type Props = {
  link: string // Href to redirect
  text: string // Text to display
- linkIcon?: boolean
+ hasIcon?: boolean
+ icon?: ReactNode
  className?: string // Additional classnames
  fill?: 'violet' | 'blue' // Choose the background color
  variant?: 'primary' | 'secondary' // Primary or secondary style
@@ -18,7 +19,14 @@ type Props = {
 const CTALink: FC<Props> = ({
  link,
  text,
- linkIcon = true,
+ hasIcon = true,
+ icon = (
+  <ExternalLink
+   className='h-4 w-4'
+   viewBox='0 0 50 50'
+  />
+ ),
+
  fill = 'violet',
  className,
  variant = 'primary',
@@ -37,12 +45,7 @@ const CTALink: FC<Props> = ({
      : 'secondary-violet'
    } inline-flex h-fit w-fit items-center gap-x-2 rounded-lg border-2 px-4 py-2 text-white transition-all disabled:opacity-60`}>
    {text}
-   {linkIcon && (
-    <ExternalLink
-     className='h-4 w-4'
-     viewBox='0 0 50 50'
-    />
-   )}
+   {hasIcon && icon}
   </Link>
  )
 }

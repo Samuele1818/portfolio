@@ -1,11 +1,11 @@
 'use client'
 import { FC, useEffect } from 'react'
-import CTA from '../../components/CTA'
 import RightArrow from '../../public/icons/RightArrow.svg'
 import DesktopIllustration from '../../public/illustrations/desktop.svg'
 import { useRouter } from 'next/navigation'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import CTALink from '../../components/CTALink'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -46,28 +46,28 @@ const Hero: FC = () => {
  }, [])
 
  return (
-  <section className='layout mt-24 flex flex-col lg:h-[600px] lg:flex-row lg:items-center xl:h-[700px] 2xl:h-[800px] 3xl:h-[900px]'>
-   <div className='hr-align-lg flex flex-col lg:max-w-[400px] xl:max-w-[450px] 2xl:max-w-[600px]'>
-    <h1>
+  <section className='layout mt-24 flex flex-row flex-wrap lg:h-[600px] lg:items-center xl:h-[700px] 2xl:h-[800px] 3xl:h-[900px]'>
+   <div className='flex flex-grow flex-col'>
+    <h1 className='hero-title !text-dark'>
      Transform your ideas in{' '}
-     <span className=' content relative after:absolute after:-bottom-2 after:left-0 after:h-4 after:w-full after:bg-[url("/icons/CurlyAccent.svg")] after:bg-cover'>
+     <span className='content relative after:absolute after:-bottom-2 after:left-0 after:h-4 after:w-full after:bg-[url("/icons/CurlyAccent.svg")] after:bg-cover'>
       solid
      </span>{' '}
      websites and applications
     </h1>
-    <h2 className='mt-4'>
+    <h2 className='hero-sub mt-4'>
      I&apos;m a full stack developer and software
      engineer
     </h2>
-    {/*TODO: Fix push to anchor*/}
-    <CTA
-     onClick={() => push('#projects')}
+    <CTALink
+     link='#projects'
      icon={<RightArrow />}
      className='hr-align-lg mt-8 font-bold'
      text='View projects'
     />
    </div>
-   <div className='relative isolate mx-auto mb-0 mt-16 h-full w-full md:h-fit md:max-w-[450px] lg:-mr-[10%] lg:mt-auto xl:max-w-xl 2xl:max-w-2xl'>
+
+   <div className='relative isolate mx-auto mb-0 mt-16 h-full w-full flex-shrink-0 flex-grow md:h-fit lg:-mr-[10%] lg:mt-auto'>
     <div className='shadow-shadow absolute left-[15%] top-[10%] -z-10 h-[80%] w-[90%] rounded-xl bg-[#50B56F] bg-opacity-40' />
     <DesktopIllustration
      className='h-full w-full'

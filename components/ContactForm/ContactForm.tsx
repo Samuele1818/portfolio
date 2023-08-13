@@ -122,7 +122,7 @@ const ContactForm = () => {
     {/*  CTA to send the form with helper text */}
     <div className='flex flex-col'>
      <CTA
-      sendButtonRef={sendButtonRef}
+      ref={sendButtonRef}
       isDisabled
       className='rounded-none'
       icon={

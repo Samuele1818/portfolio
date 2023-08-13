@@ -9,13 +9,13 @@ const Contact: FC = ({}) => {
    </h1>
    <div className='flex flex-wrap items-center gap-x-6 gap-y-6'>
     <CTALink
-     linkIcon={false}
+     hasIcon={false}
      link='/#contact-me'
      fill='blue'
      text='Contact me'
     />
     <CTALink
-     linkIcon={false}
+     hasIcon={false}
      link='/'
      fill='blue'
      variant='secondary'
