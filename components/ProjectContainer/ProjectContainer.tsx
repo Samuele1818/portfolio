@@ -35,11 +35,12 @@ const ProjectContainer: FC<Props> = ({
  return (
   <section
    id={id}
-   className='layout fill-hintOfRed mb-auto mt-auto flex h-[600px] w-screen flex-col-reverse gap-x-4 text-light lg:flex-row'>
-   <div className='mt-12 flex flex-col lg:mb-auto lg:mt-auto'>
+   className='flex h-[800px] flex-col gap-x-24 gap-y-8 fill-light text-light lg:h-[600px] lg:flex-row'>
+   <div className='mt-12 flex flex-grow flex-col lg:mb-auto lg:mt-auto lg:w-[40%]'>
     <p className='xs-text -mb-2 opacity-75'>
      {type}
     </p>
+
     <Link
      href='https://a-boutall.com'
      target='_blank'
@@ -54,9 +55,11 @@ const ProjectContainer: FC<Props> = ({
       className='ml-4 h-fit w-10 opacity-75 transition-all group-hover:w-0 group-hover:translate-x-12'
      />
     </Link>
+
     <p className='mt-2 first-letter:capitalize'>
      {description}
     </p>
+
     <div className='flex-align-md mt-8 gap-x-8 md:items-center'>
      <div className='flex flex-row items-center gap-x-2'>
       <User
@@ -65,6 +68,7 @@ const ProjectContainer: FC<Props> = ({
       />
       <p className='sm-text capitalize'>{role}</p>
      </div>
+
      <div className='flex flex-row items-center gap-x-2'>
       <Clock
        viewBox='0 0 1000 1000'
@@ -74,13 +78,14 @@ const ProjectContainer: FC<Props> = ({
      </div>
     </div>
    </div>
-   <div className='bg-bastille flex w-full overflow-clip'>
+
+   <div className='flex h-full flex-shrink items-start justify-start gap-x-4 overflow-clip bg-dark'>
     <Image
      width={2000}
      height={2000}
      src={image1}
      sizes='500px'
-     className='h-fit w-96 -rotate-12 rounded-xl transition-transform hover:scale-125'
+     className='h-fit w-96 -rotate-6 rounded-lg transition-transform hover:scale-125'
      alt='Project image'
     />
     <Image
@@ -88,7 +93,7 @@ const ProjectContainer: FC<Props> = ({
      height={2000}
      sizes='500px'
      src={image2}
-     className='ml-auto mr-0 h-fit w-96 -rotate-12 rounded-xl transition-transform hover:scale-150 xl:ml-auto xl:mr-auto'
+     className='ml-auto mr-0 h-fit w-96 -rotate-6 rounded-lg transition-transform hover:scale-125 xl:ml-auto xl:mr-auto'
      alt='Project image'
     />
     {image3 && (
@@ -97,7 +102,7 @@ const ProjectContainer: FC<Props> = ({
       height={2000}
       src={image3}
       sizes='(max-width: 1536px) 0, 500px'
-      className='hidden h-fit w-96 -rotate-12 rounded-xl transition-transform hover:scale-125 2xl:block'
+      className='hidden h-fit w-96 -rotate-6 rounded-lg transition-transform hover:scale-125 2xl:block'
       alt='Project image'
      />
     )}

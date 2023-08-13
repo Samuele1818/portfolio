@@ -105,6 +105,11 @@
         @apply center lg:mx-0 lg:text-left
     }
 
+    .watermark {
+        font-size: min(20vw, 256px);
+        @apply opacity-[2%] text-white break-keep whitespace-nowrap font-black
+    }
+
     .hero-title {
         font-size: max(48px, min(5vw, 76px));
         @apply font-extrabold text-violet-800
