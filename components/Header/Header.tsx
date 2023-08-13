@@ -1,16 +1,12 @@
-'use client'
 import { FC } from 'react'
 import Link from 'next/link'
 import Logo from '../../public/logo.svg'
-import CTA from '../CTA'
-import { useRouter } from 'next/navigation'
+import CTALink from '../CTALink'
 
 /*
   Provides logo and the CTA to redirect to the Contact Form
 */
 const Header: FC = () => {
- const { push } = useRouter()
-
  // Slidebar with hamburger menu for mobile devices with animation (works with the next container so in NextJs13 this code needs adjustments )
  /*  const [isSidebar, toggleSidebar] =
                                       useState<boolean>(false)
@@ -122,9 +118,9 @@ const Header: FC = () => {
      className='hover-underline-animation mr-4 text-dark'>
      Blog
     </Link>
-    <CTA
+    <CTALink
      text='Contact Me'
-     onClick={() => push('/#contact-form')}
+     href='/#contact-form'
     />
    </div>
   </header>
