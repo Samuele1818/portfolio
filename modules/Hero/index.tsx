@@ -40,11 +40,11 @@ const Hero: FC = () => {
  // }, [])
 
  return (
-  <section className='layout mt-24 flex flex-row flex-wrap lg:h-[600px] lg:items-center xl:h-[700px] 2xl:h-[800px] 3xl:h-[900px]'>
-   <div className='flex flex-grow flex-col'>
+  <section className='layout mt-24 flex flex-col items-center gap-x-48 gap-y-16 lg:h-[600px] lg:flex-row xl:h-[700px] 2xl:h-[800px] 3xl:h-[900px]'>
+   <div className='flex flex-grow flex-col text-center lg:w-1/2 lg:text-start'>
     <h1 className='hero-title !text-dark'>
      Transform your ideas in{' '}
-     <span className='content relative after:absolute after:-bottom-2 after:left-0 after:h-4 after:w-full after:bg-[url("/icons/CurlyAccent.svg")] after:bg-cover'>
+     <span className='content relative after:absolute after:-bottom-2 after:left-0 after:h-6 after:w-full after:bg-[url("/icons/CurlyAccent.svg")] after:bg-cover'>
       solid
      </span>{' '}
      websites and applications
@@ -61,11 +61,12 @@ const Hero: FC = () => {
     />
    </div>
 
-   <div className='relative isolate mx-auto mb-0 mt-16 h-full w-full flex-shrink-0 flex-grow md:h-fit lg:-mr-[10%] lg:mt-auto'>
+   <div className='relative isolate mx-auto h-fit w-full lg:-mr-[10%] lg:w-1/2 lg:flex-shrink'>
     <div className='shadow-shadow absolute left-[15%] top-[10%] -z-10 h-[80%] w-[90%] rounded-xl bg-[#50B56F] bg-opacity-40' />
     <DesktopIllustration
      className='h-full w-full'
-     viewBox='0 0 2507 2472'></DesktopIllustration>
+     viewBox='0 0 2507 2472'
+    />
    </div>
   </section>
  )
