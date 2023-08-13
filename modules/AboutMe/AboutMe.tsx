@@ -1,10 +1,10 @@
 'use client'
-import { FC, useEffect, useRef } from 'react'
+import { FC, useRef } from 'react'
 import Image from 'next/image'
 import React from '../../public/assets/skills/React.svg'
 import CyberSec from '../../public/assets/skills/new/Cybersecurity.svg'
 import NewSkillCard from '../../components/NewSkillCard'
-import gsap from 'gsap'
+// import gsap from 'gsap'
 import Process from '../../components/Process'
 import SkillsScroller from './SkillsScroller'
 import Avatar from '../../public//illustrations/ReadyPlayerMe-Avatar-removebg-preview-transformed 1.png'
@@ -15,41 +15,41 @@ import Avatar from '../../public//illustrations/ReadyPlayerMe-Avatar-removebg-pr
 const AboutMe: FC = () => {
  const containerRef = useRef(null)
 
- // @ts-ignore
- useEffect(() => {
-  // If container is not initialized return
-  // Put panels in an array
-  const panels = gsap.utils.toArray('#new-skill')
-  gsap.set(panels, {
-   xPercent: -100 * (panels.length - 1),
-  })
-  if (!containerRef.current) return
-  // @ts-ignore
-  let ctx = gsap.to(panels, {
-   xPercent: 0,
-   ease: 'none',
-   scrollTrigger: {
-    // Set the trigger to the container of panels
-    trigger: containerRef.current,
-    pin: true, // Make scrolling stop vertically
-    start: 'top top',
-    scrub: 1,
-    snap: {
-     // Auto snap if scroll is partial
-     snapTo: 1 / (panels.length - 1),
-     inertia: false,
-     duration: { min: 0.1, max: 0.1 },
-    },
-    // Set the end of the container
-    end: () =>
-     '+=' +
-     // @ts-ignore
-     (containerRef.current.offsetWidth -
-      innerWidth),
-   },
-  })
-  return () => ctx.revert()
- }, [])
+ // // @ts-ignore
+ // useEffect(() => {
+ //  // If container is not initialized return
+ //  // Put panels in an array
+ //  const panels = gsap.utils.toArray('#new-skill')
+ //  gsap.set(panels, {
+ //   xPercent: -100 * (panels.length - 1),
+ //  })
+ //  if (!containerRef.current) return
+ //  // @ts-ignore
+ //  let ctx = gsap.to(panels, {
+ //   xPercent: 0,
+ //   ease: 'none',
+ //   scrollTrigger: {
+ //    // Set the trigger to the container of panels
+ //    trigger: containerRef.current,
+ //    pin: true, // Make scrolling stop vertically
+ //    start: 'top top',
+ //    scrub: 1,
+ //    snap: {
+ //     // Auto snap if scroll is partial
+ //     snapTo: 1 / (panels.length - 1),
+ //     inertia: false,
+ //     duration: { min: 0.1, max: 0.1 },
+ //    },
+ //    // Set the end of the container
+ //    end: () =>
+ //     '+=' +
+ //     // @ts-ignore
+ //     (containerRef.current.offsetWidth -
+ //      innerWidth),
+ //   },
+ //  })
+ //  return () => ctx.revert()
+ // }, [])
 
  return (
   <>
