@@ -1,8 +1,6 @@
-'use client'
 import { FC, useEffect } from 'react'
 import RightArrow from '../../public/icons/RightArrow.svg'
 import DesktopIllustration from '../../public/illustrations/desktop.svg'
-import { useRouter } from 'next/navigation'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import CTALink from '../../components/CTALink'
@@ -13,8 +11,6 @@ gsap.registerPlugin(ScrollTrigger)
   Hero section to grab client attention, introduce my self and make the client click the CTA to view my works
 */
 const Hero: FC = () => {
- const { push } = useRouter()
-
  useEffect(() => {
   const darkWindow = document.getElementById(
    'dark-window'
@@ -60,7 +56,7 @@ const Hero: FC = () => {
      engineer
     </h2>
     <CTALink
-     link='#projects'
+     href='#projects'
      icon={<RightArrow />}
      className='hr-align-lg mt-8 font-bold'
      text='View projects'
