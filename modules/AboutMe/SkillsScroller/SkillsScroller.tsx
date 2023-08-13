@@ -11,27 +11,27 @@ import NextJS from '../../../public/assets/skills/NextJS.svg'
 import Firebase from '../../../public/assets/skills/Firebase.svg'
 import MySQL from '../../../public/assets/skills/MySQL.svg'
 import Kotlin from '../../../public/assets/skills/Kotlin.svg'
-import { useEffect } from 'react'
-import gsap from 'gsap'
+// import { useEffect } from 'react'
+// import gsap from 'gsap'
 
 const SkillsScroller = () => {
- useEffect(() => {
-  let panels: HTMLDivElement[] =
-   gsap.utils.toArray('#skills-section')
-
-  panels.forEach((panel, i) => {
-   gsap.to(panel, {
-    translateX: i % 2 == 0 ? 200 : -200,
-    ease: 'back',
-    duration: 0.4,
-    scrollTrigger: {
-     trigger: panel,
-     start: 'top center',
-     toggleActions: 'play none reverse none',
-    },
-   })
-  })
- }, [])
+ // useEffect(() => {
+ //  let panels: HTMLDivElement[] =
+ //   gsap.utils.toArray('#skills-section')
+ //
+ //  panels.forEach((panel, i) => {
+ //   gsap.to(panel, {
+ //    translateX: i % 2 == 0 ? 200 : -200,
+ //    ease: 'back',
+ //    duration: 0.4,
+ //    scrollTrigger: {
+ //     trigger: panel,
+ //     start: 'top center',
+ //     toggleActions: 'play none reverse none',
+ //    },
+ //   })
+ //  })
+ // }, [])
 
  return (
   <div className='w-full'>
