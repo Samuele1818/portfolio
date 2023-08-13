@@ -1,23 +1,21 @@
 import { FC, ReactNode } from 'react'
-import Link from 'next/link'
+import Link, { LinkProps } from 'next/link'
 import ExternalLink from '../../public/icons/ExternalLink.svg'
 import '../CTA/cta.css'
 
 type Props = {
- link: string // Href to redirect
  text: string // Text to display
  hasIcon?: boolean
  icon?: ReactNode
  className?: string // Additional classnames
  fill?: 'violet' | 'blue' // Choose the background color
  variant?: 'primary' | 'secondary' // Primary or secondary style
-}
+} & LinkProps
 
 /*
   Linked styles as a Click to action button to make it more visible and important
 */
 const CTALink: FC<Props> = ({
- link,
  text,
  hasIcon = true,
  icon = (
@@ -26,15 +24,14 @@ const CTALink: FC<Props> = ({
    viewBox='0 0 50 50'
   />
  ),
-
  fill = 'violet',
  className,
  variant = 'primary',
+ ...props
 }) => {
  return (
   <Link
-   href={link}
-   target='_blank'
+   {...props}
    className={`${className} ${
     fill == 'blue'
      ? variant == 'primary'
