@@ -10,13 +10,13 @@ const Contact: FC = ({}) => {
    <div className='flex flex-wrap items-center gap-x-6 gap-y-6'>
     <CTALink
      hasIcon={false}
-     link='/#contact-me'
+     href='/#contact-me'
      fill='blue'
      text='Contact me'
     />
     <CTALink
      hasIcon={false}
-     link='/'
+     href='/'
      fill='blue'
      variant='secondary'
      text='See portfolio'
