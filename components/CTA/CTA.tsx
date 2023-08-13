@@ -1,37 +1,32 @@
-import { FC, ReactNode, RefObject } from 'react'
+import {
+ ButtonHTMLAttributes,
+ FC,
+ ReactNode,
+} from 'react'
 import './cta.css'
 
 type Props = {
- ref?: RefObject<HTMLButtonElement>
  text: string // Text of the button
- onClick?: () => unknown // Function on click
  className?: string // Additional classnames
  icon?: ReactNode // Optional icon to display after the text
- isDisabled?: boolean // Disable the button
- isLoading?: boolean // Put the button in loading state
  fill?: 'violet' | 'blue' // Choose the color of the background
  variant?: 'primary' | 'secondary' // Primary or secondary style
-}
+} & ButtonHTMLAttributes<HTMLButtonElement>
 
 /*
    Click to action button to grab user attention and made him click on it.
 */
 const CTA: FC<Props> = ({
- ref,
  text,
  className,
  icon,
- onClick,
- isDisabled = false,
- isLoading = false,
  fill = 'violet',
  variant = 'primary',
+ ...props
 }) => {
  return (
   <button
-   ref={ref}
-   disabled={isDisabled || isLoading}
-   onClick={onClick}
+   {...props}
    className={`${className} ${
     fill == 'blue'
      ? variant == 'primary'
