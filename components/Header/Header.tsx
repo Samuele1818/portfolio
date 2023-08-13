@@ -119,6 +119,7 @@ const Header: FC = () => {
      Blog
     </Link>
     <CTALink
+     hasIcon={false}
      text='Contact Me'
      href='/#contact-form'
     />
