@@ -22,7 +22,7 @@ const Projects: FC = () => {
  return (
   <div
    id='projects'
-   className='layout h-fit bg-slate-900 py-24'>
+   className='layout bg-slate-900 py-48'>
    <div className='relative text-light'>
     <h1 className='xl2-text'>My Projects</h1>
     <p className='watermark absolute -left-6 -top-[80%] md:-top-[200%]'>

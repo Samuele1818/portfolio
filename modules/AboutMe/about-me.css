@@ -1,0 +1,56 @@
+@tailwind utilities;
+
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 90deg;
+    inherits: true;
+}
+
+@property --gradX {
+    syntax: '<percentage>';
+    initial-value: 50%;
+    inherits: true;
+}
+
+@property --gradY {
+    syntax: '<percentage>';
+    initial-value: 0%;
+    inherits: true;
+}
+
+:root {
+    --d: 3500ms;
+    --angle: 90deg;
+    --c1: rgba(168, 239, 255, 0.6);
+    --c2: rgba(168, 239, 255, 0.2);
+}
+
+@layer utilities {
+    .horizontal-lines {
+        @apply relative flex
+    }
+
+    .horizontal-lines:after {
+        content: "";
+        border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 10;
+        animation: borderRotate var(--d) linear infinite forwards;
+        @apply w-24 h-8 my-auto top-0 bottom-0 right-full absolute border-l-0 border-r-0 border-t-2 border-b-2 first:hidden last:block
+    }
+
+    .vertical-lines {
+        @apply relative flex justify-center
+    }
+
+    .vertical-lines:after {
+        content: "";
+        border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 10;
+        animation: borderRotate 3.6s linear infinite forwards;
+        @apply w-8 h-full top-full absolute border-r-2 border-l-2 last:hidden
+    }
+}
+
+@keyframes borderRotate {
+    100% {
+        --angle: 420deg;
+    }
+}

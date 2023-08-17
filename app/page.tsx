@@ -54,7 +54,7 @@ const Index: NextPage = () => {
    <DynamicHeader />
    <DynamicHero />
    <DynamicProjects />
-   {/*<DynamicAboutMe />*/}
+   <DynamicAboutMe />
    {/*<DynamicFooter />*/}
   </div>
  )
