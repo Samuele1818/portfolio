@@ -3,11 +3,13 @@ import Image from 'next/image'
 import React from '../../public/assets/skills/React.svg'
 import Me from '../../public/assets/about-me/me.png'
 import AI from '../../public/assets/blog/ai.png'
-import Process from '../../public/assets/blog/process.png'
+import ProcessPost from '../../public/assets/blog/process.png'
 import './about-me.css'
 import Card from '../../components/Card'
 import CTA from '../../components/CTA'
 import SkillsSlider from '../../components/SkillsSlider'
+import Begin from './process/begin'
+import Work from './process/work'
 
 /*
   About me section with description of my self, technologies and process that I use to build products
@@ -109,7 +111,7 @@ const AboutMe: FC = () => {
       className='absolute bottom-12 left-0 h-fit min-w-[220px] max-w-[320px] -rotate-2 rounded-lg shadow-sm shadow-slate-300'
      />
      <Image
-      src={Process}
+      src={ProcessPost}
       alt='Image of an article that talks about how to create a software'
       className='absolute bottom-0 right-0 h-fit min-w-[220px] max-w-[320px] rounded-lg shadow-md shadow-slate-600'
      />
@@ -117,7 +119,24 @@ const AboutMe: FC = () => {
    </Card>
 
    {/* Creation process */}
-   <div className=''></div>
+   <div className='flex flex-col items-center gap-y-12'>
+    {/* Section title */}
+    <div className='w-full text-center'>
+     <h1 className='xl2-text whitespace-pre-line'>
+      Trust the process
+     </h1>
+     <p className='hero-sub text-slate-400'>
+      My creating process decomposed in small
+      steps
+     </p>
+    </div>
+
+    {/* Process container */}
+    <div className='flex w-full flex-col'>
+     <Begin />
+     <Work />
+    </div>
+   </div>
   </section>
  )
 }
