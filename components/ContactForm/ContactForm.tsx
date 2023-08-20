@@ -123,6 +123,7 @@ const ContactForm = () => {
      <CTA
       disabled
       className='rounded-none'
+      fill='blue'
       icon={
        <Send
         viewBox='0 0 9 9'

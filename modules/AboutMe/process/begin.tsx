@@ -36,7 +36,7 @@ const Begin: FC = () => {
      <div className='w-fit bg-slate-800 px-2 py-2'>
       <Evaluate className='h-fit w-16' />
      </div>
-     <h2 className='md-text font-bold'>
+     <h2 className='md-text mt-2 font-bold'>
       Evaluate the idea
      </h2>
      <p className='sm-text text-slate-400'>
@@ -48,7 +48,7 @@ const Begin: FC = () => {
      <div className='mt-12 w-fit bg-slate-800 px-2 py-2'>
       <Plan className='h-fit w-16' />
      </div>
-     <h2 className='md-text font-bold'>
+     <h2 className='md-text mt-2 font-bold'>
       Make the plan
      </h2>
      <p className='sm-text text-slate-400'>

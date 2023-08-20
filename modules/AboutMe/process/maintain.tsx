@@ -31,7 +31,7 @@ const Maintain: FC = () => {
      <div className='w-fit bg-slate-800 px-2 py-2'>
       <MaintainIcon className='h-fit w-16' />
      </div>
-     <h2 className='md-text font-bold'>
+     <h2 className='md-text mt-2 font-bold'>
       Monitoring everything
      </h2>
      <p className='sm-text text-slate-400'>

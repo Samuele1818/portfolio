@@ -6,7 +6,7 @@ import Teamwork from '../../../public/icons/misc/Teamwork.svg'
 
 const Misc: FC = ({}) => {
  return (
-  <div className='flex flex-row flex-wrap gap-x-16 gap-y-8 px-12 py-8 text-slate-300'>
+  <div className='grid grid-cols-2 place-content-evenly gap-x-24 gap-y-12 text-slate-300 sm:grid-cols-3 lg:grid-cols-4'>
    <div className='flex flex-col items-center gap-y-4'>
     <Document className='h-12 w-12 lg:h-24 lg:w-24' />
     <p>Document</p>

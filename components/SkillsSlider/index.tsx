@@ -24,8 +24,11 @@ const SkillsSlider: FC = ({}) => {
         .swiper-pagination-bullet {
             width: 64px !important;
         }
-        .swiper-pagination-bullet > svg {
+        .swiper-pagination-bullet svg, .swiper-pagination-bullet p {
             display: none !important;
+        }
+        .swiper-pagination-bullet {
+            height: 2px !important;
         }
       }
       .swiper {
@@ -35,18 +38,31 @@ const SkillsSlider: FC = ({}) => {
         height: 100%;
         justify-content: center;
         align-items: center;
+        border-right: 1px dashed #475569;
+        border-left: 1px dashed #475569;
       }
       .swiper-pagination {
         display: flex;
         position: relative !important;
         left: auto !important;
         width: fit-content !important;
-        margin-top: 20px;
+        margin-top: 6rem;
+      }
+      .swiper-pagination::before {
+          content: "";
+          border-bottom: 1px dashed #475569;
+          top: -3rem;
+          left: -100vw;
+          position: absolute;
+          overflow: visible;
+          width: 200vw;
       }
       .swiper-pagination-bullet {
+        padding: 1rem 0.5rem;
         width: 128px;
         height: 128px;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         border-radius: 0;
@@ -56,9 +72,16 @@ const SkillsSlider: FC = ({}) => {
         opacity: 1;
       }
       
-      .swiper-pagination-bullet > svg {
+      .swiper-pagination-bullet svg {
         width: 64px;
-        height: fit-content;
+        height: 64px;
+      }
+      
+      .swiper-pagination-bullet p {
+        font-size: 22px;
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
       }
 
       .swiper-pagination-bullet-active {
@@ -72,10 +95,18 @@ const SkillsSlider: FC = ({}) => {
     renderBullet: function (index, className) {
      // Define an array of custom icons
      const customIcons = [
-      <Language key='lan-icon' />, // Use your custom React component here
-      <Technologies key='tec-icon' />, // Use another custom React component here
-      <MiscIcon key='mis-icon' />, // Use another custom React component here
-      // Add more custom icons as needed...
+      <div key='lan-icon'>
+       <Language />
+       <p>Languages</p>
+      </div>,
+      <div key='tec-icon'>
+       <Technologies />
+       <p>Technologies</p>
+      </div>,
+      <div key='mis-icon'>
+       <MiscIcon />
+       <p>Misc</p>
+      </div>,
      ]
 
      return `

@@ -58,7 +58,7 @@ test('renders initial count',
      <div className='w-fit bg-slate-800 px-2 py-2'>
       <Development className='h-fit w-16' />
      </div>
-     <h2 className='md-text font-bold'>
+     <h2 className='md-text mt-2 font-bold'>
       Development
      </h2>
      <p className='sm-text text-slate-400'>
@@ -68,7 +68,7 @@ test('renders initial count',
      <div className='mt-12 w-fit bg-slate-800 px-2 py-2'>
       <Test className='h-fit w-16' />
      </div>
-     <h2 className='md-text font-bold'>
+     <h2 className='md-text mt-2 font-bold'>
       Test and test again
      </h2>
      <p className='sm-text text-slate-400'>

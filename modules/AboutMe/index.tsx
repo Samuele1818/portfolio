@@ -34,7 +34,7 @@ const AboutMe: FC = () => {
  ]
 
  return (
-  <section className='layout flex w-full flex-col gap-y-24 bg-slate-900 py-48 text-white'>
+  <section className='layout flex w-full flex-col gap-y-64 bg-slate-900 py-48 text-white'>
    <div className='flex flex-wrap items-center justify-center gap-x-48 gap-y-24'>
     {/* Title and image */}
     <div className='flex-grow text-center lg:w-min lg:text-start'>
@@ -76,7 +76,7 @@ const AboutMe: FC = () => {
 
    {/* Skills with carousel */}
    <div className='w-full'>
-    <div className='mb-12 w-full text-center'>
+    <div className='mb-24 w-full text-center'>
      <h1 className='xl2-text'>What I offer</h1>
      <p className='hero-sub text-slate-400'>
       My skills are in continuos development, take

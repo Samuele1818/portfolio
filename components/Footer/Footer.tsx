@@ -12,7 +12,7 @@ import ContactForm from '../ContactForm/ContactForm'
 */
 const Footer: FC = () => {
  return (
-  <footer className="layout mt-24 flex h-full w-full flex-col bg-[url('/illustrations/footer.svg')] bg-cover bg-bottom lg:flex-row">
+  <footer className="layout flex h-full w-full flex-col bg-[url('/illustrations/footer.svg')] bg-cover bg-bottom py-24 lg:flex-row">
    <div className='z-10 mb-0 mt-12 flex h-[80%] flex-col gap-y-12 rounded-t-xl bg-white px-8 py-4 lg:mt-auto lg:px-24 lg:py-12 xl:w-2/3'>
     <h1 className='mb-12'>Contact me</h1>
     <ContactForm />
