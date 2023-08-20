@@ -21,7 +21,7 @@ type Props = {
 /*
   Show a project description and name with a link to the site / product created. Also show images of the project
 */
-const ProjectContainer: FC<Props> = ({
+const Project: FC<Props> = ({
  id,
  image1,
  image2,
@@ -111,4 +111,4 @@ const ProjectContainer: FC<Props> = ({
  )
 }
 
-export default ProjectContainer
+export default Project

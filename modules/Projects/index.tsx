@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import ProjectContainer from '../../components/ProjectContainer'
+import ProjectContainer from '../../components/Project'
 
 /*
   Projects section with products that I made
