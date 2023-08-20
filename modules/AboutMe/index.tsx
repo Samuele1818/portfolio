@@ -10,6 +10,7 @@ import CTA from '../../components/CTA'
 import SkillsSlider from '../../components/SkillsSlider'
 import Begin from './process/begin'
 import Work from './process/work'
+import Maintain from './process/maintain'
 
 /*
   About me section with description of my self, technologies and process that I use to build products
@@ -132,9 +133,10 @@ const AboutMe: FC = () => {
     </div>
 
     {/* Process container */}
-    <div className='flex w-full flex-col'>
+    <div className='flex w-full flex-col items-center'>
      <Begin />
      <Work />
+     <Maintain />
     </div>
    </div>
   </section>

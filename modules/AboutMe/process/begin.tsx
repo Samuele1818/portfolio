@@ -17,7 +17,7 @@ const Begin: FC = () => {
     Start the process when the idea comes in.
    </p>
 
-   <div className='mx-auto mt-12 flex flex-col items-center gap-x-48 gap-y-12 lg:flex-row'>
+   <div className='mt-12 flex flex-col items-center gap-x-48 gap-y-12 lg:flex-row'>
     <Window>
      <div className='relative w-full border-b-2 border-b-slate-400'>
       <Cake className='absolute -right-24 -top-12 left-auto h-fit w-48 md:w-72' />
@@ -33,7 +33,7 @@ const Begin: FC = () => {
      </div>
     </Window>
 
-    <div className='flex max-w-md flex-col items-center text-center lg:items-start lg:text-start'>
+    <div className='flex flex-col items-center text-center lg:max-w-md lg:items-start lg:text-start'>
      <div className='w-fit bg-slate-800 px-2 py-2'>
       <Evaluate className='h-fit w-16' />
      </div>
