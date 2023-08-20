@@ -5,7 +5,6 @@ import Process from '../../../public/assets/about-me/process/Process.svg'
 import Idea from '../../../public/assets/about-me/process/Idea.svg'
 import Evaluate from '../../../public/assets/about-me/process/icons/Evaluate.svg'
 import Plan from '../../../public/assets/about-me/process/icons/Plan.svg'
-import React from '../../../public/assets/skills/React.svg'
 
 const Begin: FC = () => {
  return (

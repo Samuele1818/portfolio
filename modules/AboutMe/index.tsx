@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import Image from 'next/image'
-import React from '../../public/assets/skills/React.svg'
 import Me from '../../public/assets/about-me/me.png'
 import AI from '../../public/assets/blog/ai.png'
 import ProcessPost from '../../public/assets/blog/process.png'

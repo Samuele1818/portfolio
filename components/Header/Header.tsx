@@ -100,7 +100,7 @@ const Header: FC = () => {
    <Link
     className='inline-flex items-center gap-x-2'
     href='/'>
-    <Logo className='fill-violet-800' />
+    <Logo className='h-fit w-10 fill-violet-800' />
     <p className='hidden font-extrabold md:block'>
      Samuele Sciatore
     </p>

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import Window from '../../../components/Window'
 import MaintainIcon from '../../../public/assets/about-me/process/icons/Maintain.svg'
-import React from '../../../public/assets/skills/React.svg'
+
 import CodeBlock from '../../../components/CodeBlock'
 
 const Maintain: FC = () => {

@@ -5,7 +5,6 @@ import Book from '../../public/icons/Book.svg'
 import SecurityShield from '../../public/icons/SecurityShield.svg'
 import Weight from '../../public/icons/Weight.svg'
 import Binary from '../../public/icons/Binary.svg'
-import React from '../../public/assets/skills/React.svg'
 import ContactForm from '../ContactForm/ContactForm'
 
 /*

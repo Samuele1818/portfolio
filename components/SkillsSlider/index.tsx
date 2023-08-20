@@ -1,13 +1,13 @@
 'use client'
 import { FC, useLayoutEffect } from 'react'
 import { register } from 'swiper/element/bundle'
-import React from '../../public/assets/skills/React.svg'
 import Language from '../../public/icons/Language.svg'
-import Framework from '../../public/icons/Frameworks.svg'
 import Technologies from '../../public/icons/Technologies.svg'
-import Misc from '../../public/icons/Misc.svg'
+import MiscIcon from '../../public/icons/Misc.svg'
 import { renderToString } from 'react-dom/server'
 import TechnologiesSlider from './Slides/technologies'
+import Languages from './Slides/languages'
+import Misc from './Slides/misc'
 
 register()
 
@@ -55,6 +55,11 @@ const SkillsSlider: FC = ({}) => {
         background: transparent;
         opacity: 1;
       }
+      
+      .swiper-pagination-bullet > svg {
+        width: 64px;
+        height: fit-content;
+      }
 
       .swiper-pagination-bullet-active {
         color: #94A3B8;
@@ -68,9 +73,8 @@ const SkillsSlider: FC = ({}) => {
      // Define an array of custom icons
      const customIcons = [
       <Language key='lan-icon' />, // Use your custom React component here
-      <Framework key='fra-icon' />, // Use another custom React component here
       <Technologies key='tec-icon' />, // Use another custom React component here
-      <Misc key='mis-icon' />, // Use another custom React component here
+      <MiscIcon key='mis-icon' />, // Use another custom React component here
       // Add more custom icons as needed...
      ]
 
@@ -94,12 +98,15 @@ const SkillsSlider: FC = ({}) => {
    class='h-full w-full'
    init='false'
    loop='true'>
-   <swiper-slide>Slide 2</swiper-slide>
+   <swiper-slide>
+    <Languages />
+   </swiper-slide>
    <swiper-slide>
     <TechnologiesSlider />
    </swiper-slide>
-   <swiper-slide>Slide 3</swiper-slide>
-   <swiper-slide>Slide 4</swiper-slide>
+   <swiper-slide>
+    <Misc />
+   </swiper-slide>
   </swiper-container>
  )
 }

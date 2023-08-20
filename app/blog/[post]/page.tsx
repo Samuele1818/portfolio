@@ -1,7 +1,6 @@
 import { Metadata, NextPage } from 'next'
 import dynamic from 'next/dynamic'
 import Loader from '../../../components/Loader'
-import React from '../../../public/assets/skills/React.svg'
 import { notFound } from 'next/navigation'
 import './Post.css'
 import { extractTocHeadings } from '../../../utils/remark-toc-headings'

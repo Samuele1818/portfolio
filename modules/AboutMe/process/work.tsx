@@ -2,7 +2,6 @@ import { FC } from 'react'
 import Window from '../../../components/Window'
 import Development from '../../../public/assets/about-me/process/icons/Development.svg'
 import Test from '../../../public/assets/about-me/process/icons/Test.svg'
-import React from '../../../public/assets/skills/React.svg'
 import CodeBlock from '../../../components/CodeBlock'
 
 const Begin: FC = () => {

@@ -1,5 +1,4 @@
 import { Metadata, NextPage } from 'next'
-import React from '../public/assets/skills/React.svg'
 import dynamic from 'next/dynamic'
 import Loader from '../components/Loader'
 
@@ -55,7 +54,7 @@ const Index: NextPage = () => {
    <DynamicHero />
    <DynamicProjects />
    <DynamicAboutMe />
-   {/*<DynamicFooter />*/}
+   <DynamicFooter />
   </div>
  )
 }
