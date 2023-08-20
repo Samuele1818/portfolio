@@ -61,7 +61,7 @@ const Hero: FC = () => {
     />
    </div>
 
-   <div className='relative isolate mx-auto h-fit w-full lg:-mr-[10%] lg:w-1/2 lg:flex-shrink'>
+   <div className='relative isolate mx-auto mb-0 mt-auto h-fit w-full lg:-mr-[10%] lg:w-1/2 lg:flex-shrink'>
     <div className='shadow-shadow absolute left-[15%] top-[10%] -z-10 h-[80%] w-[90%] rounded-xl bg-[#50B56F] bg-opacity-40' />
     <DesktopIllustration
      className='h-full w-full'
