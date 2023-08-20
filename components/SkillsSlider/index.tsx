@@ -87,26 +87,35 @@ const SkillsSlider: FC = ({}) => {
    },
   }
 
+  // @ts-ignore
   Object.assign(swiperEl, params)
 
+  // @ts-ignore
   swiperEl.initialize()
  }, [])
 
- // @ts-ignore
  return (
+  // @ts-ignore
   <swiper-container
    class='h-full w-full'
    init='false'
    loop='true'>
+   {/* @ts-ignore*/}
    <swiper-slide>
     <Languages />
+    {/* @ts-ignore*/}
    </swiper-slide>
+   {/* @ts-ignore*/}
    <swiper-slide>
     <TechnologiesSlider />
+    {/* @ts-ignore*/}
    </swiper-slide>
+   {/* @ts-ignore*/}
    <swiper-slide>
     <Misc />
+    {/* @ts-ignore*/}
    </swiper-slide>
+   {/* @ts-ignore*/}
   </swiper-container>
  )
 }
