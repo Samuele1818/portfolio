@@ -5,7 +5,7 @@ import Book from '../../public/icons/Book.svg'
 import SecurityShield from '../../public/icons/SecurityShield.svg'
 import Weight from '../../public/icons/Weight.svg'
 import Binary from '../../public/icons/Binary.svg'
-import ContactForm from '../ContactForm/ContactForm'
+import ContactForm from '../ContactForm'
 
 /*
   Provide a contact form with some graphic details
