@@ -5,11 +5,11 @@ import AI from '../../public/assets/blog/ai.png'
 import ProcessPost from '../../public/assets/blog/process.png'
 import './about-me.css'
 import Card from '../../components/Card'
-import CTA from '../../components/CTA'
 import SkillsSlider from '../../components/SkillsSlider'
 import Begin from './process/begin'
 import Work from './process/work'
 import Maintain from './process/maintain'
+import CTALink from '../../components/CTALink'
 
 /*
   About me section with description of my self, technologies and process that I use to build products
@@ -98,10 +98,11 @@ const AboutMe: FC = () => {
       Visit my blog! You will find cool articles,
       tutorials and write-ups.
      </p>
-     <CTA
+     <CTALink
       className='mt-12'
       text='Visit the blog now!'
       fill='blue'
+      href='/blog'
      />
     </div>
     <div className='relative flex h-full min-h-[300px] w-[500px]'>
