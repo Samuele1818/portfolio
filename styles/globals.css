@@ -15,6 +15,10 @@
         @apply md-text
     }
 
+    p {
+        @apply whitespace-pre-line break-all
+    }
+
     p, button {
         @apply md-text
     }
