@@ -11,9 +11,10 @@ import { POST } from '../../app/api/sendEmail/route'
 import { useMemo, useRef } from 'react'
 import debounce from 'lodash.debounce'
 import { isValidForm } from '../../utils/validator'
+
 /*
    Contact form with three inputs (email, name, message) and a button to send.
-   There are also three buttons to link my email, GitHub and StackOverflow
+   There are also social links
 */
 const ContactForm = () => {
  const helperTextRef =
@@ -138,7 +139,7 @@ const ContactForm = () => {
      />
     </div>
     {/*  Icons with social links */}
-    <div className='flex flex-row items-center gap-x-8'>
+    <div className='flex flex-row flex-wrap items-center gap-x-8 gap-y-4'>
      <IconWrapper
       link='https://github.com/Samuele1818'
       icon={<Github viewBox='0 0 18 20' />}
