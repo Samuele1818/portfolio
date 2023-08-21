@@ -99,6 +99,7 @@ const AboutMe: FC = () => {
       tutorials and write-ups.
      </p>
      <CTALink
+      hasIcon={false}
       className='mt-12'
       text='Visit the blog now!'
       fill='blue'
