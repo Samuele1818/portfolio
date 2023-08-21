@@ -11,42 +11,42 @@ import NodeJS from '../../../public/icons/technologies/NodeJS.svg'
 
 const TechnologiesSlider: FC = ({}) => {
  return (
-  <div className='grid grid-cols-2 place-content-evenly gap-x-24 gap-y-12 text-slate-300 sm:grid-cols-3 lg:grid-cols-4'>
+  <div className='grid grid-cols-2 place-content-evenly gap-y-8 text-center text-slate-300 sm:grid-cols-3 md:gap-y-12 lg:grid-cols-4 xl:grid-cols-5'>
    <div className='flex flex-col items-center gap-y-4'>
-    <NodeJS className='h-12 w-12 lg:h-24 lg:w-24' />
+    <NodeJS className='h-12 w-12 lg:h-16 lg:w-16' />
     <p>NodeJS</p>
    </div>{' '}
    <div className='flex flex-col items-center gap-y-4'>
-    <NextJS className='h-12 w-12 lg:h-24 lg:w-24' />
+    <NextJS className='h-12 w-12 lg:h-16 lg:w-16' />
     <p>NextJS</p>
    </div>
    <div className='flex flex-col items-center gap-y-4'>
-    <React className='h-12 w-12 lg:h-24 lg:w-24' />
+    <React className='h-12 w-12 lg:h-16 lg:w-16' />
     <p>React</p>
    </div>
    <div className='flex flex-col items-center gap-y-4'>
-    <SASS className='h-12 w-12 lg:h-24 lg:w-24' />
+    <SASS className='h-12 w-12 lg:h-16 lg:w-16' />
     <p>SASS</p>
    </div>
    <div className='flex flex-col items-center gap-y-4'>
-    <Firebase className='h-12 w-12 lg:h-24 lg:w-24' />
+    <Firebase className='h-12 w-12 lg:h-16 lg:w-16' />
     <p>Firebase</p>
    </div>
    <div className='flex flex-col items-center gap-y-4'>
-    <SqlLite className='h-12 w-12 lg:h-24 lg:w-24' />
+    <SqlLite className='h-12 w-12 lg:h-16 lg:w-16' />
     <p>SQLite</p>
    </div>
    <div className='flex flex-col items-center gap-y-4'>
-    <MySQL className='h-12 w-12 lg:h-24 lg:w-24' />
+    <MySQL className='h-12 w-12 lg:h-16 lg:w-16' />
     <p>MySQL</p>
    </div>
    <div className='flex flex-col items-center gap-y-4'>
-    <Git className='h-12 w-12 lg:h-24 lg:w-24' />
+    <Git className='h-12 w-12 lg:h-16 lg:w-16' />
     <p>Git</p>
    </div>
    <div className='flex flex-col items-center gap-y-4'>
-    <Github className='h-12 w-12 lg:h-24 lg:w-24' />
-    <p>Github</p>
+    <Github className='h-12 w-12 lg:h-16 lg:w-16' />
+    <p>Githubdasdasdadasad</p>
    </div>
   </div>
  )
