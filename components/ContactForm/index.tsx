@@ -1,5 +1,5 @@
 'use client'
-import Input from '../Input/Input'
+import Input from '../Input'
 import CTA from '../CTA'
 import Send from '../../public/icons/Send.svg'
 import Github from '../../public/icons/Github.svg'
