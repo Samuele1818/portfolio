@@ -3,16 +3,9 @@ import Tag from '../Tag'
 import Link from 'next/link'
 import { formatDate } from '../../../utils/dates'
 import './post.css'
+import { Metadata } from '../../../types/posts'
 
-type Props = {
- slug: string
- category: 'writeup' | 'article' | 'tutorial'
- title: string
- description: string
- author: string
- date: string
- tags: Array<string>
-}
+type Props = {} & Metadata
 
 const Post: FC<Props> = ({
  slug,

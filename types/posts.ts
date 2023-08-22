@@ -15,3 +15,5 @@ type Metadata = {
  category: 'tutorial' | 'write-up' | 'article'
  tags: Tag[]
 }
+
+export type { Metadata, Tag }

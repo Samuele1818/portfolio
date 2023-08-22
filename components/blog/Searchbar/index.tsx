@@ -3,6 +3,7 @@ import { FC, useMemo, useState } from 'react'
 import CTA from '../../CTA'
 import debounce from 'lodash.debounce'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 const Searchbar: FC = () => {
  const [opened, setOpened] = useState(false)
@@ -25,12 +26,20 @@ const Searchbar: FC = () => {
   []
  )
 
+ const { push } = useRouter()
+
  return (
   <div className='relative h-fit w-full overflow-visible'>
    <form
     className='h-fit w-full'
     onFocus={() => setOpened(true)}
-    onBlur={() => setOpened(false)}>
+    onBlur={() => setOpened(false)}
+    onSubmit={(e) => {
+     e.preventDefault()
+     push(
+      `/blog/search/${e.currentTarget.search.value}`
+     )
+    }}>
     <label
      htmlFor='default-search'
      className='sr-only mb-2 text-sm font-medium text-gray-900'>
@@ -54,6 +63,7 @@ const Searchbar: FC = () => {
       </svg>
      </div>
      <input
+      name='search'
       onInput={onSearch}
       type='search'
       className='xs-text md:sm-text block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 pl-10 text-lightDark focus:border-blue-500 focus:ring-blue-500'

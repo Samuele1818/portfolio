@@ -1,12 +1,10 @@
 import { getPosts } from './files'
+import { Metadata } from '../types/posts'
 
 const searchPosts = async (key: string) => {
  const searchTerm = key.toLowerCase()
 
- const filteredPosts: {
-  slug: string
-  title: string
- }[] = []
+ const filteredPosts: Metadata[] = []
 
  const posts = getPosts()
 
@@ -17,8 +15,7 @@ const searchPosts = async (key: string) => {
    meta.title.toLowerCase().includes(searchTerm)
   ) {
    filteredPosts.push({
-    slug: meta.slug,
-    title: meta.title,
+    ...meta,
    })
   }
  }
