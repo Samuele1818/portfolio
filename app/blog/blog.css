@@ -1,6 +1,6 @@
 .border-thin {
     animation: opacityBorderAnimation 1s ease-in-out;
-    @apply relative overflow-hidden border-blue-600 border-[1px] border-dashed border-t-0 border-b-0 border-opacity-30 px-12 py-6 rounded-lg
+    @apply relative border-blue-600 border-[1px] border-dashed border-t-0 border-b-0 border-opacity-30 px-12 py-6 rounded-lg
 }
 
 .border-thin::before {

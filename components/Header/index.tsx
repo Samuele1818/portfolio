@@ -4,7 +4,7 @@ import Logo from '../../public/logo.svg'
 import CTALink from '../CTALink'
 
 /*
-  Provides logo and the CTA to redirect to the Contact Form
+  Provides logo and the CTA to redirect to the Contact Menu
 */
 const Header: FC = () => {
  // Slidebar with hamburger menu for mobile devices with animation (works with the next container so in NextJs13 this code needs adjustments )
