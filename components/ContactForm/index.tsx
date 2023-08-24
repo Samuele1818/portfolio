@@ -8,7 +8,7 @@ import StackOverflow from '../../public/icons/StackOverflow.svg'
 import LinkedIn from '../../public/icons/LinkedIn.svg'
 import IconWrapper from '../IconWrapper'
 import { POST } from '../../app/api/sendEmail/route'
-import { useMemo, useRef } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import debounce from 'lodash.debounce'
 import { isValidForm } from '../../utils/validator'
 
@@ -21,26 +21,15 @@ const ContactForm = () => {
   useRef<HTMLParagraphElement>(null)
 
  const formRef = useRef<HTMLFormElement>(null)
- const sendButtonRef =
-  useRef<HTMLButtonElement>(null)
+ const [isEnabled, setIsEnabled] =
+  useState<boolean>(false)
 
  const debouncedChangeHandler = useMemo(
   () =>
    debounce(() => {
-    if (
-     !formRef.current ||
-     !sendButtonRef.current
-    )
-     return
-    if (isValidForm(formRef.current))
-     sendButtonRef.current.removeAttribute(
-      'disabled'
-     )
-    else
-     sendButtonRef.current.setAttribute(
-      'disabled',
-      'true'
-     )
+    if (!formRef.current) return
+
+    setIsEnabled(isValidForm(formRef.current))
    }, 300),
   []
  )
@@ -99,14 +88,16 @@ const ContactForm = () => {
    <div className='flex w-full flex-col gap-x-12 gap-y-12 xl:flex-row'>
     <Input
      label='Email'
-     inputType='email'
+     type='email'
      errorText='Provided email is invalid!'
+     required
      name='email'
     />
     <Input
      label='Name'
-     inputType='text'
+     type='text'
      minLength={4}
+     required
      errorText='Name invalid. Your name has to be as least 4 chars length'
      name='name'
     />
@@ -114,6 +105,8 @@ const ContactForm = () => {
    <Input
     label='Message'
     elementType='textarea'
+    required
+    rows={10}
     minLength={10}
     errorText='Message invalid. Your message has to be as least 10 chars length'
     name='message'
@@ -122,7 +115,7 @@ const ContactForm = () => {
     {/*  CTA to send the form with helper text */}
     <div className='flex flex-col'>
      <CTA
-      disabled
+      disabled={!isEnabled}
       className='rounded-none'
       fill='blue'
       icon={
