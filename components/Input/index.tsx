@@ -1,30 +1,27 @@
-import { createElement, FC } from 'react'
+import {
+ createElement,
+ FC,
+ InputHTMLAttributes,
+ TextareaHTMLAttributes,
+} from 'react'
 
-interface Props {
+type Props = {
  elementType?: 'input' | 'textarea' // Specify if element has to be an input or a textarea
- name?: string // Name of the field
- label?: string // Text of the floating label
- inputType?: string // Choose the input type (e.g. email, text)
- rows?: number // Specify number of rows in a textarea
- required?: boolean // Specify if input is required
- minLength?: number // Specify the min length of the content (works only if required is true)
- maxLength?: number // Specify the max length of the content (works only if required is true)
  errorText?: string // Text to display when input has error
-}
+ label?: string
+ required: boolean
+} & InputHTMLAttributes<HTMLInputElement> &
+ TextareaHTMLAttributes<HTMLTextAreaElement>
 
 /*
   Take user input and check if it is valid, show error if not.
 */
 const Input: FC<Props> = ({
- label,
- inputType = 'text',
  elementType = 'input',
- rows = 8,
- required = true,
- minLength,
- maxLength,
  errorText,
- name,
+ label,
+ required,
+ ...props
 }) => {
  // Create a unique id to link label and input
  const id = Math.random().toPrecision(5)
@@ -34,15 +31,10 @@ const Input: FC<Props> = ({
    {
     // Create the element based on the elementType
     createElement(elementType, {
-     type: inputType,
      id: id,
      className:
       'resize-none block px-2.5 pb-2.5 pt-4 w-full md-text text-dark bg-transparent border-[1px] border-bastille appearance-none focus:outline-none focus:ring-0 focus:border-violet-800 peer invalid:border-red-600',
      placeholder: ' ',
-     rows: rows, // Assign the number of rows in case the element would be a textarea
-     minLength: minLength, // Required is a mandatory to make minLength works
-     maxLength: maxLength,
-     name: name,
      onFocus: (e) => {
       e.target.setAttribute('init', 'true') // Set an attribute to check that the input has been opened at least one time
      },
@@ -50,6 +42,7 @@ const Input: FC<Props> = ({
       // On blur assign value to the input required attribute to avoid show error before input has been even selected if it's required
       e.target.required = required // specify if the filed is required to submit the form
      },
+     ...props,
     })
    }
    <label
