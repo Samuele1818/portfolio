@@ -5,7 +5,11 @@ import debounce from 'lodash.debounce'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
-const Searchbar: FC = () => {
+type Props = {
+ value?: string
+}
+
+const Searchbar: FC<Props> = ({ value }) => {
  const [opened, setOpened] = useState(false)
  const [results, setResults] =
   useState<{ slug: string; title: string }[]>()
@@ -68,6 +72,9 @@ const Searchbar: FC = () => {
       type='search'
       className='xs-text md:sm-text block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 pl-10 text-lightDark focus:border-blue-500 focus:ring-blue-500'
       placeholder='Search posts or categories...'
+      defaultValue={decodeURIComponent(
+       value || ''
+      )}
       required
      />
      <CTA

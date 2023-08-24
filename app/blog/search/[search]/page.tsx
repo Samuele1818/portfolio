@@ -20,7 +20,7 @@ const Index: NextPage = async ({
 
  return (
   <div>
-   <Searchbar />
+   <Searchbar value={search} />
    <section className='mt-24 grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-2 xl:grid-cols-3'>
     {results.map((result, index) => (
      <Post key={index} {...result} />

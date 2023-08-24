@@ -22,17 +22,6 @@ const searchPosts = async (
   )
   .filter((tag) => tag)
 
- console.debug(tags)
-
- // const tags = searchTerm
- //  .split(',')
- //  .map((tag) => tag.trim())
- //  .map(
- //   (tag) =>
- //    decodeURIComponent(tag.replace(/[\[\]]/g, '')) // Decode URL-encoded tags
- //  )
- //  .filter((tag) => tag)
-
  if (tags.length > 0) searchTerm = undefined
 
  for (const post of posts) {
@@ -61,7 +50,6 @@ const searchPosts = async (
      tags.includes(tag.toLowerCase())
     ))
   ) {
-   console.debug({ meta })
    filteredPosts.push({
     ...meta,
    })
