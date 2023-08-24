@@ -46,7 +46,7 @@ const TechnologiesSlider: FC = ({}) => {
    </div>
    <div className='flex flex-col items-center gap-y-4'>
     <Github className='h-12 w-12 lg:h-16 lg:w-16' />
-    <p>Githubdasdasdadasad</p>
+    <p>Github</p>
    </div>
   </div>
  )
