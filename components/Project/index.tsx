@@ -79,13 +79,13 @@ const Project: FC<Props> = ({
     </div>
    </div>
 
-   <div className='flex h-full flex-shrink items-start justify-start gap-x-4 overflow-clip bg-dark'>
+   <div className='flex h-full flex-shrink items-start justify-start overflow-clip bg-dark'>
     <Image
      width={2000}
      height={2000}
      src={image1}
      sizes='500px'
-     className='h-fit w-96 -rotate-6 rounded-lg transition-transform hover:scale-125'
+     className='h-fit w-96 -rotate-3 rounded-lg transition-transform hover:scale-125'
      alt='Project image'
     />
     <Image
@@ -93,7 +93,7 @@ const Project: FC<Props> = ({
      height={2000}
      sizes='500px'
      src={image2}
-     className='ml-auto mr-0 h-fit w-96 -rotate-6 rounded-lg transition-transform hover:scale-125 xl:ml-auto xl:mr-auto'
+     className='ml-auto mr-0 h-fit w-96 -rotate-3 rounded-lg transition-transform hover:scale-125 xl:ml-auto xl:mr-auto'
      alt='Project image'
     />
     {image3 && (
@@ -101,8 +101,7 @@ const Project: FC<Props> = ({
       width={2000}
       height={2000}
       src={image3}
-      sizes='(max-width: 1536px) 0, 500px'
-      className='hidden h-fit w-96 -rotate-6 rounded-lg transition-transform hover:scale-125 2xl:block'
+      className='hidden h-fit w-96 -rotate-3 rounded-lg transition-transform hover:scale-125 2xl:block'
       alt='Project image'
      />
     )}
