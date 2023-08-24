@@ -22,7 +22,8 @@ const searchPosts = async (
   )
   .filter((tag) => tag)
 
- if (tags.length > 0) searchTerm = undefined
+ const finalSearchParam =
+  tags.length > 0 ? tags.join(', ') : searchTerm
 
  for (const post of posts) {
   const { meta } = await import(`/posts/${post}`)
@@ -41,10 +42,10 @@ const searchPosts = async (
   )
 
   if (
-   (searchTerm &&
+   (finalSearchParam &&
     meta.title
      .toLowerCase()
-     .includes(searchTerm)) ||
+     .includes(finalSearchParam)) ||
    (tags &&
     flatTags.some((tag) =>
      tags.includes(tag.toLowerCase())

@@ -16,7 +16,9 @@ const Index: NextPage = async ({
 }: any) => {
  const { search } = params
 
- const results = await searchPosts(search)
+ const results = await searchPosts(
+  decodeURIComponent(search)
+ )
 
  return (
   <div>
