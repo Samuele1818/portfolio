@@ -26,6 +26,7 @@ const Footer: FC = ({}) => {
         <li className='mb-4'>
          <Link
           href='/#contact'
+          passHref
           className='hover:underline'>
           Contact me
          </Link>
