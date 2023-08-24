@@ -1,9 +1,13 @@
 'use client'
-import Link from 'next/link'
-import { useState } from 'react'
+import {
+ FC,
+ useEffect,
+ useRef,
+ useState,
+} from 'react'
 import { Toc } from '../../../types/markdown'
 
-export interface TOCInlineProps {
+type Props = {
  toc: Toc
  indentDepth?: number
  fromHeading?: number
@@ -15,24 +19,14 @@ export interface TOCInlineProps {
  * Generates an inline table of contents
  * Exclude titles matching this string (new RegExp('^(' + string + ')$', 'i')).
  * If an array is passed the array gets joined with a pipe (new RegExp('^(' + array.join('|') + ')$', 'i')).
- *
- * @param {TOCInlineProps} {
- *   toc,
- *   indentDepth = 3,
- *   fromHeading = 1,
- *   toHeading = 6,
- *   asDisclosure = false,
- *   exclude = '',
- * }
- *
  */
-const TOCInline = ({
+const TOCInline: FC<Props> = ({
  toc,
  indentDepth = 2,
  fromHeading = 1,
  toHeading = 1,
  exclude = '',
-}: TOCInlineProps) => {
+}) => {
  const re = Array.isArray(exclude)
   ? new RegExp(
      '^(' + exclude.join('|') + ')$',
@@ -47,29 +41,81 @@ const TOCInline = ({
    !re.test(heading.value)
  )
 
- const [currentHref, setCurrentHref] =
-  useState('')
+ // Ref for storing the observer instance
+ const observerRef =
+  useRef<IntersectionObserver | null>(null)
 
+ const [currentHash, setCurrentHash] =
+  useState<string>('') // State to store current hash
+
+ useEffect(() => {
+  // Function to handle hash change
+  const handleHashChange = () => {
+   setCurrentHash(window.location.hash)
+  }
+
+  // Attach the hashchange event listener
+  window.addEventListener(
+   'hashchange',
+   handleHashChange
+  )
+
+  // Call the handler immediately to initialize the current hash
+  handleHashChange()
+
+  observerRef.current = new IntersectionObserver(
+   (entries) => {
+    entries.forEach((entry) => {
+     if (entry.isIntersecting) {
+      setCurrentHash(`#${entry.target.id}`)
+     }
+    })
+   },
+   {
+    threshold: 1, // Adjust as needed
+   }
+  )
+
+  // Attach the observer to each heading
+  filteredToc.forEach((heading) => {
+   const target = document.querySelector(
+    heading.url
+   )
+   if (target) {
+    observerRef.current?.observe(target)
+   }
+  })
+
+  // Clean up the event listener when the component unmounts
+  return () => {
+   window.removeEventListener(
+    'hashchange',
+    handleHashChange
+   )
+   if (observerRef.current) {
+    observerRef.current.disconnect()
+   }
+  }
+ }, []) // Empty dependency array ensures the effect runs once on mount
+
+ // FIXME: Replace with link when it will work or when a method to get hash will be introduced
  return (
   <ul className='flex flex-col gap-y-5'>
    {filteredToc.map((heading) => (
     <li
-     key={heading.value}
+     key={heading.url}
      className={`${
       heading.depth >= indentDepth && 'ml-6'
      }`}>
-     <Link
-      onClick={(e) => {
-       setCurrentHref(e.currentTarget.href)
-      }}
+     <a
       className={`${
-       currentHref.indexOf(heading.url) != -1
-        ? 'text-[#76A9FA]'
-        : ''
-      } md-text text-dark transition-colors hover:text-gray-500`}
+       heading.url === currentHash
+        ? 'text-blue-600'
+        : 'text-dark'
+      } md-text transition-colors hover:text-gray-500`}
       href={heading.url}>
       {heading.value}
-     </Link>
+     </a>
     </li>
    ))}
   </ul>
