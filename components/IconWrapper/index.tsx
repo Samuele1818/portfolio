@@ -18,7 +18,7 @@ const IconWrapper: FC<Props> = ({
   <Link
    href={link}
    target='_blank'
-   className='border-bastille h-fit w-fit cursor-pointer rounded-full border-[1px] bg-white p-3 text-dark transition-all hover:text-blue-600 [&_svg]:h-8 [&_svg]:w-8'>
+   className='border-bastille h-fit w-fit cursor-pointer rounded-full border-[1px] bg-white p-3 text-dark transition-all hover:border-blue-600 hover:text-blue-600 [&_svg]:h-8 [&_svg]:w-8'>
    {icon}
   </Link>
  )
