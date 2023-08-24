@@ -36,6 +36,7 @@ const ContactForm = () => {
 
  return (
   <form
+   id='contact'
    ref={formRef}
    onChange={debouncedChangeHandler}
    className='flex w-full flex-col gap-y-12'

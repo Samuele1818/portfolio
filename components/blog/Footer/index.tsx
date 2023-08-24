@@ -25,7 +25,7 @@ const Footer: FC = ({}) => {
        <ul className='text-lightDark'>
         <li className='mb-4'>
          <Link
-          href='/#contact-me'
+          href='/#contact'
           className='hover:underline'>
           Contact me
          </Link>

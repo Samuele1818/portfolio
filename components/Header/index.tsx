@@ -121,7 +121,7 @@ const Header: FC = () => {
     <CTALink
      hasIcon={false}
      text='Contact Me'
-     href='/#contact-form'
+     href='/#contact'
     />
    </div>
   </header>

@@ -10,7 +10,8 @@ const Contact: FC = ({}) => {
    <div className='flex flex-wrap items-center gap-x-6 gap-y-6'>
     <CTALink
      hasIcon={false}
-     href='/#contact-me'
+     href='/#contact'
+     passHref
      fill='blue'
      text='Contact me'
     />
