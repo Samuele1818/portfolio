@@ -85,16 +85,18 @@ const Searchbar: FC<Props> = ({ value }) => {
     </div>
    </form>
    {opened && (
-    <section className='absolute z-10 flex h-fit w-full flex-col rounded-b-lg bg-white shadow-lg'>
+    <ul className='absolute z-10 flex h-fit w-full flex-col rounded-b-lg bg-white shadow-lg'>
      {results?.map((result, index) => (
-      <Link
-       key={index}
-       href={`/blog/${result.slug}`}
-       className='px-4 py-2 text-blue-600 hover:bg-blue-100 hover:text-blue-800'>
-       {result.title}
-      </Link>
+      <li key={index}>
+       <Link
+        onMouseDown={(e) => e.preventDefault()}
+        href={`/blog/${result.slug}`}
+        className='px-4 py-2 text-blue-600 hover:bg-blue-100 hover:text-blue-800'>
+        {result.title}
+       </Link>
+      </li>
      ))}
-    </section>
+    </ul>
    )}
   </div>
  )
