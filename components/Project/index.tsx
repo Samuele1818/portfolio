@@ -45,15 +45,9 @@ const Project: FC<Props> = ({
      href='https://a-boutall.com'
      target='_blank'
      className='xl-text group inline-flex cursor-pointer items-center font-bold text-light'>
-     <RightArrow
-      viewBox='0 0 13 8'
-      className='h-fit w-0 transition-all delay-75 group-hover:w-10'
-     />
+     <RightArrow className='h-fit w-0 transition-all delay-75 group-hover:w-10' />
      {title}
-     <RightArrow
-      viewBox='0 0 13 8'
-      className='ml-4 h-fit w-10 opacity-75 transition-all group-hover:w-0 group-hover:translate-x-12'
-     />
+     <RightArrow className='ml-4 h-fit w-10 opacity-75 transition-all group-hover:w-0 group-hover:translate-x-12' />
     </Link>
 
     <p className='mt-2 first-letter:capitalize'>
