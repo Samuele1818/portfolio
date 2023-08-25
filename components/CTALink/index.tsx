@@ -40,7 +40,7 @@ const CTALink: FC<Props> = ({
      : variant == 'primary'
      ? 'primary-violet'
      : 'secondary-violet'
-   } inline-flex h-fit w-fit items-center gap-x-2 rounded-lg border-2 px-4 py-2 text-white transition-all disabled:opacity-60`}>
+   } inline-flex h-fit w-fit items-center gap-x-2 rounded-lg border-2 px-4 py-2 transition-all disabled:opacity-60`}>
    {text}
    {hasIcon && icon}
   </Link>
