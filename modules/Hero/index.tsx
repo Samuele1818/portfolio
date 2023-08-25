@@ -56,7 +56,7 @@ const Hero: FC = () => {
     </h2>
     <CTALink
      href='#projects'
-     icon={<RightArrow />}
+     icon={<RightArrow className='h-fit w-6' />}
      className='hr-align-lg mt-8 font-bold'
      text='View projects'
     />
