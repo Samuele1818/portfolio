@@ -4,6 +4,7 @@ import CTA from '../../CTA'
 import debounce from 'lodash.debounce'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import RightArrow from '../../../public/icons/RightArrow.svg'
 
 type Props = {
  value?: string
@@ -87,12 +88,15 @@ const Searchbar: FC<Props> = ({ value }) => {
    {opened && (
     <ul className='absolute z-10 flex h-fit w-full flex-col rounded-b-lg bg-white shadow-lg'>
      {results?.map((result, index) => (
-      <li key={index}>
+      <li
+       key={index}
+       className='w-full px-4 py-4 text-blue-600 hover:bg-blue-100 hover:text-blue-800'
+       onMouseDown={(e) => e.preventDefault()}>
        <Link
-        onMouseDown={(e) => e.preventDefault()}
         href={`/blog/${result.slug}`}
-        className='px-4 py-2 text-blue-600 hover:bg-blue-100 hover:text-blue-800'>
+        className='inline-flex w-full items-center justify-between gap-x-4 whitespace-break-spaces'>
         {result.title}
+        <RightArrow className='h-fit w-6 flex-shrink-0' />
        </Link>
       </li>
      ))}
