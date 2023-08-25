@@ -1,5 +1,6 @@
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypePrismPlus from "rehype-prism-plus";
 import remarkGmf from "remark-gfm";
 import createMDX from "@next/mdx"
 import {s} from 'hastscript';
@@ -12,6 +13,7 @@ const withMDX = createMDX({
         ],
         rehypePlugins: [
             rehypeSlug,
+            rehypePrismPlus,
             [rehypeAutolinkHeadings, {
                 behavior: 'prepend',
                 properties: {
