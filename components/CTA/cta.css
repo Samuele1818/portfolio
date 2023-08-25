@@ -1,5 +1,5 @@
 .primary-violet {
-    @apply bg-violet-800 hover:bg-white hover:text-violet-800 border-violet-800
+    @apply bg-violet-800 hover:bg-white hover:text-violet-800 border-violet-800 text-white
 }
 
 .secondary-violet {
@@ -7,7 +7,7 @@
 }
 
 .primary-blue {
-    @apply bg-blue-600 hover:bg-white hover:text-blue-600 border-blue-600
+    @apply bg-blue-600 hover:bg-white hover:text-blue-600 border-blue-600 text-white
 }
 
 .secondary-blue {
