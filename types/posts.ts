@@ -5,6 +5,7 @@ type Tag =
  | 'html'
  | 'css'
  | 'tailwindcss'
+ | 'python'
 
 type Metadata = {
  slug: string
