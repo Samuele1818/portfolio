@@ -32,8 +32,6 @@ const getRecentPosts = async (
   )
  )
 
- if (posts.length < numberOfPosts) return null
-
  posts.sort((a, b) => {
   const dateA = new Date(a.meta.date).getTime() // Convert to timestamp
   const dateB = new Date(b.meta.date).getTime() // Convert to timestamp
