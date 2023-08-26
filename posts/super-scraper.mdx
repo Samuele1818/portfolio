@@ -1,0 +1,30 @@
+import {Metadata} from "../types/posts";
+export const meta: Metadata = {
+    slug: "super-scraper",
+    title: "The S(uper)Scraper",
+    description: ""
+    category: "write-up",
+    author: "Samuele Sciatore",
+    date: "27-08-2023",
+    tags: ["python"]
+}
+
+Let's say you want to do an analysis of a website, you want to search all the information that can be useful.
+For example, you want to extract:
+* Metadata
+* Technologies used
+* Contacts
+* Name of people (With the relative role if specified)
+* Pages with forms
+
+what can you do? Search this information manually, or use some tools.
+
+Now you can use a simple an unique tool that will store the report in a simple and well organized log file that includes all the information you need.
+
+# The idea
+The idea is simple, I want to optimize the time necessary to scan a website.
+I want a tool that integrates the functions of the various tools that are needed to do a full scan (Nmap, Wappalyzer, Dirbuster, etc.)
+
+## Why python
+
+Cause is a simple language, with a vast gamma of library already created for 
