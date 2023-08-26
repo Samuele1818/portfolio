@@ -3,6 +3,7 @@ import Communication from '../../../public/icons/misc/Communication.svg'
 import ProblemSolving from '../../../public/icons/misc/ProblemSolving.svg'
 import Document from '../../../public/icons/misc/Document.svg'
 import Teamwork from '../../../public/icons/misc/Teamwork.svg'
+import Linux from '../../../public/icons/misc/Linux.svg'
 
 const Misc: FC = ({}) => {
  return (
@@ -22,6 +23,10 @@ const Misc: FC = ({}) => {
    <div className='flex flex-col items-center gap-y-4'>
     <Teamwork className='h-12 w-12 lg:h-16 lg:w-16' />
     <p>Teamwork</p>
+   </div>
+   <div className='flex flex-col items-center gap-y-4'>
+    <Linux className='h-12 w-12 lg:h-16 lg:w-16' />
+    <p>Linux</p>
    </div>
   </div>
  )
