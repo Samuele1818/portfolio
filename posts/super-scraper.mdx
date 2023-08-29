@@ -1,6 +1,6 @@
 export const meta = {
     slug: "super-scraper",
-    title: "The S(uper)Scraper",
+    title: "The S(upper)Scraper",
     description: "Let's say you want to do an analysis of a website, you want to search all the information that can be useful",
     category: "write-up",
     author: "Samuele Sciatore",
@@ -16,7 +16,7 @@ For example, you want to extract:
 * Name of people (With the relative role if specified)
 * Pages with forms
 
-what can you do? Search this information manually, or use some tools.
+What can you do? Search this information manually, or use some tools.
 
 Now you can use a simple unique tool that will store the report in a simple and well-organized log file that includes all the information you need.
 
@@ -26,15 +26,17 @@ I want a tool that integrates the functions of the various tools that are needed
 
 ## Why Python
 
-Cause is simple to use, with a vast gamma of library useful for my purposes. Moreover, I want to improve my skills with this language.
+Cause is simple to use, with a vast gamma of a library useful for my purposes.
+Moreover, I want to improve my skills with this language.
 
 ## Check the project
 
-You can find [the project on my Github](https://github.com/Samuele1818/SScraper) you can contribute or open an issue. Feel free to suggest new features and functionalities.
+You can find [the project on my GitHub](https://github.com/Samuele1818/SScraper) you can contribute or open an issue.
+Feel free to suggest new features and functionalities.
 
 # The plan
 
-When you start a new project, you want to create a plan, to avoid wandering in the void.
+When you start a new project, you want to create a plan to avoid wandering in the void.
 
 ## Features
 * Create a log file in `.md` format in which store
@@ -44,20 +46,23 @@ When you start a new project, you want to create a plan, to avoid wandering in t
 * Name of people (With the relative role if specified)
 * Pages with forms
 
-and with a [well defined structure]((https://github.com/Samuele1818/SScraper/blob/master/README.md) to be unsterstandable for everyone.
+and with a
+[well defined structure]((https://github.com/Samuele1818/SScraper/blob/master/README.md)
+to be understandably for everyone.
 
 - The tool has to be very easy to use and has to require only the URL of the website
 
 - Every page of the website has to be scanned
 
 ## Risks
-I think this project has no risks that have to be included in a plan, but I did research to make sure all the libraries that I needed existed.
+I think this project has no risks that have to be included in a plan,
+but I did research to make sure all the libraries that I needed exist.
 
 # Developing
 Now we can start writing the program.
 First of all, how we can structure the project? What functions do we need?
 
-Ok calm, let's create the `main.py.
+Ok calm, let's create the `main.py`.
 We need to take a URL from the user and make sure that it is a valid URL.
 
 ```py title="main.py"
@@ -75,7 +80,7 @@ if __name__ == '__main__':
 
 Let's say you want to do an analysis of a website, you want to search all the information that can be useful.
 
-```python validators.py
+```py title="validators.py"
 def is_valid_url(session: HTMLSession, url: str):
 	if url == "":
 		return False
@@ -92,10 +97,11 @@ def is_valid_url(session: HTMLSession, url: str):
 At first, I tried to use the `requests` library, but something went wrong cause the page seemed to be not fully loaded.
 I investigated further and discovered that if a page uses JavaScript, we need to attend until all the code is executed so the page is fully loaded.
 
-How? Using [requests_html](https://requests.readthedocs.io/projects/requests-html/en/latest/)  instead of [requests](https://requests.readthedocs.io/en/latest/).
+How?
+Using [requests_html](https://requests.readthedocs.io/projects/requests-html/en/latest/) instead of [requests](https://requests.readthedocs.io/en/latest/).
 With this new library we can create the `get_page` method
 
-```python spider.py
+```py title="spider.py"
 def get_page(session: HTMLSession, url: str):
 	# Get the page
 	r = session.get(url)
@@ -115,14 +121,14 @@ this function returns the HTML after waiting for the execution of JavaScript cod
 All the data has to be stored in a file, so we have to handle files.
 We want to use the `md` file format, for this, we use a library called [MdUtils](https://github.com/didix21/mdutils), a set of basic utilities to manage `.md` files.
 When the program starts, a log file has to be created, so in the main
-```python main.py
+```py title="main.py"
 log = create_log()
 ```
 
 this file will be passed as an argument at some functions to allow logging.
 
 Let's take a look at the `create_log` function.
-```python files.py
+```py title="files.py"
 def create_log():
 	try:
 	# Create log folder if not exists
@@ -144,22 +150,24 @@ def create_log():
 	return None
 ```
 
-we see the use of the `os` module to prevent bugs on different operating systems.
+We see the use of the `os` module to prevent bugs on different operating systems.
 We create the log folder if not exist already, and in it, we create the new log file.
-To name the file we use the current date, to prevent overlapping names.
+To name the file, we use the current date to prevent overlapping names.
 
 ## Discovering
 We have to get all the pages of the site, but how?
 
-In the main create a dictionary with all the links each associated with a letter, that can be a `Y` or a `N`. If the link is associated with an `N` means that it was not already scanned, otherwise, it is marked by a `Y`.
+In the main create a dictionary with all the links each associated with a letter, that can be a `Y` or a `N`.
+If the link is associated with an `N` means that it was not yet scanned, otherwise, it is marked by a `Y`.
 
-How we can discover the other pages starting from the home? We have to save all the links discovered on each page, taking care to avoid duplicated ones.
-`
-```python main.py
+How can we discover the other pages starting from the home?
+We have to save all the links discovered on each page, taking care to avoid duplicated ones.
+
+```py title="main.py"
 discovered_links = {url: "N"}
 ```
 
-```python
+```py title="scrapers.py"
 def get_links(webpage: object, log: MarkDownFile | None, discovered_links: dict):
 	homepage_url = list(discovered_links)[0]
 	log.append_end("### Links\n")
@@ -181,12 +189,12 @@ def get_links(webpage: object, log: MarkDownFile | None, discovered_links: dict)
 While analyzing a page `get_links` will be invoked to add new links to the `discovered_links` dictionary.
 
 ## Analyzing
-At this point we need a function to analyze every page.
+At this point, we need a function to analyze every page.
 
 ### Page analysis
 Let's create the function `analyze_page`
 
-```python scrapers.py
+```py title="scrapers.py"
 def analyze_page(page: object, log: MarkDownFile | None, url: str, discovered_links: dict):
 	# Log the page url
 	log.append_end(f"## {url}\n")
@@ -202,14 +210,14 @@ def analyze_page(page: object, log: MarkDownFile | None, url: str, discovered_li
 	contacts(page, log)
 ```
 
-as we can see this function call a method for each information that we want to retrieve.
+as we can see, this function, call a method for each information that we want to retrieve.
 
 ### Global analysis
 There are some data that are not page related such as the `robot.txt` or the `sitemap.xml`.
 
 So in the `main` we can find call to some methods
 
-```python main.py
+```py title="main.py"
 files(session, url, log)
 whois_check(url, log)
 technologies(url, log)
