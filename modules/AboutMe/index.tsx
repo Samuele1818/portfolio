@@ -47,7 +47,7 @@ const AboutMe: FC = () => {
       hacking.
      </p>
     </div>
-    <div className='vertical-lines w-64 flex-shrink-0 lg:w-1/3'>
+    <div className='v-lines  w-64 flex-shrink-0 lg:w-1/3'>
      <Image
       src={Me}
       alt='Photo of me'
@@ -60,7 +60,7 @@ const AboutMe: FC = () => {
      {cardsContent.map((item, index) => (
       <Card
        key={index}
-       className='vertical-lines lg:horizontal-lines h-auto w-full'>
+       className='lines  h-auto w-full'>
        <div className='w-full text-center'>
         <h2 className='xl-text font-bold'>
          {item.title}

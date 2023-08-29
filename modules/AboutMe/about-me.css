@@ -1,7 +1,5 @@
 @import '../../styles/code.css';
 
-@tailwind utilities;
-
 @property --angle {
     syntax: '<angle>';
     initial-value: 90deg;
@@ -27,27 +25,34 @@
     --c2: rgba(168, 239, 255, 0.2);
 }
 
-@layer utilities {
-    .horizontal-lines {
-        @apply relative flex
-    }
+.lines {
+    @apply relative flex justify-center
+}
 
-    .horizontal-lines:after {
+.lines:after {
+    content: "";
+    border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 10;
+    animation: borderRotate 3.6s linear infinite forwards;
+    @apply w-8 h-full top-full absolute border-r-2 border-l-2 last:hidden
+}
+
+.v-lines {
+    @apply relative flex justify-center
+}
+
+.v-lines:after {
+    content: "";
+    border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 10;
+    animation: borderRotate 3.6s linear infinite forwards;
+    @apply w-8 h-full top-full absolute border-r-2 border-l-2 last:hidden
+}
+
+@media screen(lg) {
+    .lines:after {
         content: "";
         border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 10;
         animation: borderRotate var(--d) linear infinite forwards;
         @apply w-24 h-8 my-auto top-0 bottom-0 right-full absolute border-l-0 border-r-0 border-t-2 border-b-2 first:hidden last:block
-    }
-
-    .vertical-lines {
-        @apply relative flex justify-center
-    }
-
-    .vertical-lines:after {
-        content: "";
-        border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 10;
-        animation: borderRotate 3.6s linear infinite forwards;
-        @apply w-8 h-full top-full absolute border-r-2 border-l-2 last:hidden
     }
 }
 
