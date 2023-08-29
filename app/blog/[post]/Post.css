@@ -1,10 +1,10 @@
 @import '../../../styles/code.css';
 
-*:is(h1, h2, h3, h4, h5, h6) {
+article > *:is(h1, h2, h3, h4, h5, h6) {
     @apply flex items-center relative
 }
 
-*:is(h1, h2, h3, h4, h5, h6):hover > .autolink-header {
+article > *:is(h1, h2, h3, h4, h5, h6):hover > .autolink-header {
     @apply block
 }
 

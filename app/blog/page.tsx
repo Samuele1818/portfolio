@@ -20,11 +20,11 @@ const Index: NextPage = async () => {
   <main className='flex w-full flex-col items-center'>
    <div className='max-w-screen-xl'>
     <div className='flex w-full flex-col items-center'>
-     <h1 className='hero-title border-thin w-full !border-t-[1px] text-center'>
+     <h1 className='hero-title border-thin w-full !border-t-[1px] text-center text-violet-800'>
       See experiences of developing
      </h1>
 
-     <h2 className='hero-sub border-thin w-full text-center'>
+     <h2 className='hero-sub border-thin w-full text-center !text-lightDark'>
       Well made and useful write-ups, tutorials
       and articles,{' '}
       <strong>

@@ -113,12 +113,12 @@
 
     .hero-title {
         font-size: max(48px, min(5vw, 76px));
-        @apply font-extrabold text-violet-800
+        @apply font-extrabold
     }
 
     .hero-sub {
         font-size: max(15px, min(2vw, 20px));
-        @apply text-lightDark
+        @apply text-slate-400
     }
 
     .xl2-text {
