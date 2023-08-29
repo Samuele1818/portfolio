@@ -1,4 +1,8 @@
-import { Metadata, NextPage } from 'next'
+import {
+ Metadata,
+ NextPage,
+ ResolvingMetadata,
+} from 'next'
 import dynamic from 'next/dynamic'
 import Loader from '../../../components/Loader'
 import { notFound } from 'next/navigation'
@@ -13,11 +17,26 @@ import Tag from '../../../components/blog/Tag'
 import { formatDate } from '../../../utils/dates'
 import RelatedPost from '../../../components/blog/RelatedPost'
 
-export const metadata: Metadata = {
- title: 'Samuele Sciatore',
- description: "Samuele Sciatore's blog",
- viewport:
-  'initial-scale=1.0, width=device-width',
+type Props = {
+ params: { post: string }
+}
+
+export async function generateMetadata(
+ { params }: Props,
+ parent: ResolvingMetadata
+): Promise<Metadata> {
+ // read route params
+ const { post } = params
+
+ const { meta } = await import(
+  `/posts/${post}.mdx`
+ )
+
+ return {
+  title: meta.title,
+  description: meta.description,
+  keywords: meta.tags,
+ }
 }
 
 const Index: NextPage = async ({
