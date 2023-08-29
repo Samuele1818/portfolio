@@ -1,21 +1,9 @@
 import { FC } from 'react'
-import Window from '../../../components/Window'
-import MaintainIcon from '../../../public/assets/about-me/process/icons/Maintain.svg'
+import Window from '../../../../components/Window'
+import MaintainIcon from '../../../../public/assets/about-me/process/icons/Maintain.svg'
+import Code from './code.mdx'
 
-import CodeBlock from '../../../components/CodeBlock'
-
-const Maintain: FC = () => {
- const jsonCode = `
-{
-   "name": "sample-app",
-   "version": "1.0.0",
-   "dependencies": {
-      "vulnerable-package": "1.2.3" // Vulnerable version,
-      "vulnerable-package": "1.2.4" // Fixed version
-   }
-}
-`
-
+const Index: FC = () => {
  return (
   <>
    <h1 className='xl-text mt-48 whitespace-pre-line text-center'>
@@ -42,14 +30,11 @@ const Maintain: FC = () => {
     </div>
 
     <Window>
-     <CodeBlock
-      code={jsonCode}
-      language='javascript'
-     />
+     <Code />
     </Window>
    </div>
   </>
  )
 }
 
-export default Maintain
+export default Index

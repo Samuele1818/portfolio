@@ -1,34 +1,11 @@
 import { FC } from 'react'
-import Window from '../../../components/Window'
-import Development from '../../../public/assets/about-me/process/icons/Development.svg'
-import Test from '../../../public/assets/about-me/process/icons/Test.svg'
-import CodeBlock from '../../../components/CodeBlock'
+import Window from '../../../../components/Window'
+import Development from '../../../../public/assets/about-me/process/icons/Development.svg'
+import Test from '../../../../public/assets/about-me/process/icons/Test.svg'
+import Code from './code.mdx'
+import TestCode from './test.mdx'
 
 const Begin: FC = () => {
- const componentCode = `
-const Counter = () => {
-  const [count, setCount] = useState(0);
-  const increment = () => setCount(count + 1);
-  return (
-    <div>
-      <h1>Counter App</h1>
-      <p>Count: {count}</p>
-      <button onClick={increment}>
-       Increment
-      </button>
-    </div>
-  );
-}`
-
- const testCode = `
-test('renders initial count', 
- () => {
-  const { getByText } = render(<Counter />);
-  expect(getByText("Count: 8")).toBeInTheDocument();
- }
-);
-`
-
  return (
   <>
    <h1 className='xl-text mt-48 whitespace-pre-line text-center'>
@@ -41,16 +18,10 @@ test('renders initial count',
    <div className='mx-auto mt-12 flex flex-col items-center gap-x-60 gap-y-12 lg:flex-row'>
     <div className='relative flex flex-col'>
      <Window className='w-full'>
-      <CodeBlock
-       code={componentCode}
-       language='javascript'
-      />
+      <Code />
      </Window>
      <Window className='z-10 mb-auto ml-0 mt-0 w-full sm:-mt-12 sm:ml-12'>
-      <CodeBlock
-       code={testCode}
-       language='javascript'
-      />
+      <TestCode />
      </Window>
     </div>
 

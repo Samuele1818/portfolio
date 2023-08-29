@@ -1,3 +1,5 @@
+@import '../../styles/code.css';
+
 @tailwind utilities;
 
 @property --angle {
@@ -47,6 +49,26 @@
         animation: borderRotate 3.6s linear infinite forwards;
         @apply w-8 h-full top-full absolute border-r-2 border-l-2 last:hidden
     }
+}
+
+pre {
+    @apply max-w-full
+}
+
+pre > code {
+    @apply !whitespace-break-spaces
+}
+
+[data-rehype-pretty-code-fragment] {
+    @apply mt-6
+}
+
+[data-chars-id='old-version'] {
+    @apply !text-pink-300 bg-rose-800/50 border-b-pink-600 font-bold;
+}
+
+[data-chars-id='new-version'] {
+    @apply bg-green-400/50 border-b-green-100 font-bold;
 }
 
 @keyframes borderRotate {

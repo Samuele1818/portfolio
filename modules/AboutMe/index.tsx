@@ -8,7 +8,7 @@ import Card from '../../components/Card'
 import SkillsSlider from '../../components/SkillsSlider'
 import Begin from './process/begin'
 import Work from './process/work'
-import Maintain from './process/maintain'
+import Index from './process/maintain'
 import CTALink from '../../components/CTALink'
 
 /*
@@ -137,7 +137,7 @@ const AboutMe: FC = () => {
     <div className='flex w-full flex-col items-center'>
      <Begin />
      <Work />
-     <Maintain />
+     <Index />
     </div>
    </div>
   </section>
