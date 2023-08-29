@@ -1,6 +1,7 @@
 import { Metadata, NextPage } from 'next'
 import dynamic from 'next/dynamic'
 import Loader from '../components/Loader'
+import Hero from '../modules/Hero'
 
 // Set metadata of the page
 export const metadata: Metadata = {
@@ -17,12 +18,6 @@ export const metadata: Metadata = {
 const Index: NextPage = () => {
  const DynamicHeader = dynamic(
   () => import('../components/Header'),
-  {
-   loading: () => <Loader />,
-  }
- )
- const DynamicHero = dynamic(
-  () => import('../modules/Hero'),
   {
    loading: () => <Loader />,
   }
@@ -51,7 +46,7 @@ const Index: NextPage = () => {
  return (
   <div className='h-full w-full overflow-x-clip bg-white'>
    <DynamicHeader />
-   <DynamicHero />
+   <Hero />
    <DynamicProjects />
    <DynamicAboutMe />
    <DynamicFooter />
