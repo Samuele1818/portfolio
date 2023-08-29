@@ -12,7 +12,6 @@ import {
 import Tag from '../../../components/blog/Tag'
 import { formatDate } from '../../../utils/dates'
 import RelatedPost from '../../../components/blog/RelatedPost'
-import '../../../components/CodeBlock/vscode-dark-plus.css'
 
 export const metadata: Metadata = {
  title: 'Samuele Sciatore',

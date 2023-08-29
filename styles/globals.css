@@ -78,6 +78,15 @@
         transform: scaleX(1);
         transform-origin: bottom center;
     }
+
+    pre {
+        @apply rounded-lg
+    }
+
+    pre > code {
+        @apply grid;
+        counter-reset: line;
+    }
 }
 
 @layer utilities {

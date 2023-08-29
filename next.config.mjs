@@ -1,9 +1,17 @@
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypePrismPlus from "rehype-prism-plus";
+import rehypePrettyCode from "rehype-pretty-code";
 import remarkGmf from "remark-gfm";
 import createMDX from "@next/mdx"
 import {s} from 'hastscript';
+import {readFileSync} from "fs";
+
+const options = {
+    keepBackground: false,
+    theme: JSON.parse(
+        readFileSync(new URL('./highlight/moonlight-ii.json', import.meta.url))
+    ),
+}
 
 const withMDX = createMDX({
     extension: /\.mdx?$/,
@@ -13,7 +21,7 @@ const withMDX = createMDX({
         ],
         rehypePlugins: [
             rehypeSlug,
-            rehypePrismPlus,
+            [rehypePrettyCode, options],
             [rehypeAutolinkHeadings, {
                 behavior: 'prepend',
                 properties: {
