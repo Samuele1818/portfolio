@@ -10,6 +10,13 @@ export const metadata: Metadata = {
   "Home of Samuele Sciatore's portfolio website",
  viewport:
   'initial-scale=1.0, width=device-width',
+ keywords: [
+  'portfolio',
+  'Samuele Sciatore',
+  'Developer',
+  'Engineer',
+  'Software',
+ ],
 }
 
 /*
