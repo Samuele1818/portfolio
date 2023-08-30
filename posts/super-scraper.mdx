@@ -60,7 +60,7 @@ First of all, how we can structure the project? What functions do we need?
 Ok calm, let's create the `main.py.
 We need to take a URL from the user and make sure that it is a valid URL.
 
-```py main.py
+```py title="main.py"
 if __name__ == '__main__':
 	# Testing URL
 	url = ""
@@ -75,7 +75,7 @@ if __name__ == '__main__':
 
 Let's say you want to do an analysis of a website, you want to search all the information that can be useful.
 
-```py validators.py
+```py title="validators.py"
 def is_valid_url(session: HTMLSession, url: str):
 	if url == "":
 		return False
@@ -95,7 +95,7 @@ I investigated further and discovered that if a page uses JavaScript, we need to
 How? Using [requests_html](https://requests.readthedocs.io/projects/requests-html/en/latest/) instead of [requests](https://requests.readthedocs.io/en/latest/).
 With this new library we can create the `get_page` method
 
-```py spider.py
+```py title="spider.py"
 def get_page(session: HTMLSession, url: str):
 	# Get the page
 	r = session.get(url)
@@ -115,14 +115,14 @@ this function returns the HTML after waiting for the execution of JavaScript cod
 All the data has to be stored in a file, so we have to handle files.
 We want to use the `md` file format, for this, we use a library called [MdUtils](https://github.com/didix21/mdutils), a set of basic utilities to manage `.md` files.
 When the program starts, a log file has to be created, so in the main
-```py main.py
+```py title="main.py"
 log = create_log()
 ```
 
 this file will be passed as an argument at some functions to allow logging.
 
 Let's take a look at the `create_log` function.
-```py files.py
+```py title="files.py"
 def create_log():
 	try:
 	# Create log folder if not exists
@@ -155,7 +155,7 @@ In the main create a dictionary with all the links each associated with a letter
 
 How can we discover the other pages starting from the home? We have to save all the links discovered on each page, taking care to avoid duplicated ones.
 `
-```py main.py
+```py title="main.py"
 discovered_links = {url: "N"}
 ```
 
@@ -209,7 +209,7 @@ There are some data that are not page related such as the `robot.txt` or the `si
 
 So in the `main` we can find call to some methods
 
-```py main.py
+```py title="main.py"
 files(session, url, log)
 nmap_scan(url, log)
 technologies(url, log)
