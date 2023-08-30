@@ -159,7 +159,7 @@ How can we discover the other pages starting from the home? We have to save all 
 discovered_links = {url: "N"}
 ```
 
-```py
+```py title="spider.py"
 def get_links(webpage: object, log: MarkDownFile | None, discovered_links: dict):
 	homepage_url = list(discovered_links)[0]
 	log.append_end("### Links\n")
@@ -186,7 +186,7 @@ At this point, we need a function to analyze every page.
 ### Page analysis
 Let's create the function `analyze_page`
 
-```py scrapers.py
+```py title="scrapers.py"
 def analyze_page(page: object, log: MarkDownFile | None, url: str, discovered_links: dict):
 	# Log the page url
 	log.append_end(f"## {url}\n")
