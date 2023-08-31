@@ -14,7 +14,7 @@ For example, you want to extract:
 * Technologies used
 * Contacts
 * Name of people (With the relative role if specified)
-  * Pages with forms
+* Pages with forms
 
 What can you do? Search this information manually, or use some tools.
 
@@ -42,7 +42,7 @@ When you start a new project, you want to create a plan to avoid wandering in th
 * Technologies used
 * Contacts
 * Name of people (With the relative role if specified)
-  * Pages with forms
+* Pages with forms
 
 and with a [well defined structure]((https://github.com/Samuele1818/SScraper/blob/master/README.md) to be understandably for everyone.
 
@@ -57,103 +57,104 @@ I think this project has no risks that have to be included in a plan, but I did 
 Now we can start writing the program.
 First of all, how we can structure the project? What functions do we need?
 
-    Ok calm, let's create the `main.py.
+Ok calm, let's create the `main.py.
 We need to take a URL from the user and make sure that it is a valid URL.
 
 ```py title="main.py"
 if __name__ == '__main__':
-# Testing URL
-url = ""
+    # Testing URL
+    url = ""
 
-# Create the session to make requests
-session = HTMLSession()
+    # Create the session to make requests
+    session = HTMLSession()
 
-# Request URL till the inserted URL is valid and reachable11
-while not is_valid_url(session, url):
-url = input("Insert the URL of the website (home page URL): ")
+    # Request URL till the inserted URL is valid and reachable11
+    while not is_valid_url(session, url):
+    url = input("Insert the URL of the website (home page URL): ")
 ```
 
 Let's say you want to do an analysis of a website, you want to search all the information that can be useful.
 
 ```py title="validators.py"
 def is_valid_url(session: HTMLSession, url: str):
-if url == "":
-return False
+    if url == "":
+    return False
 
-try:
-session.get(url)
-return True
-except Exception as e:
-print(e)
-return False
+    try:
+    session.get(url)
+    return True
+    except Exception as e:
+    print(e)
+    return False
 ```
 
 ## First issue
 At first, I tried to use the `requests` library, but something went wrong cause the page seemed to be not fully loaded.
 I investigated further and discovered that if a page uses JavaScript, we need to attend until all the code is executed so the page is fully loaded.
 
-    How? Using [requests_html](https://requests.readthedocs.io/projects/requests-html/en/latest/) instead of [requests](https://requests.readthedocs.io/en/latest/).
-    With this new library we can create the `get_page` method
+How? Using [requests_html](https://requests.readthedocs.io/projects/requests-html/en/latest/) instead of [requests](https://requests.readthedocs.io/en/latest/).
+With this new library we can create the `get_page` method
 
 ```py title="spider.py"
 def get_page(session: HTMLSession, url: str):
-# Get the page
-r = session.get(url)
+    # Get the page
+    r = session.get(url)
 
-# If page not found / errors occurred return None
-if r.status_code != 200:
-return None
+    # If page not found / errors occurred return None
+    if r.status_code != 200:
+    return None
 
-# Wait page loading to get Javascript loaded elements
-r.html.render(timeout=50000, keep_page=True)
-return r.html
+    # Wait page loading to get Javascript loaded elements
+    r.html.render(timeout=50000, keep_page=True)
+    return r.html
 ```
 
 this function returns the HTML after waiting for the execution of JavaScript code.
 
 ## Logging
 All the data has to be stored in a file, so we have to handle files.
-    We want to use the `md` file format, for this, we use a library called [MdUtils](https://github.com/didix21/mdutils), a set of basic utilities to manage `.md` files.
+We want to use the `md` file format, for this, we use a library called [MdUtils](https://github.com/didix21/mdutils), a set of basic utilities to manage `.md` files.
 When the program starts, a log file has to be created, so in the main
+
 ```py title="main.py"
 log = create_log()
 ```
 
 this file will be passed as an argument at some functions to allow logging.
 
-    Let's take a look at the `create_log` function.
+Let's take a look at the `create_log` function.
 ```py title="files.py"
 def create_log():
-try:
-# Create log folder if not exists
-if not os.path.exists("./logs/"):
-os.makedirs("./logs/")
+    try:
+    # Create log folder if not exists
+    if not os.path.exists("./logs/"):
+    os.makedirs("./logs/")
 
-# Get the current date that will be the name of the log
-dt_string = datetime.now().strftime("%d_%m_%Y_%H_%M_%S")
+    # Get the current date that will be the name of the log
+    dt_string = datetime.now().strftime("%d_%m_%Y_%H_%M_%S")
 
-file_name = f"./logs/{dt_string}"
+    file_name = f"./logs/{dt_string}"
 
-# Create the md file
-mdAcme = MdUtils(file_name=file_name)
-print(f"Log {file_name} created")
-return mdAcme.create_md_file()
+    # Create the md file
+    mdAcme = MdUtils(file_name=file_name)
+    print(f"Log {file_name} created")
+    return mdAcme.create_md_file()
 
-except Exception as e:
-print(e)
-return None
+    except Exception as e:
+    print(e)
+    return None
 ```
 
 We see the use of the `os` module to prevent bugs on different operating systems.
-    We create the log folder if not exist already, and in it, we create the new log file.
-    To name the file, we use the current date to prevent overlapping names.
+We create the log folder if not exist already, and in it, we create the new log file.
+To name the file, we use the current date to prevent overlapping names.
 
 ## Discovering
 We have to get all the pages of the site, but how?
 
-    In the main create a dictionary with all the links each associated with a letter, that can be a `Y` or a `N`. If the link is associated with an `N` means that it was not yet scanned, otherwise, it is marked by a `Y`.
+In the main create a dictionary with all the links each associated with a letter, that can be a `Y` or a `N`. If the link is associated with an `N` means that it was not yet scanned, otherwise, it is marked by a `Y`.
 
-    How can we discover the other pages starting from the home? We have to save all the links discovered on each page, taking care to avoid duplicated ones.
+How can we discover the other pages starting from the home? We have to save all the links discovered on each page, taking care to avoid duplicated ones.
 
 ```py title="main.py"
 discovered_links = {url: "N"}
@@ -161,21 +162,21 @@ discovered_links = {url: "N"}
 
 ```py title="spider.py"
 def get_links(webpage: object, log: MarkDownFile | None, discovered_links: dict):
-homepage_url = list(discovered_links)[0]
-log.append_end("### Links\n")
+    homepage_url = list(discovered_links)[0]
+    log.append_end("### Links\n")
 
-links = list(webpage.links)
+    links = list(webpage.links)
 
-for link in links:
+    for link in links:
 
-link = normalize_link(homepage_url, link)
-if link not in discovered_links.keys():
-if link is not None:
-discovered_links[link] = "N"
+    link = normalize_link(homepage_url, link)
+    if link not in discovered_links.keys():
+    if link is not None:
+    discovered_links[link] = "N"
 
-log.append_end(f"- {link} \n")
+    log.append_end(f"- {link} \n")
 
-return links
+    return links
 ```
 
 While analyzing a page `get_links` will be invoked to add new links to the `discovered_links` dictionary.
@@ -188,18 +189,18 @@ Let's create the function `analyze_page`
 
 ```py title="scrapers.py"
 def analyze_page(page: object, log: MarkDownFile | None, url: str, discovered_links: dict):
-# Log the page url
-log.append_end(f"## {url}\n")
+    # Log the page url
+    log.append_end(f"## {url}\n")
 
-if page is None:
-log.append_end("Error while getting page. Page could not exits / temporally not reachable\n")
-return
+    if page is None:
+    log.append_end("Error while getting page. Page could not exits / temporally not reachable\n")
+    return
 
-metadata(page, log)
-get_links(page, log, discovered_links)
-forms_inputs(page, log)
-cookies(page, log)
-contacts(page, log)
+    metadata(page, log)
+    get_links(page, log, discovered_links)
+    forms_inputs(page, log)
+    cookies(page, log)
+    contacts(page, log)
 ```
 
 as we can see, this function calls a method for each information that we want to retrieve.
@@ -207,7 +208,7 @@ as we can see, this function calls a method for each information that we want to
 ### Global analysis
 There are some data that are not page related such as the `robot.txt` or the `sitemap.xml`.
 
-    So in the `main` we can find calls to some methods
+So in the `main` we can find calls to some methods
 
 ```py title="main.py"
 files(session, url, log)
@@ -218,10 +219,10 @@ technologies(url, log)
 # The Nmap
 We said we want to collect information about the target system (IP, operating system, etc.).
 Here Nmap comes in, but how can we use Nmap in our program?
-    I found a library called [python3-nmap](https://pypi.org/project/python3-nmap/).
+I found a library called [python3-nmap](https://pypi.org/project/python3-nmap/).
 I installed the library using
 
-    ```shell title="terminal"
+```shell title="terminal"
 pip install python3-nmap
 ```
 
@@ -229,13 +230,13 @@ and then implemented a function named `nmap_scan`.
 
 ```py title="scrapers.py"
 def nmap_scan(url: str, log: MarkDownFile | None):
-nmap = nmap3.Nmap()
-log.append_end("# Target Information\n")
-log.append_end("## Nmap Scan\n")
-log.append_end("### Ports\n")
-log.append_end(str(nmap.scan_top_ports(url)) + "\n\n")
-log.append_end("### OS\n")
-log.append_end(str(nmap.nmap_os_detection(url)) + "\n\n")
+    nmap = nmap3.Nmap()
+    log.append_end("# Target Information\n")
+    log.append_end("## Nmap Scan\n")
+    log.append_end("### Ports\n")
+    log.append_end(str(nmap.scan_top_ports(url)) + "\n\n")
+    log.append_end("### OS\n")
+    log.append_end(str(nmap.nmap_os_detection(url)) + "\n\n")
 ```
 
 **It's clear that to use this script, you must have Nmap installed on your operating system**
@@ -250,46 +251,48 @@ Yes, cause Nmap will not find the IP of the site automatically, so there are two
 
 Clearly, we chose the second option.
 So let's see what we do
+
 ```py title="scrapers.py"
 def nmap_scan(url: str, log: MarkDownFile | None):
-url = url.replace("https://", "").replace("/", "")
+    url = url.replace("https://", "").replace("/", "")
 
-ip_address = socket.gethostbyname(url)
+    ip_address = socket.gethostbyname(url)
 
-#Code
-...
-log.append_end(str(nmap.scan_top_ports(ip_address)) + "\n\n")
+    #Code
+    ...
+    log.append_end(str(nmap.scan_top_ports(ip_address)) + "\n\n")
 
-#Code
-...
-log.append_end
-(str(nmap.nmap_os_detection(ip_address)) + "\n\n")
+    #Code
+    ...
+    log.append_end
+    (str(nmap.nmap_os_detection(ip_address)) + "\n\n")
 ```
 
 As you can see we use the `socket` module to get the IP address from the host name.
 The URL needs to be formatted in the `www.site.com` format or `gethostbyname` will throw an error.
 
-    Now we can pass this IP to Nmap instead of the URL.
+Now we can pass this IP to Nmap instead of the URL.
 
 # The Wappalyzer
 Technologies that compose a website can be useful information for us.
 I think the most powerful tool now is [Wappalyzer](https://www.wappalyzer.com/), but to use it in our application, we need to pay for the API and we don't want to pay.
 After a long research, I found [WebTech](https://github.com/ShielderSec/webtech), This library is not perfect, but it does the work and it's free.
 So, let's see `technologies`
+
 ```py title="scrapers.py"
 def technologies(url: str, log: MarkDownFile | None):
-log.append_end("## Technologies\n")
-try:
-wt = webtech.WebTech(options={'json': True})
-report = wt.start_from_url(url)
-log.append_end(str(report) + "\n\n")
-except webtech.utils.ConnectionException:
-log.append_end("Connection error" + "\n\n")
+    log.append_end("## Technologies\n")
+    try:
+    wt = webtech.WebTech(options={'json': True})
+    report = wt.start_from_url(url)
+    log.append_end(str(report) + "\n\n")
+    except webtech.utils.ConnectionException:
+    log.append_end("Connection error" + "\n\n")
 ```
 
 # The files
 Every website has important files that we want to scan, for now, the attention goes to `sitemap.xml` and `robots.txt`.
-    Getting these two files is simple, let's explore `files`
+Getting these two files is simple, let's explore `files`
 
 ```py title="scrapers.py"
 def files(session: HTMLSession, url: str, log: MarkDownFile | None):
@@ -321,7 +324,7 @@ Find email is easy, we use regex, and that's all.
 
 ```py title="scrapers.py"
 def contacts(page: object, log: MarkDownFile | None):
-text = page.text
+    text = page.text
 
 	log.append_end("### Contacts\n")
 
@@ -335,8 +338,8 @@ text = page.text
 
 But for socials? Yes, because we want to check if on the page there are social links.
 
-    First, we need a list, so a JSON file was created.
-    Let's see how the file is structured:
+First, we need a list, so a JSON file was created.
+Let's see how the file is structured:
 
 ```json title="socials.json"
 {
@@ -352,32 +355,32 @@ But for socials? Yes, because we want to check if on the page there are social l
 Perfect now we need the code to analyze the page text.
 
 ```py title="scrapers.py"
-	# Code
-	...
+# Code
+...
 
-	# Load the file with the list of socials name as a JSON
-	with open('./lists/social.json', 'r') as social_file:
-	social_networks = json.load(social_file)
+# Load the file with the list of socials name as a JSON
+with open('./lists/social.json', 'r') as social_file:
+social_networks = json.load(social_file)
 
-	# Create a pattern for matching URLs
-	pattern = '|'.join(re.escape(url) for url in social_networks.values())
+# Create a pattern for matching URLs
+pattern = '|'.join(re.escape(url) for url in social_networks.values())
 
-	# Find all matches in the text
-	matches = re.findall(pattern, text)
+# Find all matches in the text
+matches = re.findall(pattern, text)
 
-	# Get the social network names from the matches
-	matched_social_networks = [name for name, url in social_networks.items() if url in matches]
+# Get the social network names from the matches
+matched_social_networks = [name for name, url in social_networks.items() if url in matches]
 
-	log.append_end("#### Socials\n")
+log.append_end("#### Socials\n")
 
-	# Check if text in the page represents a social
-	for social in matched_social_networks:
-	log.append_end(f"- {social}\n")
+# Check if text in the page represents a social
+for social in matched_social_networks:
+log.append_end(f"- {social}\n")
 ```
 
 this code works, but does not consider that the URL in the webpage could be found in various formats, for example, if in the page the URL is formatted as "https://github.com" the code will not find it cause in the JSON the URL is formatted like "https://www.github.com".
 
-    So? We replace the format of the URL in the JSON file.
+So? We replace the format of the URL in the JSON file.
 
 ```json title="socials.json"
 {
