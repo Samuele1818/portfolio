@@ -128,7 +128,7 @@ def create_log():
     try:
         # Create log folder if not exists
         if not os.path.exists("./logs/"):
-        os.makedirs("./logs/")
+            os.makedirs("./logs/")
 
         # Get the current date that will be the name of the log
         dt_string = datetime.now().strftime("%d_%m_%Y_%H_%M_%S")
@@ -171,8 +171,8 @@ def get_links(webpage: object, log: MarkDownFile | None, discovered_links: dict)
 
         link = normalize_link(homepage_url, link)
         if link not in discovered_links.keys():
-        if link is not None:
-        discovered_links[link] = "N"
+            if link is not None:
+                discovered_links[link] = "N"
 
         log.append_end(f"- {link} \n")
 
