@@ -60,7 +60,7 @@ First of all, how we can structure the project? What functions do we need?
 Ok calm, let's create the `main.py.
 We need to take a URL from the user and make sure that it is a valid URL.
 
-```py title="main.py"
+```python title="main.py"
 if __name__ == '__main__':
     # Testing URL
     url = ""
@@ -70,22 +70,22 @@ if __name__ == '__main__':
 
     # Request URL till the inserted URL is valid and reachable11
     while not is_valid_url(session, url):
-    url = input("Insert the URL of the website (home page URL): ")
+        url = input("Insert the URL of the website (home page URL): ")
 ```
 
 Let's say you want to do an analysis of a website, you want to search all the information that can be useful.
 
-```py title="validators.py"
+```python title="validators.py"
 def is_valid_url(session: HTMLSession, url: str):
     if url == "":
-    return False
+        return False
 
     try:
-    session.get(url)
-    return True
+        session.get(url)
+        return True
     except Exception as e:
-    print(e)
-    return False
+        print(e)
+        return False
 ```
 
 ## First issue
@@ -95,14 +95,14 @@ I investigated further and discovered that if a page uses JavaScript, we need to
 How? Using [requests_html](https://requests.readthedocs.io/projects/requests-html/en/latest/) instead of [requests](https://requests.readthedocs.io/en/latest/).
 With this new library we can create the `get_page` method
 
-```py title="spider.py"
+```python title="spider.py"
 def get_page(session: HTMLSession, url: str):
     # Get the page
     r = session.get(url)
 
     # If page not found / errors occurred return None
     if r.status_code != 200:
-    return None
+        return None
 
     # Wait page loading to get Javascript loaded elements
     r.html.render(timeout=50000, keep_page=True)
@@ -116,33 +116,33 @@ All the data has to be stored in a file, so we have to handle files.
 We want to use the `md` file format, for this, we use a library called [MdUtils](https://github.com/didix21/mdutils), a set of basic utilities to manage `.md` files.
 When the program starts, a log file has to be created, so in the main
 
-```py title="main.py"
+```python title="main.py"
 log = create_log()
 ```
 
 this file will be passed as an argument at some functions to allow logging.
 
 Let's take a look at the `create_log` function.
-```py title="files.py"
+```python title="files.py"
 def create_log():
     try:
-    # Create log folder if not exists
-    if not os.path.exists("./logs/"):
-    os.makedirs("./logs/")
+        # Create log folder if not exists
+        if not os.path.exists("./logs/"):
+        os.makedirs("./logs/")
 
-    # Get the current date that will be the name of the log
-    dt_string = datetime.now().strftime("%d_%m_%Y_%H_%M_%S")
+        # Get the current date that will be the name of the log
+        dt_string = datetime.now().strftime("%d_%m_%Y_%H_%M_%S")
 
-    file_name = f"./logs/{dt_string}"
+        file_name = f"./logs/{dt_string}"
 
-    # Create the md file
-    mdAcme = MdUtils(file_name=file_name)
-    print(f"Log {file_name} created")
-    return mdAcme.create_md_file()
+        # Create the md file
+        mdAcme = MdUtils(file_name=file_name)
+        print(f"Log {file_name} created")
+        return mdAcme.create_md_file()
 
     except Exception as e:
-    print(e)
-    return None
+        print(e)
+        return None
 ```
 
 We see the use of the `os` module to prevent bugs on different operating systems.
@@ -156,11 +156,11 @@ In the main create a dictionary with all the links each associated with a letter
 
 How can we discover the other pages starting from the home? We have to save all the links discovered on each page, taking care to avoid duplicated ones.
 
-```py title="main.py"
+```python title="main.py"
 discovered_links = {url: "N"}
 ```
 
-```py title="spider.py"
+```python title="spider.py"
 def get_links(webpage: object, log: MarkDownFile | None, discovered_links: dict):
     homepage_url = list(discovered_links)[0]
     log.append_end("### Links\n")
@@ -169,12 +169,12 @@ def get_links(webpage: object, log: MarkDownFile | None, discovered_links: dict)
 
     for link in links:
 
-    link = normalize_link(homepage_url, link)
-    if link not in discovered_links.keys():
-    if link is not None:
-    discovered_links[link] = "N"
+        link = normalize_link(homepage_url, link)
+        if link not in discovered_links.keys():
+        if link is not None:
+        discovered_links[link] = "N"
 
-    log.append_end(f"- {link} \n")
+        log.append_end(f"- {link} \n")
 
     return links
 ```
@@ -187,14 +187,14 @@ At this point, we need a function to analyze every page.
 ### Page analysis
 Let's create the function `analyze_page`
 
-```py title="scrapers.py"
+```python title="scrapers.py"
 def analyze_page(page: object, log: MarkDownFile | None, url: str, discovered_links: dict):
     # Log the page url
     log.append_end(f"## {url}\n")
 
     if page is None:
-    log.append_end("Error while getting page. Page could not exits / temporally not reachable\n")
-    return
+        log.append_end("Error while getting page. Page could not exits / temporally not reachable\n")
+        return
 
     metadata(page, log)
     get_links(page, log, discovered_links)
@@ -210,7 +210,7 @@ There are some data that are not page related such as the `robot.txt` or the `si
 
 So in the `main` we can find calls to some methods
 
-```py title="main.py"
+```python title="main.py"
 files(session, url, log)
 nmap_scan(url, log)
 technologies(url, log)
@@ -228,7 +228,7 @@ pip install python3-nmap
 
 and then implemented a function named `nmap_scan`.
 
-```py title="scrapers.py"
+```python title="scrapers.py"
 def nmap_scan(url: str, log: MarkDownFile | None):
     nmap = nmap3.Nmap()
     log.append_end("# Target Information\n")
@@ -252,7 +252,7 @@ Yes, cause Nmap will not find the IP of the site automatically, so there are two
 Clearly, we chose the second option.
 So let's see what we do
 
-```py title="scrapers.py"
+```python title="scrapers.py"
 def nmap_scan(url: str, log: MarkDownFile | None):
     url = url.replace("https://", "").replace("/", "")
 
@@ -279,22 +279,22 @@ I think the most powerful tool now is [Wappalyzer](https://www.wappalyzer.com/),
 After a long research, I found [WebTech](https://github.com/ShielderSec/webtech), This library is not perfect, but it does the work and it's free.
 So, let's see `technologies`
 
-```py title="scrapers.py"
+```python title="scrapers.py"
 def technologies(url: str, log: MarkDownFile | None):
     log.append_end("## Technologies\n")
     try:
-    wt = webtech.WebTech(options={'json': True})
-    report = wt.start_from_url(url)
-    log.append_end(str(report) + "\n\n")
+        wt = webtech.WebTech(options={'json': True})
+        report = wt.start_from_url(url)
+        log.append_end(str(report) + "\n\n")
     except webtech.utils.ConnectionException:
-    log.append_end("Connection error" + "\n\n")
+        log.append_end("Connection error" + "\n\n")
 ```
 
 # The files
 Every website has important files that we want to scan, for now, the attention goes to `sitemap.xml` and `robots.txt`.
 Getting these two files is simple, let's explore `files`
 
-```py title="scrapers.py"
+```python title="scrapers.py"
 def files(session: HTMLSession, url: str, log: MarkDownFile | None):
 	sitemap_req = session.get(f"{url}/sitemap.xml")
 	robots_req = session.get(f"{url}/robots.txt")
@@ -304,16 +304,16 @@ def files(session: HTMLSession, url: str, log: MarkDownFile | None):
 	# If found print sitemap.xml content
 	log.append_end("## Sitemap\n")
 	if sitemap_req.status_code == 200:
-	log.append_end(sitemap_req.content.decode() + "\n")
+	    log.append_end(sitemap_req.content.decode() + "\n")
 	else:
-	log.append_end("sitemap.xml not found\n")
+	    log.append_end("sitemap.xml not found\n")
 
 	# If found print robots.txt content
 	log.append_end("## Robots\n")
 	if robots_req.status_code == 200:
-	log.append_end(robots_req.content.decode() + "\n")
+	    log.append_end(robots_req.content.decode() + "\n")
 	else:
-	log.append_end("robots.txt not found\n")
+	    log.append_end("robots.txt not found\n")
 ```
 
 in the future, something like DirBuster will be implemented to scan folders.
@@ -322,7 +322,7 @@ in the future, something like DirBuster will be implemented to scan folders.
 Now we want all the contacts and all the social on the page.
 Find email is easy, we use regex, and that's all.
 
-```py title="scrapers.py"
+```python title="scrapers.py"
 def contacts(page: object, log: MarkDownFile | None):
     text = page.text
 
@@ -354,28 +354,28 @@ Let's see how the file is structured:
 
 Perfect now we need the code to analyze the page text.
 
-```py title="scrapers.py"
+```python title="scrapers.py"
 # Code
 ...
 
 # Load the file with the list of socials name as a JSON
 with open('./lists/social.json', 'r') as social_file:
-social_networks = json.load(social_file)
+    social_networks = json.load(social_file)
 
-# Create a pattern for matching URLs
-pattern = '|'.join(re.escape(url) for url in social_networks.values())
+    # Create a pattern for matching URLs
+    pattern = '|'.join(re.escape(url) for url in social_networks.values())
 
-# Find all matches in the text
-matches = re.findall(pattern, text)
+    # Find all matches in the text
+    matches = re.findall(pattern, text)
 
-# Get the social network names from the matches
-matched_social_networks = [name for name, url in social_networks.items() if url in matches]
+    # Get the social network names from the matches
+    matched_social_networks = [name for name, url in social_networks.items() if url in matches]
 
-log.append_end("#### Socials\n")
+    log.append_end("#### Socials\n")
 
-# Check if text in the page represents a social
-for social in matched_social_networks:
-log.append_end(f"- {social}\n")
+    # Check if text in the page represents a social
+    for social in matched_social_networks:
+        log.append_end(f"- {social}\n")
 ```
 
 this code works, but does not consider that the URL in the webpage could be found in various formats, for example, if in the page the URL is formatted as "https://github.com" the code will not find it cause in the JSON the URL is formatted like "https://www.github.com".
