@@ -23,10 +23,16 @@ const Index: NextPage = async ({
  return (
   <div>
    <Searchbar value={search} />
-   <section className='mt-24 grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-2 xl:grid-cols-3'>
-    {results.map((result, index) => (
-     <Post key={index} {...result} />
-    ))}
+   <section className='relative mt-24 grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-2 xl:grid-cols-3'>
+    {results.length === 0 ? (
+     <p className='md-text absolute w-fit place-self-center py-8 text-slate-600'>
+      Nothing found... Try again
+     </p>
+    ) : (
+     results.map((result, index) => (
+      <Post key={index} {...result} />
+     ))
+    )}
    </section>
   </div>
  )
