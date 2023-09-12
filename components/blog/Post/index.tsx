@@ -17,7 +17,7 @@ const Post: FC<Props> = ({
  tags,
 }) => {
  return (
-  <div className='post bg-white px-6 py-12 text-dark'>
+  <div className='post flex flex-col bg-white px-6 py-12 text-dark'>
    <div className='flex flex-row flex-wrap items-center justify-between gap-x-2 gap-y-4'>
     <Tag
      text={category}
@@ -27,7 +27,7 @@ const Post: FC<Props> = ({
      {author}, {formatDate(date)}
     </p>
    </div>
-   <div className='mt-4'>
+   <div className='mb-4 mt-4'>
     <Link
      href={`/blog/${slug}`}
      className='lg-text line-clamp-1 font-bold text-violet-800 underline-offset-4 hover:underline'>
@@ -37,7 +37,7 @@ const Post: FC<Props> = ({
      {description}
     </p>
    </div>
-   <div className='mt-4 flex flex-row flex-wrap-reverse items-center justify-between gap-x-4 gap-y-4'>
+   <div className='mb-0 mt-auto flex flex-row flex-wrap-reverse items-center justify-between gap-x-4 gap-y-4'>
     <div className='flex flex-row flex-wrap items-center gap-x-4 gap-y-4'>
      {tags.map((item, index) => {
       return <Tag key={index} text={item} />
