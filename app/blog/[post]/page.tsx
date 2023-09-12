@@ -103,7 +103,7 @@ const Index: NextPage = async ({
       {meta.title}
      </h1>
     </div>
-    <article className='md:prose-md prose prose-slate mt-24 max-w-none xl:prose-lg prose-h1:text-[#4300A8]'>
+    <article className='prose prose-slate mt-24 max-w-none md:prose-base xl:prose-lg prose-h1:text-[#4300A8]'>
      <PostFile />
     </article>
    </section>

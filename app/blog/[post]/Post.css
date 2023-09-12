@@ -17,6 +17,10 @@ article > *:is(h1, h2, h3, h4, h5, h6):hover > .autolink-header {
 }
 
 pre {
+    margin: auto;
+    display: block;
+    white-space: pre-wrap;
+    word-break: break-word;
     @apply !rounded-t-none !rounded-lg !mt-0
 }
 
