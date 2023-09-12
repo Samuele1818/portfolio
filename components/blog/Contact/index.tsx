@@ -3,7 +3,7 @@ import CTALink from '../../CTALink'
 
 const Contact: FC = ({}) => {
  return (
-  <section className='mx-auto mt-48 flex max-w-screen-xl flex-col items-center gap-y-6 text-center'>
+  <section className='mx-auto mt-64 flex max-w-screen-xl flex-col items-center gap-y-6 text-center'>
    <h1>
     Connect with me when you want, anywhere
    </h1>
