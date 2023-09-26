@@ -42,6 +42,19 @@ const getRecentPosts = async (
  return posts.slice(0, numberOfPosts)
 }
 
+const getAllPostsLimit: (
+ limit: number
+) => Promise<Awaited<any>[]> = async (
+ limit: number
+) => {
+ const posts = await Promise.all(
+  getPosts().map(
+   (post) => import(`/posts/${post}`)
+  )
+ )
+ return posts.slice(0, limit)
+}
+
 const getRelatedPosts = async (
  slug,
  currentTags
@@ -79,4 +92,5 @@ export {
  getPost,
  getRecentPosts,
  getRelatedPosts,
+ getAllPostsLimit,
 }
