@@ -37,9 +37,9 @@ export default function RootLayout({
     <Header />
     <div className='layout mt-36 w-full'>
      {children}
+     <Contact />
+     <Footer />
     </div>
-    <Contact />
-    <Footer />
    </body>
   </html>
  )
