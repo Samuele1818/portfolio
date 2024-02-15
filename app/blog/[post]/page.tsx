@@ -58,7 +58,7 @@ const Index: NextPage = async ({
 }: any) => {
  const { post } = params
 
- const PostFile = await dynamic(
+ const PostFile = dynamic(
   () =>
    import(`/posts/${post}.mdx`).catch(() =>
     notFound()
