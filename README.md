@@ -11,7 +11,6 @@ stuff.
 - ReactJS
 - NextJS
 - TailwindCSS
-- GSAP
 
 ## TODOs
 
@@ -20,4 +19,3 @@ stuff.
 - [x] Delete old components / modules that is not in use anymore
 - [x] Rename every file to follow the CamelCase convention (when possible)
 - [x] Check dependencies and remove what is not used anymore
-- [ ] Implement TODOs
