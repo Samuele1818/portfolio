@@ -27,46 +27,71 @@
 }
 
 .lines {
-    @apply relative flex justify-center last:after:hidden
+    @apply
+    relative flex justify-center
+
+    after:content-['']
+    after:absolute after:w-8 after:h-full after:top-full
+    after:border-r-2 after:border-l-2
+    after:[border-image:conic-gradient(from_var(--angle),var(--c2),var(--c1)_0.1turn,var(--c1)_0.15turn,var(--c2)_0.25turn)_10]
+    after:[animation:borderRotate_3.6s_linear_infinite_forwards]
+
+    last:after:hidden
+
+    lg:first:after:hidden
+    lg:last:after:block
+
+    lg:after:w-24
+    lg:after:h-8
+    lg:after:my-auto
+    lg:after:top-0
+    lg:after:bottom-0
+    lg:after:right-full
+    lg:after:border-t-2
+    lg:after:border-b-2
+    lg:after:border-l-0
+    lg:after:border-r-0
+    lg:after:[animation:borderRotate_var(--d)_linear_infinite_forwards]
+    /*@apply relative flex justify-center last:after:hidden*/
 }
 
-.lines:after {
-    content: "";
-    border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 10;
-    animation: borderRotate 3.6s linear infinite forwards;
-    @apply w-8 h-full top-full absolute border-r-2 border-l-2
-}
+/*.lines:after {*/
+/*    content: "";*/
+/*    border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 10;*/
+/*    animation: borderRotate 3.6s linear infinite forwards;*/
+/*    @apply w-8 h-full top-full absolute border-r-2 border-l-2*/
+/*}*/
 
 .v-lines {
     @apply relative flex justify-center
+
+    after:content-['']
+    after:absolute after:w-8 after:h-full after:top-full
+    after:border-r-2 after:border-l-2
+    after:[border-image:conic-gradient(from_var(--angle),var(--c2),var(--c1)_0.1turn,var(--c1)_0.15turn,var(--c2)_0.25turn)_10]
+    after:[animation:borderRotate_3.6s_linear_infinite_forwards]
 }
 
-.v-lines:after {
-    content: "";
-    border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 10;
-    animation: borderRotate 3.6s linear infinite forwards;
-    @apply w-8 h-full top-full absolute border-r-2 border-l-2
-}
+/*.v-lines:after {*/
+/*    content: "";*/
+/*    border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 10;*/
+/*    animation: borderRotate 3.6s linear infinite forwards;*/
+/*    @apply w-8 h-full top-full absolute border-r-2 border-l-2*/
+/*}*/
 
-@media (width >=
 
-theme
-(
---breakpoint-lg
+/*@media (width >= theme(--breakpoint-lg)) {*/
+/*    .lines {*/
+/*        @apply last:after:block first:after:hidden*/
+/*    }*/
 
-)
-)
-{
-.lines {
-    @apply last:after:block first:after:hidden
-}
-    .lines:after {
-        content: "";
-        border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 10;
-        animation: borderRotate var(--d) linear infinite forwards;
-        @apply w-24 h-8 my-auto top-0 bottom-0 right-full absolute border-l-0 border-r-0 border-t-2 border-b-2
-    }
-}
+/*    .lines:after {*/
+/*        content: "";*/
+/*        border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 10;*/
+/*        animation: borderRotate var(--d) linear infinite forwards;*/
+/*        @apply w-24 h-8 my-auto top-0 bottom-0 right-full absolute border-l-0 border-r-0 border-t-2 border-b-2*/
+/*    }*/
+/*}*/
 
 pre {
     @apply max-w-full
