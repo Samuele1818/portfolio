@@ -24,7 +24,7 @@ const Index: NextPage = async () => {
       See experiences of developing
      </h1>
 
-     <h2 className='hero-sub border-thin w-full text-center !text-lightDark'>
+     <h2 className='hero-sub border-thin !text-lightDark w-full text-center'>
       Well made and useful write-ups, tutorials
       and articles,{' '}
       <strong>
@@ -51,14 +51,9 @@ const Index: NextPage = async () => {
     </div>
 
     <div className='mt-36 flex w-fit flex-col items-center'>
-     <div className='flex flex-wrap items-center justify-center gap-x-3 text-center'>
-      <h1 className='font-bold text-violet-800'>
-       Recently published posts
-      </h1>
-      <p className='sm-text font-normal'>
-       Check either the old!
-      </p>
-     </div>
+     <h1 className='font-bold text-violet-800'>
+      Recently published posts
+     </h1>
 
      <div className='mt-6 grid grid-flow-col grid-rows-2 gap-x-6 gap-y-12 md:grid-flow-row md:grid-cols-2 md:grid-rows-1'>
       {recentPosts?.map((post, index) => {

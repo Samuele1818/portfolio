@@ -2,6 +2,8 @@ import { FC } from 'react'
 import Link from 'next/link'
 import Logo from '../../../public/logo.svg'
 
+const year = new Date().getFullYear()
+
 const Footer: FC = ({}) => {
  return (
   <footer className='mt-36 bg-white p-4 sm:p-6'>
@@ -48,7 +50,7 @@ const Footer: FC = ({}) => {
         <li className='mb-4'>
          <Link
           href='https://github.com/Samuele1818'
-          className='hover:underline '>
+          className='hover:underline'>
           Github
          </Link>
         </li>
@@ -66,7 +68,7 @@ const Footer: FC = ({}) => {
     <hr className='my-6 border-gray-200 sm:mx-auto lg:my-8' />
     <div className='sm:flex sm:items-center sm:justify-between'>
      <span className='sm-text text-gray-500 sm:text-center'>
-      © {new Date().getFullYear()}{' '}
+      © {year}{' '}
       <Link href='/' className='hover:underline'>
        Samuele Sciatore
       </Link>

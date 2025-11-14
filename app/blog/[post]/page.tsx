@@ -1,8 +1,4 @@
-import {
- Metadata,
- NextPage,
- ResolvingMetadata,
-} from 'next'
+import { Metadata, NextPage } from 'next'
 import dynamic from 'next/dynamic'
 import Loader from '../../../components/Loader'
 import { notFound } from 'next/navigation'
@@ -18,18 +14,17 @@ import { formatDate } from '../../../utils/dates'
 import RelatedPost from '../../../components/blog/RelatedPost'
 
 type Props = {
- params: { post: string }
+ params: Promise<{ post: string }>
 }
 
-export async function generateMetadata(
- { params }: Props,
- parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({
+ params,
+}: Props): Promise<Metadata> {
  // read route params
- const { post } = params
+ const { post } = await params
 
  const { meta } = await import(
-  `/posts/${post}.mdx`
+  `../../../posts/${post}.mdx`
  )
 
  return {
@@ -56,12 +51,12 @@ export async function generateMetadata(
 const Index: NextPage = async ({
  params,
 }: any) => {
- const { post } = params
+ const { post } = await params
 
  const PostFile = dynamic(
   () =>
-   import(`/posts/${post}.mdx`).catch(() =>
-    notFound()
+   import(`../../../posts/${post}.mdx`).catch(
+    () => notFound()
    ),
   {
    loading: () => <Loader />,
@@ -69,7 +64,7 @@ const Index: NextPage = async ({
  )
 
  const { meta } = await import(
-  `/posts/${post}.mdx`
+  `../../../posts/${post}.mdx`
  )
 
  const postContent = getPost(post)
@@ -84,7 +79,7 @@ const Index: NextPage = async ({
  return (
   <main className='relative flex gap-x-12'>
    {/* First aside - Visible when there is enough space */}
-   <aside className='order-first hidden w-[284px] xl:flex-shrink-0 3xl:block'>
+   <aside className='3xl:block order-first hidden w-[284px] xl:shrink-0'>
     <p className='lg-text mb-2 font-bold text-[#4300A8]'>
      Related posts
     </p>
@@ -96,20 +91,20 @@ const Index: NextPage = async ({
    {/* Article content */}
    <section className='w-full'>
     <div>
-     <p className='whitespace-pre-wrap break-all'>
+     <p className='break-all whitespace-pre-wrap'>
       {meta.author} - {formatDate(meta.date)}
      </p>
-     <h1 className='xl2-text -mt-2 whitespace-pre-wrap break-all'>
+     <h1 className='xl2-text -mt-2 break-all whitespace-pre-wrap'>
       {meta.title}
      </h1>
     </div>
-    <article className='prose prose-slate mt-24 max-w-none md:prose-base xl:prose-lg prose-h1:text-[#4300A8]'>
+    <article className='prose prose-slate md:prose-base xl:prose-lg prose-h1:text-[#4300A8] mt-24 max-w-none'>
      <PostFile />
     </article>
    </section>
 
    {/* Second aside - Visible on large screens */}
-   <aside className='sticky top-24 order-last hidden h-full w-56 flex-shrink-0 md:block'>
+   <aside className='sticky top-24 order-last hidden h-full w-56 shrink-0 md:block'>
     <p className='lg-text mb-2 font-bold text-[#4300A8]'>
      On this page
     </p>

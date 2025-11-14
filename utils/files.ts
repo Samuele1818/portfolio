@@ -28,7 +28,7 @@ const getRecentPosts = async (
  numberOfPosts ||= 1
  const posts = await Promise.all(
   getPosts().map(
-   (post) => import(`/posts/${post}`)
+   (post) => import(`../posts/${post}`)
   )
  )
 
@@ -49,7 +49,7 @@ const getAllPostsLimit: (
 ) => {
  const posts = await Promise.all(
   getPosts().map(
-   (post) => import(`/posts/${post}`)
+   (post) => import(`../posts/${post}`)
   )
  )
  return posts.slice(0, limit)
@@ -61,7 +61,7 @@ const getRelatedPosts = async (
 ) => {
  const posts = await Promise.all(
   getPosts().map(
-   (post) => import(`/posts/${post}`)
+   (post) => import(`../posts/${post}`)
   )
  )
  // Find articles that share at least one tag with the current article

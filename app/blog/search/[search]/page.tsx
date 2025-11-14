@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const Index: NextPage = async ({
  params,
 }: any) => {
- const { search } = params
+ const { search } = await params
 
  const results = await searchPosts(
   decodeURIComponent(search)

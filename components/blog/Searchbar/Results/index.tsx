@@ -21,7 +21,7 @@ const Results: FC<Props> = ({ results }) => {
        href={`/blog/${result.slug}`}
        className='inline-flex w-full items-center justify-between gap-x-4 whitespace-break-spaces'>
        {result.title}
-       <RightArrow className='h-fit w-6 flex-shrink-0' />
+       <RightArrow className='h-fit w-6 shrink-0' />
       </Link>
      </li>
     ))

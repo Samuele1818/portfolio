@@ -37,7 +37,7 @@ const AboutMe: FC = () => {
   <section className='layout flex w-full flex-col gap-y-64 bg-slate-900 py-48 text-white'>
    <div className='flex flex-wrap items-center justify-center gap-x-48 gap-y-24'>
     {/* Title and image */}
-    <div className='flex-grow text-center lg:w-min lg:text-start'>
+    <div className='grow text-center lg:w-min lg:text-start'>
      <h1 className='xl2-text'>Call me Sam!</h1>
      <p className='hero-sub text-slate-400'>
       I’m a full stack developer and software
@@ -47,11 +47,11 @@ const AboutMe: FC = () => {
       hacking.
      </p>
     </div>
-    <div className='v-lines w-64 flex-shrink-0 lg:w-1/3'>
+    <div className='v-lines w-64 shrink-0 lg:w-1/3'>
      <Image
       src={Me}
       alt='Photo of me'
-      className='ml-auto mr-0 h-fit rounded-full lg:rounded-lg'
+      className='mr-0 ml-auto h-fit rounded-full lg:rounded-lg'
      />
     </div>
 
@@ -65,7 +65,7 @@ const AboutMe: FC = () => {
         <h2 className='xl-text font-bold'>
          {item.title}
         </h2>
-        <p className='sm-text mt-2 whitespace-pre-line leading-10 tracking-wide text-slate-300'>
+        <p className='sm-text mt-2 leading-10 tracking-wide whitespace-pre-line text-slate-300'>
          {item.content}
         </p>
        </div>
@@ -110,12 +110,12 @@ const AboutMe: FC = () => {
      <Image
       src={AI}
       alt='Image of an article that talks about AI'
-      className='absolute bottom-12 left-0 h-fit min-w-[220px] max-w-[320px] -rotate-2 rounded-lg shadow-sm shadow-slate-300'
+      className='absolute bottom-12 left-0 h-fit max-w-[320px] min-w-[220px] -rotate-2 rounded-lg shadow-xs shadow-slate-300'
      />
      <Image
       src={ProcessPost}
       alt='Image of an article that talks about how to create a software'
-      className='absolute bottom-0 right-0 h-fit min-w-[220px] max-w-[320px] rounded-lg shadow-md shadow-slate-600'
+      className='absolute right-0 bottom-0 h-fit max-w-[320px] min-w-[220px] rounded-lg shadow-md shadow-slate-600'
      />
     </div>
    </Card>

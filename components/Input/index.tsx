@@ -1,8 +1,10 @@
 import {
  createElement,
  FC,
+ FocusEvent,
  InputHTMLAttributes,
  TextareaHTMLAttributes,
+ useId,
 } from 'react'
 
 type Props = {
@@ -24,7 +26,7 @@ const Input: FC<Props> = ({
  ...props
 }) => {
  // Create a unique id to link label and input
- const id = Math.random().toPrecision(5)
+ const id = useId()
 
  return (
   <div className='relative h-fit w-full'>
@@ -33,12 +35,20 @@ const Input: FC<Props> = ({
     createElement(elementType, {
      id: id,
      className:
-      'resize-none block px-2.5 pb-2.5 pt-4 w-full md-text text-dark bg-transparent border-[1px] border-bastille appearance-none focus:outline-none focus:ring-0 focus:border-violet-800 peer invalid:border-red-600',
+      'resize-none block px-2.5 pb-2.5 pt-4 w-full md-text text-dark bg-transparent border-[1px] border-bastille appearance-none focus:outline-hidden focus:ring-0 focus:border-violet-800 peer invalid:border-red-600',
      placeholder: ' ',
-     onFocus: (e) => {
+     onFocus: (
+      e:
+       | FocusEvent<HTMLInputElement>
+       | React.FocusEvent<HTMLTextAreaElement>
+     ) => {
       e.target.setAttribute('init', 'true') // Set an attribute to check that the input has been opened at least one time
      },
-     onBlur: (e) => {
+     onBlur: (
+      e:
+       | FocusEvent<HTMLInputElement>
+       | FocusEvent<HTMLTextAreaElement>
+     ) => {
       // On blur assign value to the input required attribute to avoid show error before input has been even selected if it's required
       e.target.required = required // specify if the filed is required to submit the form
      },
@@ -47,7 +57,7 @@ const Input: FC<Props> = ({
    }
    <label
     htmlFor={`${id}`}
-    className='sm-text absolute left-1 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-white px-2 text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-invalid:text-red-600 peer-invalid:peer-placeholder-shown:top-1/4 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-violet-800 peer-invalid:peer-focus:top-2'>
+    className='sm-text absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-75 transform bg-white px-2 text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-invalid:text-red-600 peer-invalid:peer-placeholder-shown:top-1/4 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-violet-800 peer-invalid:peer-focus:top-2'>
     {label}
    </label>
    {/* The paragraph has a fixed height to prevent total height of the div to be dynamically and so avoid label to be in different y position */}

@@ -26,7 +26,9 @@ const searchPosts = async (
   tags.length > 0 ? tags.join(', ') : searchTerm
 
  for (const post of posts) {
-  const { meta } = await import(`/posts/${post}`)
+  const { meta } = await import(
+   `../posts/${post}`
+  )
 
   const postTags = meta.tags || []
 

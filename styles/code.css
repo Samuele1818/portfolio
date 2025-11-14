@@ -1,3 +1,4 @@
+@reference "./globals.css";
 /*code {*/
 /*    counter-reset: line;*/
 /*}*/
@@ -32,7 +33,7 @@
 }
 
 [data-highlighted-chars] {
-    @apply bg-zinc-600/50 rounded;
+    @apply bg-zinc-600/50 rounded-sm;
     box-shadow: 0 0 0 4px rgb(82 82 91 / 0.5);
 }
 

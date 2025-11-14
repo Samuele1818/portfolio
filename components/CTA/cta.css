@@ -1,3 +1,5 @@
+@reference '../../styles/globals.css';
+
 .primary-violet {
     @apply bg-violet-800 hover:bg-white hover:text-violet-800 border-violet-800 text-white
 }

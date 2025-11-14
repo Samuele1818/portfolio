@@ -23,9 +23,9 @@ const Projects: FC = () => {
   <div
    id='projects'
    className='layout bg-slate-900 py-48'>
-   <div className='relative text-light'>
+   <div className='text-light relative'>
     <h1 className='xl2-text'>My Projects</h1>
-    <p className='watermark absolute -left-6 -top-[80%] md:-top-[200%]'>
+    <p className='watermark absolute -top-[80%] -left-6 md:-top-[200%]'>
      Explore my Projects
     </p>
    </div>

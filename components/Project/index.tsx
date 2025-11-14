@@ -35,8 +35,8 @@ const Project: FC<Props> = ({
  return (
   <section
    id={id}
-   className='flex h-[800px] flex-col gap-x-24 gap-y-8 fill-light text-light lg:h-[600px] lg:flex-row'>
-   <div className='mt-12 flex flex-grow flex-col lg:mb-auto lg:mt-auto lg:w-[40%]'>
+   className='fill-light text-light flex h-[800px] flex-col gap-x-24 gap-y-8 lg:h-[600px] lg:flex-row'>
+   <div className='mt-12 flex grow flex-col lg:mt-auto lg:mb-auto lg:w-[40%]'>
     <p className='xs-text -mb-2 opacity-75'>
      {type}
     </p>
@@ -44,7 +44,7 @@ const Project: FC<Props> = ({
     <Link
      href='https://a-boutall.com'
      target='_blank'
-     className='xl-text group inline-flex cursor-pointer items-center font-bold text-light'>
+     className='xl-text group text-light inline-flex cursor-pointer items-center font-bold'>
      <RightArrow className='h-fit w-0 transition-all delay-75 group-hover:w-10' />
      {title}
      <RightArrow className='ml-4 h-fit w-10 opacity-75 transition-all group-hover:w-0 group-hover:translate-x-12' />
@@ -66,14 +66,14 @@ const Project: FC<Props> = ({
      <div className='flex flex-row items-center gap-x-2'>
       <Clock
        viewBox='0 0 1000 1000'
-       className='h-4 w-4 text-light lg:h-8 lg:w-8'
+       className='text-light h-4 w-4 lg:h-8 lg:w-8'
       />
       <p className='sm-text capitalize'>{date}</p>
      </div>
     </div>
    </div>
 
-   <div className='flex h-full flex-shrink items-start justify-start overflow-clip bg-dark'>
+   <div className='bg-dark flex h-full shrink items-start justify-start overflow-clip'>
     <Image
      width={2000}
      height={2000}
@@ -87,7 +87,7 @@ const Project: FC<Props> = ({
      height={2000}
      sizes='500px'
      src={image2}
-     className='ml-auto mr-0 h-fit w-96 -rotate-3 rounded-lg transition-transform hover:scale-125 xl:ml-auto xl:mr-auto'
+     className='mr-0 ml-auto h-fit w-96 -rotate-3 rounded-lg transition-transform hover:scale-125 xl:mr-auto xl:ml-auto'
      alt='Project image'
     />
     {image3 && (

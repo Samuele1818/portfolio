@@ -1,3 +1,4 @@
+@reference '../../styles/globals.css'
 @import '../../styles/code.css';
 
 @property --angle {
@@ -26,14 +27,14 @@
 }
 
 .lines {
-    @apply relative flex justify-center
+    @apply relative flex justify-center last:after:hidden
 }
 
 .lines:after {
     content: "";
     border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 10;
     animation: borderRotate 3.6s linear infinite forwards;
-    @apply w-8 h-full top-full absolute border-r-2 border-l-2 last:hidden
+    @apply w-8 h-full top-full absolute border-r-2 border-l-2
 }
 
 .v-lines {
@@ -44,15 +45,26 @@
     content: "";
     border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 10;
     animation: borderRotate 3.6s linear infinite forwards;
-    @apply w-8 h-full top-full absolute border-r-2 border-l-2 last:hidden
+    @apply w-8 h-full top-full absolute border-r-2 border-l-2
 }
 
-@media screen(lg) {
+@media (width >=
+
+theme
+(
+--breakpoint-lg
+
+)
+)
+{
+.lines {
+    @apply last:after:block first:after:hidden
+}
     .lines:after {
         content: "";
         border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 10;
         animation: borderRotate var(--d) linear infinite forwards;
-        @apply w-24 h-8 my-auto top-0 bottom-0 right-full absolute border-l-0 border-r-0 border-t-2 border-b-2 first:hidden last:block
+        @apply w-24 h-8 my-auto top-0 bottom-0 right-full absolute border-l-0 border-r-0 border-t-2 border-b-2
     }
 }
 

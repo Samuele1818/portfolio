@@ -3,7 +3,6 @@ import {
  FC,
  ReactNode,
 } from 'react'
-import './cta.css'
 
 type Props = {
  text: string // Text of the button
@@ -33,8 +32,8 @@ const CTA: FC<Props> = ({
        ? 'primary-blue'
        : 'secondary-blue'
      : variant == 'primary'
-     ? 'primary-violet'
-     : 'secondary-violet'
+       ? 'primary-violet'
+       : 'secondary-violet'
    } inline-flex h-fit w-fit items-center gap-x-2 rounded-lg border-2 px-4 py-2 text-white transition-all disabled:opacity-60`}>
    {text}
    {icon}

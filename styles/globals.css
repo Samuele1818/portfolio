@@ -1,6 +1,19 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin '@tailwindcss/typography';
+
+@theme {
+    --color-dark: #1f1926;
+    --color-lightDark: #474747;
+    --color-light: #f5f0f0;
+
+    --background-image-darkgr: linear-gradient(to right top, #0d1c31, #0c182a, #0a1524, #07101e, #030b18);
+    --background-image-cyangr: linear-gradient(to right top, #083344, #0b2939, #0c202e, #0a1723, #030b18);
+
+    --breakpoint-3xl: 1800px;
+
+    --box-shadow-cs: 4px 12px 16px rgba(31, 25, 38, 0.22);;
+}
 
 @layer base {
     html,
@@ -77,74 +90,82 @@
         transform: scaleX(1);
         transform-origin: bottom center;
     }
+
+    .border-thin::before {
+        content: "";
+        transform-origin: center top;
+        animation: translateBorder 1s forwards;
+        @apply border-b-blue-600 border-b-[1px] border-dashed bottom-0 absolute overflow-visible w-full
+    }
 }
 
-@layer utilities {
+@utility hover-underline-animation {
+    display: inline-block;
+    position: relative;
+}
 
-    .hover-underline-animation {
-        display: inline-block;
-        position: relative;
-    }
+@utility layout {
+    @apply px-6 md:px-8 lg:px-12 xl:px-24 2xl:px-[14rem] 3xl:px-[22rem]
+}
 
-    .layout {
-        @apply px-6 md:px-8 lg:px-12 xl:px-24 2xl:px-[14rem] 3xl:px-[22rem]
-    }
+@utility center {
+    @apply text-center mx-auto
+}
 
-    .center {
-        @apply text-center mx-auto
-    }
+@utility flex-align-lg {
+    @apply flex flex-col lg:flex-row
+}
 
-    .flex-align-lg {
-        @apply flex flex-col lg:flex-row
-    }
+@utility flex-align-md {
+    @apply flex flex-col md:flex-row
+}
 
-    .flex-align-md {
-        @apply flex flex-col md:flex-row
-    }
+@utility hr-align-lg {
+    @apply center lg:mx-0 lg:text-left
+}
 
-    .hr-align-lg {
-        @apply center lg:mx-0 lg:text-left
-    }
+@utility watermark {
+    font-size: min(20vw, 256px);
+    @apply opacity-[2%] text-white break-keep whitespace-nowrap font-black
+}
 
-    .watermark {
-        font-size: min(20vw, 256px);
-        @apply opacity-[2%] text-white break-keep whitespace-nowrap font-black
-    }
+@utility hero-title {
+    font-size: max(48px, min(5vw, 76px));
+    @apply font-extrabold
+}
 
-    .hero-title {
-        font-size: max(48px, min(5vw, 76px));
-        @apply font-extrabold
-    }
+@utility hero-sub {
+    font-size: max(15px, min(2vw, 20px));
+    @apply text-slate-400
+}
 
-    .hero-sub {
-        font-size: max(15px, min(2vw, 20px));
-        @apply text-slate-400
-    }
+@utility xl2-text {
+    font-size: clamp(2.5rem, 3rem + 0.9375vw, 3.5rem);
+    @apply font-black leading-snug;
+}
 
-    .xl2-text {
-        font-size: clamp(2.5rem, 3rem + 0.9375vw, 3.5rem);
-        @apply font-black leading-snug;
-    }
+@utility xl-text {
+    font-size: clamp(1.5rem, 2rem + 0.9375vw, 2.5rem);
+    @apply font-bold leading-snug;
+}
 
-    .xl-text {
-        font-size: clamp(1.5rem, 2rem + 0.9375vw, 2.5rem);
-        @apply font-bold leading-snug;
-    }
+@utility lg-text {
+    font-size: clamp(1.25rem, 1.5rem + 0.625vw, 1.875rem);
+}
 
-    .lg-text {
-        font-size: clamp(1.25rem, 1.5rem + 0.625vw, 1.875rem);
-    }
+@utility md-text {
+    font-size: clamp(1.125rem, 1.25rem + 0.3125vw, 1.5rem);
+}
 
-    .md-text {
-        font-size: clamp(1.125rem, 1.25rem + 0.3125vw, 1.5rem);
-    }
+@utility sm-text {
+    font-size: clamp(1rem, 1.125rem + 0.3125vw, 1.25rem);
+}
 
-    .sm-text {
-        font-size: clamp(1rem, 1.125rem + 0.3125vw, 1.25rem);
-    }
+@utility xs-text {
+    font-size: clamp(0.875rem, 1rem + 0.3125vw, 1.125rem);
+    @apply tracking-wider;
+}
 
-    .xs-text {
-        font-size: clamp(0.875rem, 1rem + 0.3125vw, 1.125rem);
-        @apply tracking-wider;
-    }
+@utility border-thin {
+    @apply overflow-x-hidden relative border-blue-600/30 border-[1px] border-dashed border-t-0 border-b-0 px-12 py-6 rounded-lg
 }
